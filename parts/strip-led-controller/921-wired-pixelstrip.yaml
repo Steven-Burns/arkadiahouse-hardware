@@ -75,6 +75,5 @@ light:
 <<: !include 
   file: /workspace/include/wemos-d1-mini-wired-baseline.yaml
   vars:
-    device_hostname: "921-esphome"
     device_friendly_name: "Arkadia House Pixelstrip Controller (${device_hostname})"
     device_comment: "Wired pixel strip controller on board 921."
