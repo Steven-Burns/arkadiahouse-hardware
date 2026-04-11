@@ -30,6 +30,6 @@ switch:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_friendly_name: "Living Room Amp A-B switch"
+    device_friendly_name: "A-B switch on board 906."
     device_comment: "A-B selector for stereo speaker output."
 
