@@ -11,7 +11,7 @@ function do-esphome-command
 		$args
 	)
 
-	if ($args.Count -eq 0 -or $command -notin @("compile", "run")) 
+	if ($args.Count -eq 0 -or $command -notin @("compile", "run", "config")) 
 	{
 		throw "Usage: esphome-<command> <device yaml file> [<device yaml file> ...]"
 	}
@@ -65,3 +65,14 @@ function esphome-run
 	do-esphome-command "run" $args
 }
 
+function esphome-config
+{
+	param
+	(
+		[Parameter(Mandatory = $true, ValueFromRemainingArguments = $true, Position = 0)]
+		[string[]]
+		$args
+	)
+
+	do-esphome-command "config" $args
+}
