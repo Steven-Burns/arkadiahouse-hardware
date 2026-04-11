@@ -1,7 +1,8 @@
-# base configuration for all v6.x Arkadia Sensor Hub hardware.
+# The 'v4' hub board has all the external sensors hooked up with screw terminals.
+# This is still useful for testing individual components (ETH modules, displays, radars), but 
+# is not installed into actual use. 
 
 substitutions:
-  device_hostname: SPECIFY_HOSTNAME_TO_BASELINE_YAML_INCLUDE
   device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
 
 esp32:
@@ -34,6 +35,10 @@ packages:
       buzzer_pin: "GPIO33"
   ha_chime: !include
     file: /workspace/include/home-asst-tone-player.yaml
+  illuminance: !include
+    file: /workspace/include/photoresistor-illuminance.yaml
+    vars:
+      illuminance_pin: "GPIO39"
   radar_0: !include
     file: /workspace/include/HLK-LD2410-radar-motion.yaml
     vars:
@@ -54,18 +59,10 @@ packages:
       i2c_sda_pin: "GPIO21"
       i2c_scl_pin: "GPIO22"
       i2c_freq: "420kHz"
-
-# the env sensor data needs to get updated to be something that remotely reads the data points from a given set of sensors in Home Assistant
-# which are in turn updated by a separate MCU in the 6.0 iteration of the Arkadia House project.
   temp_humidity: !include
     file: /workspace/include/BMP280-AHT20-temp-humidity.yaml
     vars: 
       temperature_offset: "0"      
-  illuminance: !include
-    file: /workspace/include/photoresistor-illuminance.yaml
-    vars:
-      illuminance_pin: "GPIO39"
-
   display: !include
     file: /workspace/include/SDD1306-display-arkadia.yaml
   keypad: !include
@@ -99,7 +96,6 @@ packages:
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
     # turn off UART0 logging so that we can use it for radar1
-    logger_baud_rate: "0"
-    device_hostname: ${device_hostname} 
-    device_friendly_name: "Arkadia House Sensor Hub v6 (${device_hostname})"
+    logger_baud_rate: 0
+    device_friendly_name: "Arkadia House Sensor Hub v4 (${device_hostname})"
     device_comment: ${device_comment}

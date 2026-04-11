@@ -1,0 +1,4 @@
+<<: !include 
+  file: ./hub-v6-base.yaml
+  vars:
+    device_comment: "Arkadia Sensor Hub Version 6.x hardware with board 667."
