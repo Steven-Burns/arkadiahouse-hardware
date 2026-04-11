@@ -1,6 +1,3 @@
-substitutions:
-  device_hostname: SPECIFY_HOSTNAME_TO_BASELINE_YAML_INCLUDE
-
 esp32:
   board: lolin_s2_mini
   variant: ESP32S2
@@ -38,6 +35,6 @@ packages:
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
     logger_baud_rate: 115200
-    device_friendly_name: "Arkadia House Env Sensor v1 (${device_hostname})"
-    device_comment: "Arkadia House Evnironmental Sensor."
+    device_friendly_name: "Arkadia House Env Sensor (${device_hostname})"
+    device_comment: "Arkadia House Environmental Sensor."
 

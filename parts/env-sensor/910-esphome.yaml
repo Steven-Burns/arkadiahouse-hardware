@@ -1,4 +1,4 @@
 <<: !include 
-  file: ./arkadia-env-sense-base.yaml
+  file: ./env-sense-base.yaml
   vars:
 
