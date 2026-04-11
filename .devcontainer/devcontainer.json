@@ -37,7 +37,7 @@
   // This is a reference to a named docker volume that is assumed to already exist (created manually
   // in docker desktop, or via a docker compose).  Clone the repo into a folder named arkadiahouse-esphome 
   // in the named volume. 
-  "workspaceMount": "type=volume,source=arkadiahouse-esphome-main,volume-subpath=arkadiahouse-esphome,target=/workspace",
+  "workspaceMount": "type=volume,source=arkadiahouse-docker-volume,volume-subpath=arkadiahouse-hardware,target=/workspace",
   "workspaceFolder": "/workspace",
 
   "customizations": 

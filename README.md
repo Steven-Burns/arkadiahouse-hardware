@@ -3,15 +3,24 @@ Circuit board and enclosure designs for Arkadia House
 
 # pre-reqs
 
-1. host computer running docker desktop.
-1. host computer has cloned the repo on the host's local disk somewhere.
+1. Host computer running Docker Desktop.
+1. Host computer has cloned the repo on the host's local disk somewhere.
 1. VSCode is installed on the host computer.
 
 # bootstrapping
 
-1. create a docker named volume named "arkadiahouse-docker-volume"
-1. clone the repo into that volume at a folder named arkdiahouse-hardware
-1. (The above steps are assumed to have been completed by the devcontainer.json file checked into this repo.)
+Create a docker named volume named "arkadiahouse-docker-volume"
+```DOS
+docker volume create arkadiahouse-docker-volume
+```
+Clone the repo into that volume at a folder named arkdiahouse-hardware
+
+```DOS
+docker run --interactive --user root --volume arkadiahouse-docker-volume:/arkadiahouse-hardware cleanstart/git:latest clone https://github.com/Steven-Burns/arkadiahouse-hardware.git 
+```
+
+
+(The above steps are assumed to have been completed by the devcontainer.json file checked into this repo.)
 
 # startup
 
