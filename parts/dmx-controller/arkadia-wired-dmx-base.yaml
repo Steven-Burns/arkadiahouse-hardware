@@ -1,0 +1,1009 @@
+# base configuration for all v1.x Arkadia wired DMX controller hardware.
+# two DMX universes on the same device, with 2 RGBCW fixtures (10 channels) on each universe.
+
+substitutions:
+  device_hostname: SPECIFY_HOSTNAME_TO_BASELINE_YAML_INCLUDE
+  device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
+
+
+external_components:
+  - source: github://andyboeh/esphome-dmx512
+
+uart:
+
+# Leaving use of UART0 commented out here in case I ever need to remember how to utilize all 3 UARTs on a single controller.
+
+  # - id: uart_bus0
+  #   baud_rate: 250000
+  #   tx_pin: 
+  #     number: GPIO27   
+  #     allow_other_uses: true 
+  #     inverted: false
+  #   stop_bits: 2
+  #   data_bits: 8
+  #   parity: NONE
+
+  - id: uart_bus1
+    baud_rate: 250000
+    tx_pin: 
+      number: GPIO25   
+      allow_other_uses: true 
+      inverted: false
+    stop_bits: 2
+    data_bits: 8
+    parity: NONE
+  - id: uart_bus2
+    baud_rate: 250000
+    tx_pin: 
+      number: GPIO17   
+      allow_other_uses: true 
+      inverted: false
+    stop_bits: 2
+    data_bits: 8
+    parity: NONE
+
+
+dmx512:
+  # - id: dmx_u0   
+  #   uart_id: uart_bus0
+  #   tx_pin: 
+  #     number: GPIO27
+  #     allow_other_uses: true # For ESPHome >= 2023.12.0
+  #   uart_num: 0
+  #   force_full_frames: false
+  #   periodic_update: true
+  #   custom_break_len: 92 # 92=default optional
+  #   custom_mab_len: 12 # 12=default optional
+  #   update_interval: 500 # 500=default optional
+
+  - id: dmx_u1  
+    uart_id: uart_bus1
+    tx_pin: 
+      number: GPIO25
+      allow_other_uses: true 
+    uart_num: 1
+    force_full_frames: false
+    periodic_update: true
+    custom_break_len: 92 # 92=default optional
+    custom_mab_len: 12 # 12=default optional
+    update_interval: 500 # 500=default optional
+  - id: dmx_u2
+    uart_id: uart_bus2
+    tx_pin: 
+      number: GPIO17
+      allow_other_uses: true 
+    uart_num: 2
+    force_full_frames: false
+    periodic_update: true
+
+output:
+  # universe 0 commented out for future reference...
+  # - platform: dmx512
+  #   channel: 1
+  #   universe: dmx_u0
+  #   id: dmx_u0_ch1  
+  # - platform: dmx512
+  #   channel: 2
+  #   universe: dmx_u0
+  #   id: dmx_u0_ch2
+  # - platform: dmx512
+  #   channel: 3
+  #   universe: dmx_u0
+  #   id: dmx_u0_ch3  
+  # - platform: dmx512
+  #   channel: 4
+  #   universe: dmx_u0
+  #   id: dmx_u0_ch4
+  # - platform: dmx512
+  #   channel: 5
+  #   universe: dmx_u0
+  #   id: dmx_u0_ch5  
+  # - platform: dmx512
+  #   channel: 6
+  #   universe: dmx_u0
+  #   id: dmx_u0_ch6
+  # - platform: dmx512
+  #   channel: 7
+  #   universe: dmx_u0
+  #   id: dmx_u0_ch7  
+  # - platform: dmx512
+  #   channel: 8
+  #   universe: dmx_u0
+  #   id: dmx_u0_ch8
+
+# On universe 1, we define enough output channels for 32 RGB+CW+WW fixtures of 5 channels each.
+# 32 is the most number of fixtures we could ever imagine controlling on a single universe, as
+# we are uninterested in worrying about compensating for signal degradation over longer cable runs.
+  - platform: dmx512
+    channel: 1
+    universe: dmx_u1
+    id: dmx_u1_ch1  
+  - platform: dmx512
+    channel: 2
+    universe: dmx_u1
+    id: dmx_u1_ch2
+  - platform: dmx512
+    channel: 3
+    universe: dmx_u1
+    id: dmx_u1_ch3  
+  - platform: dmx512
+    channel: 4
+    universe: dmx_u1
+    id: dmx_u1_ch4
+  - platform: dmx512
+    channel: 5
+    universe: dmx_u1
+    id: dmx_u1_ch5  
+  - platform: dmx512
+    channel: 6
+    universe: dmx_u1
+    id: dmx_u1_ch6
+  - platform: dmx512
+    channel: 7
+    universe: dmx_u1
+    id: dmx_u1_ch7  
+  - platform: dmx512
+    channel: 8
+    universe: dmx_u1
+    id: dmx_u1_ch8
+  - platform: dmx512
+    channel: 9
+    universe: dmx_u1
+    id: dmx_u1_ch9  
+  - platform: dmx512
+    channel: 10
+    universe: dmx_u1
+    id: dmx_u1_ch10
+  - platform: dmx512
+    channel: 11
+    universe: dmx_u1
+    id: dmx_u1_ch11  
+  - platform: dmx512
+    channel: 12
+    universe: dmx_u1
+    id: dmx_u1_ch12
+  - platform: dmx512
+    channel: 13 
+    universe: dmx_u1
+    id: dmx_u1_ch13  
+  - platform: dmx512
+    channel: 14
+    universe: dmx_u1
+    id: dmx_u1_ch14
+  - platform: dmx512
+    channel: 15
+    universe: dmx_u1
+    id: dmx_u1_ch15  
+  - platform: dmx512
+    channel: 16
+    universe: dmx_u1
+    id: dmx_u1_ch16
+  - platform: dmx512
+    channel: 17 
+    universe: dmx_u1
+    id: dmx_u1_ch17  
+  - platform: dmx512
+    channel: 18
+    universe: dmx_u1
+    id: dmx_u1_ch18
+  - platform: dmx512
+    channel: 19
+    universe: dmx_u1
+    id: dmx_u1_ch19  
+  - platform: dmx512
+    channel: 20
+    universe: dmx_u1
+    id: dmx_u1_ch20
+  - platform: dmx512
+    channel: 21
+    universe: dmx_u1
+    id: dmx_u1_ch21
+  - platform: dmx512
+    channel: 22
+    universe: dmx_u1
+    id: dmx_u1_ch22
+  - platform: dmx512
+    channel: 23
+    universe: dmx_u1
+    id: dmx_u1_ch23
+  - platform: dmx512
+    channel: 24
+    universe: dmx_u1
+    id: dmx_u1_ch24
+  - platform: dmx512
+    channel: 25
+    universe: dmx_u1
+    id: dmx_u1_ch25
+  - platform: dmx512
+    channel: 26
+    universe: dmx_u1
+    id: dmx_u1_ch26
+  - platform: dmx512
+    channel: 27
+    universe: dmx_u1
+    id: dmx_u1_ch27
+  - platform: dmx512
+    channel: 28
+    universe: dmx_u1
+    id: dmx_u1_ch28
+  - platform: dmx512
+    channel: 29
+    universe: dmx_u1
+    id: dmx_u1_ch29
+  - platform: dmx512
+    channel: 30
+    universe: dmx_u1
+    id: dmx_u1_ch30
+  - platform: dmx512
+    channel: 31
+    universe: dmx_u1
+    id: dmx_u1_ch31
+  - platform: dmx512
+    channel: 32
+    universe: dmx_u1
+    id: dmx_u1_ch32
+  - platform: dmx512
+    channel: 33
+    universe: dmx_u1
+    id: dmx_u1_ch33
+  - platform: dmx512
+    channel: 34 
+    universe: dmx_u1
+    id: dmx_u1_ch34
+  - platform: dmx512
+    channel: 35
+    universe: dmx_u1
+    id: dmx_u1_ch35
+  - platform: dmx512
+    channel: 36
+    universe: dmx_u1
+    id: dmx_u1_ch36
+  - platform: dmx512
+    channel: 37
+    universe: dmx_u1
+    id: dmx_u1_ch37
+  - platform: dmx512
+    channel: 38
+    universe: dmx_u1
+    id: dmx_u1_ch38
+  - platform: dmx512
+    channel: 39
+    universe: dmx_u1
+    id: dmx_u1_ch39
+  - platform: dmx512
+    channel: 40
+    universe: dmx_u1
+    id: dmx_u1_ch40
+  - platform: dmx512
+    channel: 41
+    universe: dmx_u1
+    id: dmx_u1_ch41
+  - platform: dmx512
+    channel: 42 
+    universe: dmx_u1
+    id: dmx_u1_ch42
+  - platform: dmx512
+    channel: 43
+    universe: dmx_u1
+    id: dmx_u1_ch43
+  - platform: dmx512
+    channel: 44 
+    universe: dmx_u1
+    id: dmx_u1_ch44
+  - platform: dmx512
+    channel: 45
+    universe: dmx_u1
+    id: dmx_u1_ch45  
+  - platform: dmx512
+    channel: 46
+    universe: dmx_u1
+    id: dmx_u1_ch46
+  - platform: dmx512
+    channel: 47
+    universe: dmx_u1
+    id: dmx_u1_ch47  
+  - platform: dmx512
+    channel: 48
+    universe: dmx_u1
+    id: dmx_u1_ch48
+  - platform: dmx512
+    channel: 49
+    universe: dmx_u1
+    id: dmx_u1_ch49  
+  - platform: dmx512
+    channel: 50
+    universe: dmx_u1
+    id: dmx_u1_ch50
+  - platform: dmx512
+    channel: 51
+    universe: dmx_u1
+    id: dmx_u1_ch51  
+  - platform: dmx512
+    channel: 52
+    universe: dmx_u1
+    id: dmx_u1_ch52
+  - platform: dmx512
+    channel: 53
+    universe: dmx_u1
+    id: dmx_u1_ch53  
+  - platform: dmx512
+    channel: 54
+    universe: dmx_u1
+    id: dmx_u1_ch54
+  - platform: dmx512
+    channel: 55
+    universe: dmx_u1
+    id: dmx_u1_ch55  
+  - platform: dmx512
+    channel: 56
+    universe: dmx_u1
+    id: dmx_u1_ch56
+  - platform: dmx512
+    channel: 57
+    universe: dmx_u1
+    id: dmx_u1_ch57
+  - platform: dmx512
+    channel: 58 
+    universe: dmx_u1
+    id: dmx_u1_ch58  
+  - platform: dmx512
+    channel: 59
+    universe: dmx_u1
+    id: dmx_u1_ch59
+  - platform: dmx512
+    channel: 60
+    universe: dmx_u1
+    id: dmx_u1_ch60  
+  - platform: dmx512
+    channel: 61
+    universe: dmx_u1
+    id: dmx_u1_ch61
+  - platform: dmx512
+    channel: 62
+    universe: dmx_u1
+    id: dmx_u1_ch62
+  - platform: dmx512
+    channel: 63
+    universe: dmx_u1
+    id: dmx_u1_ch63
+  - platform: dmx512
+    channel: 64
+    universe: dmx_u1
+    id: dmx_u1_ch64
+  - platform: dmx512
+    channel: 65
+    universe: dmx_u1
+    id: dmx_u1_ch65
+  - platform: dmx512
+    channel: 66
+    universe: dmx_u1
+    id: dmx_u1_ch66
+  - platform: dmx512
+    channel: 67
+    universe: dmx_u1
+    id: dmx_u1_ch67
+  - platform: dmx512
+    channel: 68
+    universe: dmx_u1
+    id: dmx_u1_ch68
+  - platform: dmx512
+    channel: 69
+    universe: dmx_u1
+    id: dmx_u1_ch69
+  - platform: dmx512
+    channel: 70
+    universe: dmx_u1
+    id: dmx_u1_ch70
+  - platform: dmx512
+    channel: 71
+    universe: dmx_u1
+    id: dmx_u1_ch71
+  - platform: dmx512
+    channel: 72
+    universe: dmx_u1
+    id: dmx_u1_ch72
+  - platform: dmx512
+    channel: 73
+    universe: dmx_u1
+    id: dmx_u1_ch73
+  - platform: dmx512
+    channel: 74 
+    universe: dmx_u1
+    id: dmx_u1_ch74
+  - platform: dmx512
+    channel: 75
+    universe: dmx_u1
+    id: dmx_u1_ch75
+  - platform: dmx512
+    channel: 76
+    universe: dmx_u1
+    id: dmx_u1_ch76
+  - platform: dmx512
+    channel: 77
+    universe: dmx_u1
+    id: dmx_u1_ch77
+  - platform: dmx512
+    channel: 78 
+    universe: dmx_u1
+    id: dmx_u1_ch78
+  - platform: dmx512
+    channel: 79
+    universe: dmx_u1
+    id: dmx_u1_ch79
+  - platform: dmx512
+    channel: 80
+    universe: dmx_u1
+    id: dmx_u1_ch80
+  - platform: dmx512
+    channel: 81
+    universe: dmx_u1
+    id: dmx_u1_ch81
+  - platform: dmx512
+    channel: 82
+    universe: dmx_u1
+    id: dmx_u1_ch82
+  - platform: dmx512
+    channel: 83
+    universe: dmx_u1
+    id: dmx_u1_ch83
+  - platform: dmx512
+    channel: 84
+    universe: dmx_u1
+    id: dmx_u1_ch84
+  - platform: dmx512
+    channel: 85
+    universe: dmx_u1
+    id: dmx_u1_ch85
+  - platform: dmx512
+    channel: 86
+    universe: dmx_u1
+    id: dmx_u1_ch86
+  - platform: dmx512
+    channel: 87
+    universe: dmx_u1
+    id: dmx_u1_ch87
+  - platform: dmx512
+    channel: 88
+    universe: dmx_u1
+    id: dmx_u1_ch88
+  - platform: dmx512
+    channel: 89
+    universe: dmx_u1
+    id: dmx_u1_ch89
+  - platform: dmx512
+    channel: 90
+    universe: dmx_u1
+    id: dmx_u1_ch90
+  - platform: dmx512
+    channel: 91
+    universe: dmx_u1
+    id: dmx_u1_ch91
+  - platform: dmx512
+    channel: 92
+    universe: dmx_u1
+    id: dmx_u1_ch92
+  - platform: dmx512
+    channel: 93
+    universe: dmx_u1
+    id: dmx_u1_ch93
+  - platform: dmx512
+    channel: 94
+    universe: dmx_u1
+    id: dmx_u1_ch94
+  - platform: dmx512
+    channel: 95
+    universe: dmx_u1
+    id: dmx_u1_ch95
+  - platform: dmx512
+    channel: 96
+    universe: dmx_u1
+    id: dmx_u1_ch96
+  - platform: dmx512
+    channel: 97
+    universe: dmx_u1
+    id: dmx_u1_ch97
+  - platform: dmx512
+    channel: 98
+    universe: dmx_u1
+    id: dmx_u1_ch98
+  - platform: dmx512
+    channel: 99
+    universe: dmx_u1
+    id: dmx_u1_ch99
+  - platform: dmx512
+    channel: 100
+    universe: dmx_u1
+    id: dmx_u1_ch100
+  - platform: dmx512
+    channel: 101
+    universe: dmx_u1
+    id: dmx_u1_ch101
+  - platform: dmx512
+    channel: 102
+    universe: dmx_u1
+    id: dmx_u1_ch102
+  - platform: dmx512
+    channel: 103
+    universe: dmx_u1
+    id: dmx_u1_ch103
+  - platform: dmx512
+    channel: 104
+    universe: dmx_u1
+    id: dmx_u1_ch104
+  - platform: dmx512
+    channel: 105
+    universe: dmx_u1
+    id: dmx_u1_ch105
+  - platform: dmx512
+    channel: 106
+    universe: dmx_u1
+    id: dmx_u1_ch106
+  - platform: dmx512
+    channel: 107
+    universe: dmx_u1
+    id: dmx_u1_ch107
+  - platform: dmx512
+    channel: 108
+    universe: dmx_u1
+    id: dmx_u1_ch108
+  - platform: dmx512
+    channel: 109
+    universe: dmx_u1
+    id: dmx_u1_ch109
+
+
+# Same for universe 2.
+
+  - platform: dmx512
+    channel: 1
+    universe: dmx_u2
+    id: dmx_u2_ch1  
+  - platform: dmx512
+    channel: 2
+    universe: dmx_u2
+    id: dmx_u2_ch2
+  - platform: dmx512
+    channel: 3
+    universe: dmx_u2
+    id: dmx_u2_ch3  
+  - platform: dmx512
+    channel: 4
+    universe: dmx_u2
+    id: dmx_u2_ch4
+  - platform: dmx512
+    channel: 5
+    universe: dmx_u2
+    id: dmx_u2_ch5  
+  - platform: dmx512
+    channel: 6
+    universe: dmx_u2
+    id: dmx_u2_ch6
+  - platform: dmx512
+    channel: 7
+    universe: dmx_u2
+    id: dmx_u2_ch7  
+  - platform: dmx512
+    channel: 8
+    universe: dmx_u2
+    id: dmx_u2_ch8
+  - platform: dmx512
+    channel: 9
+    universe: dmx_u2
+    id: dmx_u2_ch9  
+  - platform: dmx512
+    channel: 10
+    universe: dmx_u2
+    id: dmx_u2_ch10
+  - platform: dmx512
+    channel: 11
+    universe: dmx_u2
+    id: dmx_u2_ch11  
+  - platform: dmx512
+    channel: 12
+    universe: dmx_u2
+    id: dmx_u2_ch12
+  - platform: dmx512
+    channel: 13 
+    universe: dmx_u2
+    id: dmx_u2_ch13  
+  - platform: dmx512
+    channel: 14
+    universe: dmx_u2
+    id: dmx_u2_ch14
+  - platform: dmx512
+    channel: 15
+    universe: dmx_u2
+    id: dmx_u2_ch15  
+  - platform: dmx512
+    channel: 16
+    universe: dmx_u2
+    id: dmx_u2_ch16
+  - platform: dmx512
+    channel: 17 
+    universe: dmx_u2
+    id: dmx_u2_ch17  
+  - platform: dmx512
+    channel: 18
+    universe: dmx_u2
+    id: dmx_u2_ch18
+  - platform: dmx512
+    channel: 19
+    universe: dmx_u2
+    id: dmx_u2_ch19  
+  - platform: dmx512
+    channel: 20
+    universe: dmx_u2
+    id: dmx_u2_ch20
+  - platform: dmx512
+    channel: 21
+    universe: dmx_u2
+    id: dmx_u2_ch21
+  - platform: dmx512
+    channel: 22
+    universe: dmx_u2
+    id: dmx_u2_ch22
+  - platform: dmx512
+    channel: 23
+    universe: dmx_u2
+    id: dmx_u2_ch23
+  - platform: dmx512
+    channel: 24
+    universe: dmx_u2
+    id: dmx_u2_ch24
+  - platform: dmx512
+    channel: 25
+    universe: dmx_u2
+    id: dmx_u2_ch25
+  - platform: dmx512
+    channel: 26
+    universe: dmx_u2
+    id: dmx_u2_ch26
+  - platform: dmx512
+    channel: 27
+    universe: dmx_u2
+    id: dmx_u2_ch27
+  - platform: dmx512
+    channel: 28
+    universe: dmx_u2
+    id: dmx_u2_ch28
+  - platform: dmx512
+    channel: 29
+    universe: dmx_u2
+    id: dmx_u2_ch29
+  - platform: dmx512
+    channel: 30
+    universe: dmx_u2
+    id: dmx_u2_ch30
+  - platform: dmx512
+    channel: 31
+    universe: dmx_u2
+    id: dmx_u2_ch31
+  - platform: dmx512
+    channel: 32
+    universe: dmx_u2
+    id: dmx_u2_ch32
+  - platform: dmx512
+    channel: 33
+    universe: dmx_u2
+    id: dmx_u2_ch33
+  - platform: dmx512
+    channel: 34 
+    universe: dmx_u2
+    id: dmx_u2_ch34
+  - platform: dmx512
+    channel: 35
+    universe: dmx_u2
+    id: dmx_u2_ch35
+  - platform: dmx512
+    channel: 36
+    universe: dmx_u2
+    id: dmx_u2_ch36
+  - platform: dmx512
+    channel: 37
+    universe: dmx_u2
+    id: dmx_u2_ch37
+  - platform: dmx512
+    channel: 38
+    universe: dmx_u2
+    id: dmx_u2_ch38
+  - platform: dmx512
+    channel: 39
+    universe: dmx_u2
+    id: dmx_u2_ch39
+  - platform: dmx512
+    channel: 40
+    universe: dmx_u2
+    id: dmx_u2_ch40
+  - platform: dmx512
+    channel: 41
+    universe: dmx_u2
+    id: dmx_u2_ch41
+  - platform: dmx512
+    channel: 42 
+    universe: dmx_u2
+    id: dmx_u2_ch42
+  - platform: dmx512
+    channel: 43
+    universe: dmx_u2
+    id: dmx_u2_ch43
+  - platform: dmx512
+    channel: 44 
+    universe: dmx_u2
+    id: dmx_u2_ch44
+  - platform: dmx512
+    channel: 45
+    universe: dmx_u2
+    id: dmx_u2_ch45  
+  - platform: dmx512
+    channel: 46
+    universe: dmx_u2
+    id: dmx_u2_ch46
+  - platform: dmx512
+    channel: 47
+    universe: dmx_u2
+    id: dmx_u2_ch47  
+  - platform: dmx512
+    channel: 48
+    universe: dmx_u2
+    id: dmx_u2_ch48
+  - platform: dmx512
+    channel: 49
+    universe: dmx_u2
+    id: dmx_u2_ch49  
+  - platform: dmx512
+    channel: 50
+    universe: dmx_u2
+    id: dmx_u2_ch50
+  - platform: dmx512
+    channel: 51
+    universe: dmx_u2
+    id: dmx_u2_ch51  
+  - platform: dmx512
+    channel: 52
+    universe: dmx_u2
+    id: dmx_u2_ch52
+  - platform: dmx512
+    channel: 53
+    universe: dmx_u2
+    id: dmx_u2_ch53  
+  - platform: dmx512
+    channel: 54
+    universe: dmx_u2
+    id: dmx_u2_ch54
+  - platform: dmx512
+    channel: 55
+    universe: dmx_u2
+    id: dmx_u2_ch55  
+  - platform: dmx512
+    channel: 56
+    universe: dmx_u2
+    id: dmx_u2_ch56
+  - platform: dmx512
+    channel: 57
+    universe: dmx_u2
+    id: dmx_u2_ch57
+  - platform: dmx512
+    channel: 58 
+    universe: dmx_u2
+    id: dmx_u2_ch58  
+  - platform: dmx512
+    channel: 59
+    universe: dmx_u2
+    id: dmx_u2_ch59
+  - platform: dmx512
+    channel: 60
+    universe: dmx_u2
+    id: dmx_u2_ch60  
+  - platform: dmx512
+    channel: 61
+    universe: dmx_u2
+    id: dmx_u2_ch61
+  - platform: dmx512
+    channel: 62
+    universe: dmx_u2
+    id: dmx_u2_ch62
+  - platform: dmx512
+    channel: 63
+    universe: dmx_u2
+    id: dmx_u2_ch63
+  - platform: dmx512
+    channel: 64
+    universe: dmx_u2
+    id: dmx_u2_ch64
+  - platform: dmx512
+    channel: 65
+    universe: dmx_u2
+    id: dmx_u2_ch65
+  - platform: dmx512
+    channel: 66
+    universe: dmx_u2
+    id: dmx_u2_ch66
+  - platform: dmx512
+    channel: 67
+    universe: dmx_u2
+    id: dmx_u2_ch67
+  - platform: dmx512
+    channel: 68
+    universe: dmx_u2
+    id: dmx_u2_ch68
+  - platform: dmx512
+    channel: 69
+    universe: dmx_u2
+    id: dmx_u2_ch69
+  - platform: dmx512
+    channel: 70
+    universe: dmx_u2
+    id: dmx_u2_ch70
+  - platform: dmx512
+    channel: 71
+    universe: dmx_u2
+    id: dmx_u2_ch71
+  - platform: dmx512
+    channel: 72
+    universe: dmx_u2
+    id: dmx_u2_ch72
+  - platform: dmx512
+    channel: 73
+    universe: dmx_u2
+    id: dmx_u2_ch73
+  - platform: dmx512
+    channel: 74 
+    universe: dmx_u2
+    id: dmx_u2_ch74
+  - platform: dmx512
+    channel: 75
+    universe: dmx_u2
+    id: dmx_u2_ch75
+  - platform: dmx512
+    channel: 76
+    universe: dmx_u2
+    id: dmx_u2_ch76
+  - platform: dmx512
+    channel: 77
+    universe: dmx_u2
+    id: dmx_u2_ch77
+  - platform: dmx512
+    channel: 78 
+    universe: dmx_u2
+    id: dmx_u2_ch78
+  - platform: dmx512
+    channel: 79
+    universe: dmx_u2
+    id: dmx_u2_ch79
+  - platform: dmx512
+    channel: 80
+    universe: dmx_u2
+    id: dmx_u2_ch80
+  - platform: dmx512
+    channel: 81
+    universe: dmx_u2
+    id: dmx_u2_ch81
+  - platform: dmx512
+    channel: 82
+    universe: dmx_u2
+    id: dmx_u2_ch82
+  - platform: dmx512
+    channel: 83
+    universe: dmx_u2
+    id: dmx_u2_ch83
+  - platform: dmx512
+    channel: 84
+    universe: dmx_u2
+    id: dmx_u2_ch84
+  - platform: dmx512
+    channel: 85
+    universe: dmx_u2
+    id: dmx_u2_ch85
+  - platform: dmx512
+    channel: 86
+    universe: dmx_u2
+    id: dmx_u2_ch86
+  - platform: dmx512
+    channel: 87
+    universe: dmx_u2
+    id: dmx_u2_ch87
+  - platform: dmx512
+    channel: 88
+    universe: dmx_u2
+    id: dmx_u2_ch88
+  - platform: dmx512
+    channel: 89
+    universe: dmx_u2
+    id: dmx_u2_ch89
+  - platform: dmx512
+    channel: 90
+    universe: dmx_u2
+    id: dmx_u2_ch90
+  - platform: dmx512
+    channel: 91
+    universe: dmx_u2
+    id: dmx_u2_ch91
+  - platform: dmx512
+    channel: 92
+    universe: dmx_u2
+    id: dmx_u2_ch92
+  - platform: dmx512
+    channel: 93
+    universe: dmx_u2
+    id: dmx_u2_ch93
+  - platform: dmx512
+    channel: 94
+    universe: dmx_u2
+    id: dmx_u2_ch94
+  - platform: dmx512
+    channel: 95
+    universe: dmx_u2
+    id: dmx_u2_ch95
+  - platform: dmx512
+    channel: 96
+    universe: dmx_u2
+    id: dmx_u2_ch96
+  - platform: dmx512
+    channel: 97
+    universe: dmx_u2
+    id: dmx_u2_ch97
+  - platform: dmx512
+    channel: 98
+    universe: dmx_u2
+    id: dmx_u2_ch98
+  - platform: dmx512
+    channel: 99
+    universe: dmx_u2
+    id: dmx_u2_ch99
+  - platform: dmx512
+    channel: 100
+    universe: dmx_u2
+    id: dmx_u2_ch100
+  - platform: dmx512
+    channel: 101
+    universe: dmx_u2
+    id: dmx_u2_ch101
+  - platform: dmx512
+    channel: 102
+    universe: dmx_u2
+    id: dmx_u2_ch102
+  - platform: dmx512
+    channel: 103
+    universe: dmx_u2
+    id: dmx_u2_ch103
+  - platform: dmx512
+    channel: 104
+    universe: dmx_u2
+    id: dmx_u2_ch104
+  - platform: dmx512
+    channel: 105
+    universe: dmx_u2
+    id: dmx_u2_ch105
+  - platform: dmx512
+    channel: 106
+    universe: dmx_u2
+    id: dmx_u2_ch106
+  - platform: dmx512
+    channel: 107
+    universe: dmx_u2
+    id: dmx_u2_ch107
+  - platform: dmx512
+    channel: 108
+    universe: dmx_u2
+    id: dmx_u2_ch108
+  - platform: dmx512
+    channel: 109
+    universe: dmx_u2
+    id: dmx_u2_ch109
+
+# "All Device" baseline stuff here
+
+<<: !include 
+  file: /workspace/include/wemos-d1-mini-wired-baseline.yaml
+  vars:
+    # we explicitly set the logger baud rate to 115200 so that UART0 is allocated, and our uart components start with 
+    # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
+    # logger baud rate to 0.  Then uart initialization would start with UART0.
+    logger_baud_rate: "115200"
+    device_hostname: ${device_hostname}
+    device_friendly_name: "Arkadia House Wired DMX controller (${device_hostname})"
+    device_comment: ${device_comment}
+
+
+
+
