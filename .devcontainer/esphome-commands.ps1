@@ -32,7 +32,6 @@ function do-esphome-command
 		if ($?) 
 		{
 			write-host "Successfully processed $file"
-			copy-item -verbose -path "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin" -destination "./fab/$hostname.bin" -force
 		}
 		else
 		{
@@ -51,6 +50,10 @@ function esphome-compile
 	)
 
 	do-esphome-command "compile" $args
+	if ($?) 
+	{
+		copy-item -verbose -path "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin" -destination "./fab/$hostname.bin" -force
+	}
 }
 
 function esphome-run
@@ -63,6 +66,10 @@ function esphome-run
 	)
 
 	do-esphome-command "run" $args
+	if ($?) 
+	{
+		copy-item -verbose -path "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin" -destination "./fab/$hostname.bin" -force
+	}
 }
 
 function esphome-config
