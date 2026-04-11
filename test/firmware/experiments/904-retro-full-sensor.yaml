@@ -50,5 +50,5 @@ binary_sensor:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "904-esphome"
+    
     device_comment: "Retrofit sensor unit on board 904."

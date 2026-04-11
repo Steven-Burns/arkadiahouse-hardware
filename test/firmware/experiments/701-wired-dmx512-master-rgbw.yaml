@@ -282,7 +282,7 @@ light:
 <<: !include 
   file: /workspace/include/w32-eth01-wired-baseline.yaml
   vars:
-    device_hostname: "701-esphome"
+    
     device_friendly_name: "701-esphome"
     device_comment: "Wired DMX on board 701."
 

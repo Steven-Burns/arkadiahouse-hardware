@@ -17,6 +17,6 @@ packages:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "925-esphome"
+    
     device_comment: "Baseline for board."
 

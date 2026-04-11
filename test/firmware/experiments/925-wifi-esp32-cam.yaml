@@ -114,7 +114,7 @@ esp32_camera_web_server:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "925-esp32-cam"
+    
     device_friendly_name: "ESP camera thingy"
     device_comment: "Board 925 camera with WiFi."
 

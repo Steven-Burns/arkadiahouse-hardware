@@ -43,7 +43,7 @@ packages:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "903-esphome"
+    
     device_comment: "Complete sensor array running on board 903 connected on wired ethernet."
 
 

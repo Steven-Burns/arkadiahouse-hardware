@@ -51,6 +51,6 @@ text_sensor:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "703-esphome"
+    
     device_friendly_name: "703-esphome"
     device_comment: "Basic config for board 703 connected on wired ethernet."

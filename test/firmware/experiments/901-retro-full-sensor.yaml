@@ -62,6 +62,6 @@ packages:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "901-esphome"
+    
     device_friendly_name: "Desk Test Sensor Unit"
     device_comment: "Retrofit sensor unit on board 901."

@@ -361,7 +361,7 @@ light:
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
     logger_baud_rate: "0"
-    device_hostname: "803-esphome"
+    
     device_comment: "Wifi connected DMX512 master controller"
     device_friendly_name: "DMX512 controller proto (803-esphome)"
 

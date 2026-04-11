@@ -95,6 +95,6 @@ packages:
   vars:
     # turn off UART0 logging so that we can use it for radar1
     logger_baud_rate: "0"
-    device_hostname: "621-esphome"
+    
     device_friendly_name: "Arkadia House Sensor Hub v6 (621-esphome)"
     device_comment: "Wherever you go, there you are."

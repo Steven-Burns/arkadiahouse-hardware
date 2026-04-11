@@ -16,7 +16,5 @@ packages:
 <<: !include 
   file: /workspace/include/wemos-d1-mini-baseline.yaml
   vars:
-    device_friendly_name: ${device_friendly_name}
-    device_comment: ${device_comment}
     logger_baud_rate: ${logger_baud_rate}
 

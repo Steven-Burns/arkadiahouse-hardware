@@ -284,7 +284,7 @@ light:
 <<: !include 
   file: /workspace/include/w32-eth01-wifi-baseline.yaml
   vars:
-    device_hostname: "701-esphome"
+    
     device_friendly_name: "701-esphome"
     device_comment: "Wifi DMX on board 701."
 

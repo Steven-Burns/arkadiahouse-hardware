@@ -2,7 +2,7 @@
 # two DMX universes on the same device, with 2 RGBCW fixtures (10 channels) on each universe.
 
 substitutions:
-  device_hostname: SPECIFY_HOSTNAME_TO_BASELINE_YAML_INCLUDE
+  
   device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
 
 

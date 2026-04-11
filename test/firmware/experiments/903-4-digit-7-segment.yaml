@@ -75,7 +75,7 @@ interval:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "903-esphome"
+    
     device_comment: "experiment with 7-seg display module."
 
 

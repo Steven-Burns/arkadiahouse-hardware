@@ -210,7 +210,7 @@ light:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "803-esphome"
+    
     device_friendly_name: "803-esphome"
     device_comment: "Wifi and pixels on board 803."
 
