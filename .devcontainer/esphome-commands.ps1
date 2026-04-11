@@ -32,6 +32,15 @@ function do-esphome-command
 		if ($?) 
 		{
 			write-host "Successfully processed $file"
+			$binfile = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin"
+			if ((split-path -resolve $binfile -erroraction silentlycontinue) -ne $null) 
+			{
+				copy-item -verbose -path $binfile -destination "./fab/$hostname.bin" -force
+			}
+			else
+			{
+				write-host "No binary file found for $hostname, skipping copy to fab directory."
+			}
 		}
 		else
 		{
@@ -50,10 +59,6 @@ function esphome-compile
 	)
 
 	do-esphome-command "compile" $args
-	if ($?) 
-	{
-		copy-item -verbose -path "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin" -destination "./fab/$hostname.bin" -force
-	}
 }
 
 function esphome-run
@@ -66,10 +71,6 @@ function esphome-run
 	)
 
 	do-esphome-command "run" $args
-	if ($?) 
-	{
-		copy-item -verbose -path "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin" -destination "./fab/$hostname.bin" -force
-	}
 }
 
 function esphome-config
