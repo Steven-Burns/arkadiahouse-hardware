@@ -1,0 +1,214 @@
+light:
+  - &light_defaults
+    platform: rgbww
+    name: "Light 00 (${device_hostname})"
+    id: light_0
+    default_transition_length: 0s
+    gamma_correct: 0
+    disabled_by_default: false
+    restore_mode: ALWAYS_OFF
+    flash_transition_length: 0s
+    constant_brightness: false
+    color_interlock: false
+    cold_white_color_temperature: 5700 K
+    warm_white_color_temperature: 3700 K    
+    red: dmx_u1_ch1
+    green: dmx_u1_ch2
+    blue: dmx_u1_ch3
+    cold_white: dmx_u1_ch4
+    warm_white: dmx_u1_ch5
+    effects:
+      - strobe:
+          colors:
+            - state: true
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+            - state: false
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+          name: Strobe
+      - pulse:
+          transition_length: 1s
+          update_interval: 1s
+          min_brightness: 0.0
+          max_brightness: 1.0
+          name: Pulse
+      - random:
+          transition_length: 7500ms
+          update_interval: 10s
+          name: Random
+      - flicker:
+          alpha: 0.95
+          intensity: 0.015
+          name: Flicker
+
+  - <<: *light_defaults
+    name: "Light 01 (${device_hostname})"
+    id: light_1
+    red: dmx_u1_ch6
+    green: dmx_u1_ch7
+    blue: dmx_u1_ch8
+    cold_white: dmx_u1_ch9
+    warm_white: dmx_u1_ch10
+  - <<: *light_defaults
+    name: "Light 02 (${device_hostname})"
+    id: light_2
+    red: dmx_u1_ch11
+    green: dmx_u1_ch12
+    blue: dmx_u1_ch13
+    cold_white: dmx_u1_ch14
+    warm_white: dmx_u1_ch15
+  - <<: *light_defaults
+    name: "Light 03 (${device_hostname})"
+    id: light_3
+    red: dmx_u1_ch16
+    green: dmx_u1_ch17
+    blue: dmx_u1_ch18
+    cold_white: dmx_u1_ch19
+    warm_white: dmx_u1_ch20
+  - <<: *light_defaults
+    name: "Light 04 (${device_hostname})"
+    id: light_4
+    red: dmx_u1_ch21
+    green: dmx_u1_ch22
+    blue: dmx_u1_ch23
+    cold_white: dmx_u1_ch24
+    warm_white: dmx_u1_ch25
+  - <<: *light_defaults
+    name: "Light 05 (${device_hostname})"
+    id: light_5
+    red: dmx_u1_ch26
+    green: dmx_u1_ch27
+    blue: dmx_u1_ch28
+    cold_white: dmx_u1_ch29
+    warm_white: dmx_u1_ch30
+  - <<: *light_defaults
+    name: "Light 06 (${device_hostname})"
+    id: light_6
+    red: dmx_u1_ch31
+    green: dmx_u1_ch32
+    blue: dmx_u1_ch33
+    cold_white: dmx_u1_ch34
+    warm_white: dmx_u1_ch35
+  - <<: *light_defaults
+    name: "Light 07 (${device_hostname})"
+    id: light_7
+    red: dmx_u1_ch36
+    green: dmx_u1_ch37
+    blue: dmx_u1_ch38
+    cold_white: dmx_u1_ch39
+    warm_white: dmx_u1_ch40
+  - <<: *light_defaults
+    name: "Light 08 (${device_hostname})"
+    id: light_8
+    red: dmx_u1_ch41
+    green: dmx_u1_ch42
+    blue: dmx_u1_ch43
+    cold_white: dmx_u1_ch44
+    warm_white: dmx_u1_ch45
+  - <<: *light_defaults
+    name: "Light 09 (${device_hostname})"
+    id: light_9
+    red: dmx_u1_ch46
+    green: dmx_u1_ch47
+    blue: dmx_u1_ch48
+    cold_white: dmx_u1_ch49
+    warm_white: dmx_u1_ch50
+  - <<: *light_defaults
+    name: "Light 10 (${device_hostname})"
+    id: light_10
+    red: dmx_u1_ch51
+    green: dmx_u1_ch52
+    blue: dmx_u1_ch53
+    cold_white: dmx_u1_ch54
+    warm_white: dmx_u1_ch55
+  - <<: *light_defaults
+    name: "Light 11 (${device_hostname})"
+    id: light_11
+    red: dmx_u1_ch56
+    green: dmx_u1_ch57
+    blue: dmx_u1_ch58
+    cold_white: dmx_u1_ch59
+    warm_white: dmx_u1_ch60
+  - <<: *light_defaults
+    name: "Light 12 (${device_hostname})"
+    id: light_12
+    red: dmx_u1_ch61
+    green: dmx_u1_ch62
+    blue: dmx_u1_ch63
+    cold_white: dmx_u1_ch64
+    warm_white: dmx_u1_ch65
+  - <<: *light_defaults
+    name: "Light 13 (${device_hostname})"
+    id: light_13
+    red: dmx_u1_ch66
+    green: dmx_u1_ch67
+    blue: dmx_u1_ch68
+    cold_white: dmx_u1_ch69
+    warm_white: dmx_u1_ch70
+  - <<: *light_defaults
+    name: "Light 14 (${device_hostname})"
+    id: light_14
+    red: dmx_u1_ch71
+    green: dmx_u1_ch72
+    blue: dmx_u1_ch73
+    cold_white: dmx_u1_ch74
+    warm_white: dmx_u1_ch75
+  - <<: *light_defaults
+    name: "Light 15 (${device_hostname})"
+    id: light_15
+    red: dmx_u1_ch76
+    green: dmx_u1_ch77
+    blue: dmx_u1_ch78
+    cold_white: dmx_u1_ch79
+    warm_white: dmx_u1_ch80
+  - <<: *light_defaults
+    name: "Light 16 (${device_hostname})"
+    id: light_16
+    red: dmx_u1_ch81
+    green: dmx_u1_ch82
+    blue: dmx_u1_ch83
+    cold_white: dmx_u1_ch84
+    warm_white: dmx_u1_ch85
+  - <<: *light_defaults
+    name: "Light 17 (${device_hostname})"
+    id: light_17
+    red: dmx_u1_ch86
+    green: dmx_u1_ch87
+    blue: dmx_u1_ch88
+    cold_white: dmx_u1_ch89
+    warm_white: dmx_u1_ch90
+  - <<: *light_defaults
+    name: "Light 19 (${device_hostname})"
+    id: light_19
+    red: dmx_u1_ch91
+    green: dmx_u1_ch92
+    blue: dmx_u1_ch93
+    cold_white: dmx_u1_ch94
+    warm_white: dmx_u1_ch95
+  - <<: *light_defaults
+    name: "Light 20 (${device_hostname})"
+    id: light_20
+    red: dmx_u1_ch96
+    green: dmx_u1_ch97
+    blue: dmx_u1_ch98
+    cold_white: dmx_u1_ch99
+    warm_white: dmx_u1_ch100
+
+

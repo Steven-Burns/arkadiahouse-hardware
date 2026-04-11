@@ -1,0 +1,495 @@
+light:  # Here we define simple on/off 'lights' for each individual DMX channel, which can be useful for testing and debugging.
+  - &test_light_defaults
+    platform: monochromatic
+    internal: true
+    default_transition_length: 0s
+    gamma_correct: 0
+    id: light_u1_ch1
+    name: "U1_Ch001"
+    output: dmx_u1_ch1
+  - <<: *test_light_defaults
+    id: light_u1_ch2
+    name: "U1_Ch002"
+  - <<: *test_light_defaults
+    id: light_u1_ch3
+    name: "U1_Ch003"
+    output: dmx_u1_ch3
+  - <<: *test_light_defaults
+    id: light_u1_ch4
+    name: "U1_Ch004"
+    output: dmx_u1_ch4
+  - <<: *test_light_defaults
+    id: light_u1_ch5
+    name: "U1_Ch005"
+    output: dmx_u1_ch5
+  - <<: *test_light_defaults
+    id: light_u1_ch6
+    name: "U1_Ch006"
+    output: dmx_u1_ch6
+  - <<: *test_light_defaults
+    id: light_u1_ch7
+    name: "U1_Ch007"
+    output: dmx_u1_ch7
+  - <<: *test_light_defaults
+    id: light_u1_ch8
+    name: "U1_Ch008"
+    output: dmx_u1_ch8
+  - <<: *test_light_defaults
+    id: light_u1_ch9
+    name: "U1_Ch009"
+    output: dmx_u1_ch9
+  - <<: *test_light_defaults
+    id: light_u1_ch10
+    name: "U1_Ch010"
+    output: dmx_u1_ch10
+  - <<: *test_light_defaults
+    id: light_u1_ch11
+    name: "U1_Ch011"
+    output: dmx_u1_ch11
+  - <<: *test_light_defaults
+    id: light_u1_ch12
+    name: "U1_Ch012"
+    output: dmx_u1_ch12
+  - <<: *test_light_defaults
+    id: light_u1_ch13
+    name: "U1_Ch013"
+    output: dmx_u1_ch13
+  - <<: *test_light_defaults
+    id: light_u1_ch14
+    name: "U1_Ch014"
+    output: dmx_u1_ch14
+  - <<: *test_light_defaults
+    id: light_u1_ch15
+    name: "U1_Ch015"
+    output: dmx_u1_ch15
+  - <<: *test_light_defaults
+    id: light_u1_ch16
+    name: "U1_Ch016"
+    output: dmx_u1_ch16
+  - <<: *test_light_defaults
+    id: light_u1_ch17
+    name: "U1_Ch017"
+    output: dmx_u1_ch17
+  - <<: *test_light_defaults
+    id: light_u1_ch18
+    name: "U1_Ch018"
+    output: dmx_u1_ch18
+  - <<: *test_light_defaults
+    id: light_u1_ch19
+    name: "U1_Ch019"
+    output: dmx_u1_ch19
+  - <<: *test_light_defaults
+    id: light_u1_ch20
+    name: "U1_Ch020"
+    output: dmx_u1_ch20
+  - <<: *test_light_defaults
+    id: light_u1_ch21
+    name: "U1_Ch021"
+    output: dmx_u1_ch21
+  - <<: *test_light_defaults
+    id: light_u1_ch22
+    name: "U1_Ch022"
+    output: dmx_u1_ch22
+  - <<: *test_light_defaults
+    id: light_u1_ch23
+    name: "U1_Ch023"
+    output: dmx_u1_ch23
+  - <<: *test_light_defaults
+    id: light_u1_ch24
+    name: "U1_Ch024"
+    output: dmx_u1_ch24
+  - <<: *test_light_defaults
+    id: light_u1_ch25
+    name: "U1_Ch025"
+    output: dmx_u1_ch25
+  - <<: *test_light_defaults
+    id: light_u1_ch26
+    name: "U1_Ch026"
+    output: dmx_u1_ch26
+  - <<: *test_light_defaults
+    id: light_u1_ch27
+    name: "U1_Ch027"
+    output: dmx_u1_ch27
+  - <<: *test_light_defaults
+    id: light_u1_ch28
+    name: "U1_Ch028"
+    output: dmx_u1_ch28
+  - <<: *test_light_defaults
+    id: light_u1_ch29
+    name: "U1_Ch029"
+    output: dmx_u1_ch29
+  - <<: *test_light_defaults
+    id: light_u1_ch30
+    name: "U1_Ch030"
+    output: dmx_u1_ch30
+  - <<: *test_light_defaults
+    id: light_u1_ch31
+    name: "U1_Ch031"
+    output: dmx_u1_ch31
+  - <<: *test_light_defaults
+    id: light_u1_ch32
+    name: "U1_Ch032"
+    output: dmx_u1_ch32
+  - <<: *test_light_defaults
+    id: light_u1_ch33
+    name: "U1_Ch033"
+    output: dmx_u1_ch33
+  - <<: *test_light_defaults
+    id: light_u1_ch34
+    name: "U1_Ch034"
+    output: dmx_u1_ch34
+  - <<: *test_light_defaults
+    id: light_u1_ch35
+    name: "U1_Ch035"
+    output: dmx_u1_ch35
+  - <<: *test_light_defaults
+    id: light_u1_ch36
+    name: "U1_Ch036"
+    output: dmx_u1_ch36
+  - <<: *test_light_defaults
+    id: light_u1_ch37
+    name: "U1_Ch037"
+    output: dmx_u1_ch37
+  - <<: *test_light_defaults
+    id: light_u1_ch38
+    name: "U1_Ch038"
+    output: dmx_u1_ch38
+  - <<: *test_light_defaults
+    id: light_u1_ch39
+    name: "U1_Ch039"
+    output: dmx_u1_ch39
+  - <<: *test_light_defaults
+    id: light_u1_ch40
+    name: "U1_Ch040"
+    output: dmx_u1_ch40
+  - <<: *test_light_defaults
+    id: light_u1_ch41
+    name: "U1_Ch041"
+    output: dmx_u1_ch41
+  - <<: *test_light_defaults
+    id: light_u1_ch42
+    name: "U1_Ch042"
+    output: dmx_u1_ch42
+  - <<: *test_light_defaults
+    id: light_u1_ch43
+    name: "U1_Ch043"
+    output: dmx_u1_ch43
+  - <<: *test_light_defaults
+    id: light_u1_ch44
+    name: "U1_Ch044"
+    output: dmx_u1_ch44
+  - <<: *test_light_defaults
+    id: light_u1_ch45
+    name: "U1_Ch045"
+    output: dmx_u1_ch45
+  - <<: *test_light_defaults
+    id: light_u1_ch46
+    name: "U1_Ch046"
+    output: dmx_u1_ch46
+  - <<: *test_light_defaults
+    id: light_u1_ch47
+    name: "U1_Ch047"
+    output: dmx_u1_ch47
+  - <<: *test_light_defaults
+    id: light_u1_ch48
+    name: "U1_Ch048"
+    output: dmx_u1_ch48
+  - <<: *test_light_defaults
+    id: light_u1_ch49
+    name: "U1_Ch049"
+    output: dmx_u1_ch49
+  - <<: *test_light_defaults
+    id: light_u1_ch50
+    name: "U1_Ch050"
+    output: dmx_u1_ch50
+  - <<: *test_light_defaults
+    id: light_u1_ch51
+    name: "U1_Ch051"
+    output: dmx_u1_ch51
+  - <<: *test_light_defaults
+    id: light_u1_ch52
+    name: "U1_Ch052"
+    output: dmx_u1_ch52
+  - <<: *test_light_defaults
+    id: light_u1_ch53
+    name: "U1_Ch053"
+    output: dmx_u1_ch53
+  - <<: *test_light_defaults
+    id: light_u1_ch54
+    name: "U1_Ch054"
+    output: dmx_u1_ch54
+  - <<: *test_light_defaults
+    id: light_u1_ch55
+    name: "U1_Ch055"
+    output: dmx_u1_ch55
+  - <<: *test_light_defaults
+    id: light_u1_ch56
+    name: "U1_Ch056"
+    output: dmx_u1_ch56
+  - <<: *test_light_defaults
+    id: light_u1_ch57
+    name: "U1_Ch057"
+    output: dmx_u1_ch57
+  - <<: *test_light_defaults
+    id: light_u1_ch58
+    name: "U1_Ch058"
+    output: dmx_u1_ch58
+  - <<: *test_light_defaults
+    id: light_u1_ch59
+    name: "U1_Ch059"
+    output: dmx_u1_ch59
+  - <<: *test_light_defaults
+    id: light_u1_ch60
+    name: "U1_Ch060"
+    output: dmx_u1_ch60
+  - <<: *test_light_defaults
+    id: light_u1_ch61
+    name: "U1_Ch061"
+    output: dmx_u1_ch61
+  - <<: *test_light_defaults
+    id: light_u1_ch62
+    name: "U1_Ch062"
+    output: dmx_u1_ch62
+  - <<: *test_light_defaults
+    id: light_u1_ch63
+    name: "U1_Ch063"
+    output: dmx_u1_ch63
+  - <<: *test_light_defaults
+    id: light_u1_ch64
+    name: "U1_Ch064"
+    output: dmx_u1_ch64
+  - <<: *test_light_defaults
+    id: light_u1_ch65
+    name: "U1_Ch065"
+    output: dmx_u1_ch65
+  - <<: *test_light_defaults
+    id: light_u1_ch66 
+    name: "U1_Ch066"
+    output: dmx_u1_ch66
+  - <<: *test_light_defaults
+    id: light_u1_ch67
+    name: "U1_Ch067"
+    output: dmx_u1_ch67
+  - <<: *test_light_defaults
+    id: light_u1_ch68
+    name: "U1_Ch068"
+    output: dmx_u1_ch68
+  - <<: *test_light_defaults
+    id: light_u1_ch69
+    name: "U1_Ch069"
+    output: dmx_u1_ch69
+  - <<: *test_light_defaults
+    id: light_u1_ch70
+    name: "U1_Ch070"
+    output: dmx_u1_ch70
+  - <<: *test_light_defaults
+    id: light_u1_ch71
+    name: "U1_Ch071"
+    output: dmx_u1_ch71
+  - <<: *test_light_defaults
+    id: light_u1_ch72
+    name: "U1_Ch072"
+    output: dmx_u1_ch72
+  - <<: *test_light_defaults
+    id: light_u1_ch73
+    name: "U1_Ch073"
+    output: dmx_u1_ch73
+  - <<: *test_light_defaults
+    id: light_u1_ch74
+    name: "U1_Ch074"
+    output: dmx_u1_ch74
+  - <<: *test_light_defaults
+    id: light_u1_ch75
+    name: "U1_Ch075"
+    output: dmx_u1_ch75
+  - <<: *test_light_defaults
+    id: light_u1_ch76
+    name: "U1_Ch076"
+    output: dmx_u1_ch76
+  - <<: *test_light_defaults
+    id: light_u1_ch77
+    name: "U1_Ch077"
+    output: dmx_u1_ch77
+  - <<: *test_light_defaults
+    id: light_u1_ch78
+    name: "U1_Ch078"
+    output: dmx_u1_ch78
+  - <<: *test_light_defaults
+    id: light_u1_ch79
+    name: "U1_Ch079"
+    output: dmx_u1_ch79
+  - <<: *test_light_defaults
+    id: light_u1_ch80
+    name: "U1_Ch080"
+    output: dmx_u1_ch80
+  - <<: *test_light_defaults
+    id: light_u1_ch81
+    name: "U1_Ch081"
+    output: dmx_u1_ch81
+  - <<: *test_light_defaults
+    id: light_u1_ch82
+    name: "U1_Ch082"
+    output: dmx_u1_ch82
+  - <<: *test_light_defaults
+    id: light_u1_ch83
+    name: "U1_Ch083"
+    output: dmx_u1_ch83
+  - <<: *test_light_defaults
+    id: light_u1_ch84
+    name: "U1_Ch084"
+    output: dmx_u1_ch84
+  - <<: *test_light_defaults
+    id: light_u1_ch85
+    name: "U1_Ch085"
+    output: dmx_u1_ch85
+  - <<: *test_light_defaults
+    id: light_u1_ch86
+    name: "U1_Ch086"
+    output: dmx_u1_ch86
+  - <<: *test_light_defaults
+    id: light_u1_ch87
+    name: "U1_Ch087"
+    output: dmx_u1_ch87
+  - <<: *test_light_defaults
+    id: light_u1_ch88
+    name: "U1_Ch088"
+    output: dmx_u1_ch88
+  - <<: *test_light_defaults
+    id: light_u1_ch89
+    name: "U1_Ch089"
+    output: dmx_u1_ch89
+  - <<: *test_light_defaults
+    id: light_u1_ch90
+    name: "U1_Ch090"
+    output: dmx_u1_ch90
+  - <<: *test_light_defaults
+    id: light_u1_ch91
+    name: "U1_Ch091"
+    output: dmx_u1_ch91
+  - <<: *test_light_defaults
+    id: light_u1_ch92
+    name: "U1_Ch092"
+    output: dmx_u1_ch92
+  - <<: *test_light_defaults
+    id: light_u1_ch93
+    name: "U1_Ch093"
+    output: dmx_u1_ch93
+  - <<: *test_light_defaults
+    id: light_u1_ch94
+    name: "U1_Ch094"
+    output: dmx_u1_ch94
+  - <<: *test_light_defaults
+    id: light_u1_ch95
+    name: "U1_Ch095"
+    output: dmx_u1_ch95
+  - <<: *test_light_defaults
+    id: light_u1_ch96
+    name: "U1_Ch096"
+    output: dmx_u1_ch96
+  - <<: *test_light_defaults
+    id: light_u1_ch97
+    name: "U1_Ch097"
+    output: dmx_u1_ch97
+  - <<: *test_light_defaults
+    id: light_u1_ch98
+    name: "U1_Ch098"
+    output: dmx_u1_ch98
+  - <<: *test_light_defaults
+    id: light_u1_ch99
+    name: "U1_Ch099"
+    output: dmx_u1_ch99
+  - <<: *test_light_defaults
+    id: light_u1_ch100 
+    name: "U1_Ch100"
+    output: dmx_u1_ch100
+  - <<: *test_light_defaults
+    id: light_u1_ch101
+    name: "U1_Ch101"
+    output: dmx_u1_ch101
+  - <<: *test_light_defaults
+    id: light_u1_ch102
+    name: "U1_Ch102"
+    output: dmx_u1_ch102
+  - <<: *test_light_defaults
+    id: light_u1_ch103
+    name: "U1_Ch103"
+    output: dmx_u1_ch103
+  - <<: *test_light_defaults
+    id: light_u1_ch104
+    name: "U1_Ch104"
+    output: dmx_u1_ch104
+  - <<: *test_light_defaults
+    id: light_u1_ch105
+    name: "U1_Ch105"
+    output: dmx_u1_ch105
+  - <<: *test_light_defaults
+    id: light_u1_ch106
+    name: "U1_Ch106"
+    output: dmx_u1_ch106
+  - <<: *test_light_defaults
+    id: light_u1_ch107
+    name: "U1_Ch107"
+    output: dmx_u1_ch107
+  - <<: *test_light_defaults
+    id: light_u1_ch108
+    name: "U1_Ch108"
+    output: dmx_u1_ch108
+  - <<: *test_light_defaults
+    id: light_u1_ch109
+    name: "U1_Ch109"
+    output: dmx_u1_ch109
+  - <<: *test_light_defaults
+    id: light_u1_ch110
+    name: "U1_Ch110"
+    output: dmx_u1_ch110
+  - <<: *test_light_defaults
+    id: light_u1_ch111
+    name: "U1_Ch111"
+    output: dmx_u1_ch111
+  - <<: *test_light_defaults
+    id: light_u1_ch112
+    name: "U1_Ch112"
+    output: dmx_u1_ch112
+
+  - <<: *test_light_defaults
+    id: light_u2_ch1
+    name: "U2_Ch001"
+    output: dmx_u2_ch1
+  - <<: *test_light_defaults
+    id: light_u2_ch2
+    name: "U2_Ch002"
+    output: dmx_u2_ch2
+  - <<: *test_light_defaults
+    id: light_u2_ch3
+    name: "U2_Ch003"
+    output: dmx_u2_ch3
+  - <<: *test_light_defaults
+    id: light_u2_ch4
+    name: "U2_Ch004"
+    output: dmx_u2_ch4
+  - <<: *test_light_defaults
+    id: light_u2_ch5
+    name: "U2_Ch005"
+    output: dmx_u2_ch5
+  - <<: *test_light_defaults
+    id: light_u2_ch6
+    name: "U2_Ch006"
+    output: dmx_u2_ch6
+  - <<: *test_light_defaults
+    id: light_u2_ch7
+    name: "U2_Ch007"
+    output: dmx_u2_ch7
+  - <<: *test_light_defaults
+    id: light_u2_ch8
+    name: "U2_Ch008"
+    output: dmx_u2_ch8
+  - <<: *test_light_defaults
+    id: light_u2_ch9
+    name: "U2_Ch009"
+    output: dmx_u2_ch9
+  - <<: *test_light_defaults
+    id: light_u2_ch10
+    name: "U2_Ch010"
+    output: dmx_u2_ch10
+
+
