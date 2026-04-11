@@ -1,4 +1,6 @@
 substitutions:
+  device_friendly_name: "Baseline (${device_hostname})"
+  device_comment: "Baseline for Wemos D1 Mini boards."
   logger_baud_rate: "115200"
 
 esp32:
@@ -17,6 +19,6 @@ esp32:
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
     logger_baud_rate: ${logger_baud_rate}
-    device_friendly_name: "Baseline (${device_hostname})"
-    device_comment: "Baseline for Wemos D1 Mini boards."
+    device_friendly_name: ${device_friendly_name}
+    device_comment: ${device_comment}
 
