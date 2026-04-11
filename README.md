@@ -16,7 +16,7 @@ docker volume create arkadiahouse-docker-volume
 Clone the repo into that volume at a folder named arkdiahouse-hardware
 
 ```DOS
-docker run --interactive --user root --volume arkadiahouse-docker-volume:/arkadiahouse-hardware --rm cleanstart/git:latest clone https://github.com/Steven-Burns/arkadiahouse-hardware.git /arkadiahouse-hardware --verbose
+docker run --interactive --user root --volume arkadiahouse-docker-volume:/clone-destination --rm cleanstart/git:latest clone https://github.com/Steven-Burns/arkadiahouse-hardware.git /clone-destination/arkadiahouse-hardware --verbose
 ```
 
 
