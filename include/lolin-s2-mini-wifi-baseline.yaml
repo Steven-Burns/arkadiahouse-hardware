@@ -1,6 +1,3 @@
-substitutions:
-  device_hostname: SPECIFY_HOSTNAME_TO_BASELINE_YAML_INCLUDE
-
 esp32:
   board: lolin_s2_mini
   variant: ESP32S2
@@ -23,7 +20,6 @@ packages:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: ${device_hostname} 
     device_friendly_name: ${device_hostname}
     device_comment: "Baseline for board."
     logger_baud_rate: "115200"

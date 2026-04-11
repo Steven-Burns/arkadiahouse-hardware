@@ -347,7 +347,6 @@ light:
     # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
     # logger baud rate to 0.  Then uart initialization would start with UART0.
     logger_baud_rate: "115200"
-    device_hostname: "922-esphome"
     device_friendly_name: "922-esphome wired DMX master."
     device_comment: "Wired DMX on board 922."
 

@@ -284,7 +284,6 @@ light:
 <<: !include 
   file: .//workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: "923-esphome"
     device_friendly_name: "923-esphome"
     device_comment: "PCF 8574 experiment"
 
