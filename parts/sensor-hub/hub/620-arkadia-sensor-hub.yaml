@@ -1,5 +1,4 @@
 <<: !include 
   file: ./arkadia-hub-v4-base.yaml
   vars:
-    device_hostname: "620-esphome"
     device_comment: "v4 hardware design. Used as component testing harness."

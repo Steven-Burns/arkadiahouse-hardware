@@ -1,13 +1,13 @@
 font:
-  - file: "/workspace/fonts/spleen-5x8.bdf"
+  - file: "/workspace/lib/fonts/spleen-5x8.bdf"
     id: tiny_font_id
-  - file: "/workspace/fonts/Bahnschrift/bahnschrift.condensedsemibold.ttf"
+  - file: "/workspace/lib/fonts/Bahnschrift/bahnschrift.condensedsemibold.ttf"
     id: large_font_id
     size: 48
-  - file: "/workspace/fonts/Bahnschrift/bahnschrift.condensedsemibold.ttf"
+  - file: "/workspace/lib/fonts/Bahnschrift/bahnschrift.condensedsemibold.ttf"
     id: small_font_id
     size: 36
-  - file: "/workspace/fonts/Bahnschrift/bahnschrift.condensedsemibold.ttf"
+  - file: "/workspace/lib/fonts/Bahnschrift/bahnschrift.condensedsemibold.ttf"
     id: med_font_id
     size: 28
 
