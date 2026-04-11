@@ -32,7 +32,7 @@ function do-esphome-command
 		if ($?) 
 		{
 			write-host "Successfully processed $file"
-			copy-item -verbose -path "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin" -destination "./fab"
+			copy-item -verbose -path "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin" -destination "./fab/$hostname.bin" -force
 		}
 		else
 		{
