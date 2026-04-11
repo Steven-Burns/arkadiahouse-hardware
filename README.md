@@ -1,6 +1,8 @@
 # arkadiahouse-hardware
 Circuit board, enclosures, and firmware for Arkadia House.
 
+This repo hosts both ESPHome firmware configuration and KiCad circuit diagram "source code," along with Sketchup models.  As the bulk of the "programming" happens with the firmware, the devcontainer setup is oriented toward coding/building/debugging with ESPHome.
+
 # pre-reqs
 
 1. Host computer running Docker Desktop.
