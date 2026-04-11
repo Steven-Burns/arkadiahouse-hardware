@@ -53,6 +53,8 @@ function prompt
 
 function global:ll { Get-ChildItem -Force $args }
 
+. /workspace/.devcontainer/esphome-commands.ps1
+
 #
 # coda
 #

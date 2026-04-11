@@ -43,4 +43,13 @@ The devcontainer will offer a powershell (pwsh) terminal window option. That ter
 
 # building
 
-Use the ESPHome command line.
+Use the following PowerShell wrappers instead of the corresponding esphome command line:
+
+```DOS
+esphome-compile <your-device-configuration.yaml>
+```
+
+```DOS
+esphome-run <your-device-configuration.yaml>
+```
+The wrapper functions normalize device hostnames and copy build outputs to the part's ./fab folder.
