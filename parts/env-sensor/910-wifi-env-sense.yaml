@@ -1,0 +1,5 @@
+<<: !include 
+  file: ./arkadia-env-sense-base.yaml
+  vars:
+    device_hostname: "910-esphome"
+

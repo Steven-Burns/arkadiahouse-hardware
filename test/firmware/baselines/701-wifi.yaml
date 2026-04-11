@@ -1,0 +1,23 @@
+esp32:
+  board: wt32-eth01
+  cpu_frequency: 240MHZ
+  framework:
+    type: esp-idf
+
+packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+  wifi: !include  
+    file: /workspace/include/wifi.yaml
+
+# "All Device" baseline stuff here
+
+<<: !include 
+  file: /workspace/include/esp32-device-baseline.yaml
+  vars:
+    device_hostname: "701-esphome"
+    device_friendly_name: "701-esphome"    
+    device_comment: "Basic config for board 701 connected on WiFi."
+
+
+

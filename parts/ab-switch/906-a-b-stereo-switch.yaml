@@ -1,0 +1,36 @@
+esp32:
+  board: nodemcu-32s
+  cpu_frequency: 240MHZ
+  framework:
+    type: esp-idf
+
+packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+  blinky: !include
+    file: /workspace/include/interval-blinky.yaml
+    vars:
+      builtin_led_pin: "GPIO2"
+  wifi: !include  
+    file: /workspace/include/wifi.yaml
+
+switch:
+  - platform: gpio
+    name: "Relay A-B"
+    id: relay_0_id
+    pin: 
+      number: 13
+      inverted: false
+      mode:
+        output: true
+        pulldown: true
+
+# "All Device" baseline stuff here
+
+<<: !include 
+  file: /workspace/include/esp32-device-baseline.yaml
+  vars:
+    device_hostname: "m-liv-a-b-switch-aa91d4-906"
+    device_friendly_name: "Living Room Amp A-B switch"
+    device_comment: "A-B selector for stereo speaker output."
+

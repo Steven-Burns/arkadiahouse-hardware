@@ -1,0 +1,209 @@
+# variation where each DMX channel is a separate simple dimmable "light" in esphome
+# this allows one to play with each channel individually, which is useful for 
+# debugging DMX
+
+esp32:
+  board: seeed_xiao_esp32c3
+  framework:
+    type: esp-idf
+
+packages:
+  wifi: !include  
+    file: /workspace/include/wifi.yaml
+
+external_components:
+  - source: github://andyboeh/esphome-dmx512
+
+uart:
+  id: uart_bus
+  baud_rate: 250000
+  tx_pin: 
+    number: GPIO5
+    allow_other_uses: true # For ESPHome >= 2023.12.0
+    inverted: false
+  stop_bits: 2
+  data_bits: 8
+  parity: NONE
+
+dmx512:
+  id: dmx   # I think this might be the name of the universe in the output elements
+  uart_id: uart_bus
+  #enable_pin: GPIO33
+  tx_pin: 
+    number: GPIO5
+    allow_other_uses: true # For ESPHome >= 2023.12.0
+  # experimentally, if UART1 is specified for this board (xiao eps32-c3), then 
+  # the timings are not precise enough.  UART0 works great, though.  To use
+  # UART0, the serial logger has to be turned off (see logger_baud_rate below).
+  #
+  # From https://github.com/andyboeh/esphome-dmx512/issues/40
+  # The UART ID is auto-assigned by ESPHome, if you use the logger, the logger 
+  # gets UART0 and the first additional UART will be UART1. However, if the logger 
+  # is disabled, the UART component will be UART0. 
+  uart_num: 0
+  force_full_frames: false
+  periodic_update: true
+  custom_break_len: 92 # 92=default optional
+  custom_mab_len: 12 # 12=default optional
+  update_interval: 500 # 500=default optional
+
+output:
+  - platform: dmx512
+    channel: 1
+    universe: dmx
+    id: dmx_1
+  - platform: dmx512
+    channel: 2
+    universe: dmx
+    id: dmx_2
+  - platform: dmx512
+    channel: 3
+    universe: dmx
+    id: dmx_3
+  - platform: dmx512
+    channel: 4
+    universe: dmx
+    id: dmx_4
+  - platform: dmx512
+    channel: 5
+    universe: dmx
+    id: dmx_5
+  - platform: dmx512
+    channel: 6
+    universe: dmx
+    id: dmx_6
+  - platform: dmx512
+    channel: 7
+    universe: dmx
+    id: dmx_7
+  - platform: dmx512
+    channel: 8
+    universe: dmx
+    id: dmx_8
+  - platform: dmx512
+    channel: 9
+    universe: dmx
+    id: dmx_9
+  - platform: dmx512
+    channel: 10
+    universe: dmx
+    id: dmx_10
+  - platform: dmx512
+    channel: 11
+    universe: dmx
+    id: dmx_11
+  - platform: dmx512
+    channel: 12
+    universe: dmx
+    id: dmx_12
+  - platform: dmx512
+    channel: 13
+    universe: dmx
+    id: dmx_13
+  - platform: dmx512
+    channel: 14
+    universe: dmx
+    id: dmx_14
+  - platform: dmx512
+    channel: 15
+    universe: dmx
+    id: dmx_15
+  - platform: dmx512
+    channel: 16
+    universe: dmx
+    id: dmx_16
+
+light:
+  - platform: monochromatic
+    name: "Test Light Ch1"
+    output: dmx_1
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch2"
+    output: dmx_2
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch3"
+    output: dmx_3
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch4"
+    output: dmx_4
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch5"
+    output: dmx_5
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch6"
+    output: dmx_6
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch7"
+    output: dmx_7
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch8"
+    output: dmx_8
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch9"
+    output: dmx_9
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch10"
+    output: dmx_10
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch11"
+    output: dmx_11
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch12"
+    output: dmx_12
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch13"
+    output: dmx_13
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch14"
+    output: dmx_14
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch15"
+    output: dmx_15
+    default_transition_length: 0s
+    gamma_correct: 0
+  - platform: monochromatic
+    name: "Test Light Ch16"
+    output: dmx_16
+    default_transition_length: 0s
+    gamma_correct: 0
+
+
+# "All Device" baseline stuff here
+
+<<: !include 
+  file: /workspace/include/esp32-device-baseline.yaml
+  vars:
+    logger_baud_rate: "0"
+    device_hostname: "803-esphome"
+    device_comment: "Wifi connected DMX512 master controller"
+    device_friendly_name: "DMX512 controller proto (803-esphome)"
+
+

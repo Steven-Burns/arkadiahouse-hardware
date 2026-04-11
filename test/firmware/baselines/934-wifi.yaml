@@ -1,0 +1,6 @@
+<<: !include 
+  file: /workspace/include/wemos-d1-mini-wifi-baseline.yaml
+  vars:
+    device_hostname: "934-esphome"
+    device_comment: "Baseline for board."
+
