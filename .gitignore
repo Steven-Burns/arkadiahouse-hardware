@@ -29,3 +29,12 @@ fp-info-cache
 # Exported BOM files
 *.xml
 *.csv
+
+# Gitignore settings for ESPHome
+
+/**/.esphome/
+/**/secrets.yaml
+
+# Sketchup
+
+*.skb

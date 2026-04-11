@@ -1,0 +1,20 @@
+substitutions:
+  device_hostname: "669-esphome"
+  device_comment: "Arkadia House DMX controller on board 669."
+
+<<: !include 
+  file: ./arkadia-wired-dmx-base.yaml
+  vars:
+    device_hostname: ${device_hostname}
+    device_comment: ${device_comment}
+
+# I can't get this to work as a package, try as I might. My suspicion is that the 
+# esphome compiler implementation of !include and packages is borked.
+# packages:
+#   debug_lights: !include ./arkadia-dmx-debug-lights.yaml
+
+# uncomment this line to create single channel on/off lights for each DMX channel of both universes, which can be useful for testing and debugging.
+#<<: !include ./arkadia-dmx-debug-lights.yaml 
+
+#uncomment this line to create RGBWW light entities.
+<<: !include ./arkadia-dmx-rgbww-lights.yaml
