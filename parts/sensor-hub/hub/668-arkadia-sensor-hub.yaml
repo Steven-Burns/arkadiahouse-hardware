@@ -1,0 +1,5 @@
+<<: !include 
+  file: ./arkadia-hub-v6-base.yaml
+  vars:
+    device_hostname: "668-esphome"
+    device_comment: "Arkadia Sensor Hub Version 6.8 hardware with board 668."

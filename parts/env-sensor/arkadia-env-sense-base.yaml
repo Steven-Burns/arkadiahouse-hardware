@@ -1,0 +1,44 @@
+substitutions:
+  device_hostname: SPECIFY_HOSTNAME_TO_BASELINE_YAML_INCLUDE
+
+esp32:
+  board: lolin_s2_mini
+  variant: ESP32S2
+  cpu_frequency: 240MHZ
+  framework:
+    type: esp-idf
+
+packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+  blinky: !include
+    file: /workspace/include/interval-blinky.yaml
+    vars:
+      builtin_led_pin: "GPIO15"
+  wifi: !include  
+    file: /workspace/include/wifi.yaml
+  i2c: !include
+    file: /workspace/include/i2c.yaml
+    vars:
+      i2c_sda_pin: "GPIO21"
+      i2c_scl_pin: "GPIO18"
+      i2c_freq: "256kHz"  # on this board, >= 258kHz will not work with the BMP280 module
+  temp_humidity: !include
+    file: /workspace/include/BMP280-AHT20-temp-humidity.yaml
+    vars: 
+      temperature_offset: "0"      
+  illuminance: !include
+    file: /workspace/include/photoresistor-illuminance.yaml
+    vars:
+      illuminance_pin: "GPIO2"
+
+# "All Device" baseline stuff here
+
+<<: !include 
+  file: /workspace/include/esp32-device-baseline.yaml
+  vars:
+    logger_baud_rate: 115200
+    device_hostname: ${device_hostname}
+    device_friendly_name: "Arkadia House Env Sensor v1 (${device_hostname})"
+    device_comment: "Arkadia House Evnironmental Sensor."
+

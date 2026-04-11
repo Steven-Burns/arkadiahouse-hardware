@@ -1,0 +1,56 @@
+esp32:
+  board: wt32-eth01
+  cpu_frequency: 240MHZ
+  framework:
+    type: esp-idf
+
+packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk:
+    pin: GPIO0
+    mode: CLK_EXT_IN
+  phy_addr: 1
+  power_pin: GPIO16
+  
+text_sensor:
+  - platform: ethernet_info
+    ip_address:
+      name: Wired IP Address
+      # This ID is significant and also defined for WiFi ethernet, so that whether the
+      # devide is wired or wireless, there is a single sensor ID for the IP address.
+      id: ip_address_id
+      entity_category: diagnostic
+      icon: "mdi:information-box"
+      # address_0:
+      #   name: Wired IP Address 0
+      # address_1:
+      #   name: Wired IP Address 1
+      # address_2:
+      #   name: Wired IP Address 2
+      # address_3:
+      #   name: Wired IP Address 3
+      # address_4:
+      #   name: Wired IP Address 4
+    dns_address:
+      name: Wired DNS Addresses
+      entity_category: diagnostic
+      icon: "mdi:information-box"
+    mac_address:
+      name: Wired MAC Address
+      entity_category: diagnostic
+      icon: "mdi:information-box"
+
+# "All Device" baseline stuff here
+
+<<: !include 
+  file: /workspace/include/esp32-device-baseline.yaml
+  vars:
+    device_hostname: "703-esphome"
+    device_friendly_name: "703-esphome"
+    device_comment: "Basic config for board 703 connected on wired ethernet."

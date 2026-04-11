@@ -1,0 +1,368 @@
+esp32:
+  board: seeed_xiao_esp32c3
+  framework:
+    type: esp-idf
+
+packages:
+  wifi: !include  
+    file: /workspace/include/wifi.yaml
+
+external_components:
+  - source: github://andyboeh/esphome-dmx512
+
+uart:
+  id: uart_bus
+  baud_rate: 250000
+  tx_pin: 
+    number: GPIO5
+    allow_other_uses: true # For ESPHome >= 2023.12.0
+    inverted: false
+  stop_bits: 2
+  data_bits: 8
+  parity: NONE
+
+dmx512:
+  id: dmx   # I think this might be the name of the universe in the output elements
+  uart_id: uart_bus
+  #enable_pin: GPIO33
+  tx_pin: 
+    number: GPIO5
+    allow_other_uses: true # For ESPHome >= 2023.12.0
+  uart_num: 0
+  force_full_frames: false
+  periodic_update: true
+  custom_break_len: 92 # 92=default optional
+  custom_mab_len: 12 # 12=default optional
+  update_interval: 500 # 500=default optional
+
+output:
+  - platform: dmx512
+    channel: 1
+    universe: dmx
+    id: dmx_1
+  - platform: dmx512
+    channel: 2
+    universe: dmx
+    id: dmx_2
+  - platform: dmx512
+    channel: 3
+    universe: dmx
+    id: dmx_3
+  - platform: dmx512
+    channel: 4
+    universe: dmx
+    id: dmx_4
+  - platform: dmx512
+    channel: 5
+    universe: dmx
+    id: dmx_5
+  - platform: dmx512
+    channel: 6
+    universe: dmx
+    id: dmx_6
+  - platform: dmx512
+    channel: 7
+    universe: dmx
+    id: dmx_7
+  - platform: dmx512
+    channel: 8
+    universe: dmx
+    id: dmx_8
+  - platform: dmx512
+    channel: 9
+    universe: dmx
+    id: dmx_9
+  - platform: dmx512
+    channel: 10
+    universe: dmx
+    id: dmx_10
+  - platform: dmx512
+    channel: 11
+    universe: dmx
+    id: dmx_11
+  - platform: dmx512
+    channel: 12
+    universe: dmx
+    id: dmx_12
+  - platform: dmx512
+    channel: 13
+    universe: dmx
+    id: dmx_13
+  - platform: dmx512
+    channel: 14
+    universe: dmx
+    id: dmx_14
+  - platform: dmx512
+    channel: 15
+    universe: dmx
+    id: dmx_15
+  - platform: dmx512
+    channel: 16
+    universe: dmx
+    id: dmx_16
+  - platform: dmx512
+    channel: 17
+    universe: dmx
+    id: dmx_17
+  - platform: dmx512
+    channel: 18
+    universe: dmx
+    id: dmx_18
+  - platform: dmx512
+    channel: 19
+    universe: dmx
+    id: dmx_19
+  - platform: dmx512
+    channel: 20
+    universe: dmx
+    id: dmx_20  
+  - platform: template
+    id: null_output
+    type: float
+    write_action:
+      - lambda: |-
+          // id(dmx_1).set_level(state);
+          // id(dmx_5).set_level(state);
+          // id(dmx_9).set_level(state);
+          // id(dmx_12).set_level(state);      
+
+
+light:
+  - platform: rgbww
+    name: "Test Light 0"
+    id: light_0
+    red: dmx_1
+    green: dmx_2
+    blue: dmx_3
+    cold_white: dmx_4
+    warm_white: dmx_5
+    cold_white_color_temperature: 5700 K
+    warm_white_color_temperature: 2700 K    
+    gamma_correct: 0
+    default_transition_length: 0s
+    effects:
+      - strobe:
+      - pulse:
+      - random:
+      - flicker:
+  - platform: rgbww
+    name: "Test Light 1"
+    id: light_1
+    red: dmx_6
+    green: dmx_7
+    blue: dmx_8
+    cold_white: dmx_9
+    warm_white: dmx_10
+    cold_white_color_temperature: 5700 K
+    warm_white_color_temperature: 2700 K    
+    gamma_correct: 0
+    default_transition_length: 0s
+    effects:
+      - strobe:
+      - pulse:
+      - random:
+      - flicker:
+  - platform: rgbww
+    name: "Test Light 2"
+    id: light_2
+    red: dmx_11
+    green: dmx_12
+    blue: dmx_13
+    cold_white: dmx_14
+    warm_white: dmx_15
+    cold_white_color_temperature: 5700 K
+    warm_white_color_temperature: 2700 K    
+    gamma_correct: 0
+    default_transition_length: 0s
+    effects:
+      - strobe:
+      - pulse:
+      - random:
+      - flicker:
+  - platform: rgbww
+    name: "Test Light 3"
+    id: light_3
+    red: dmx_16
+    green: dmx_17
+    blue: dmx_18
+    cold_white: dmx_19
+    warm_white: dmx_20
+    cold_white_color_temperature: 5700 K
+    warm_white_color_temperature: 2700 K    
+    gamma_correct: 0
+    default_transition_length: 0s
+    effects:
+      - strobe:
+      - pulse:
+      - random:
+      - flicker:
+
+  - platform: monochromatic
+    name: "Test Light Group 0"
+    output: null_output
+    gamma_correct: 0
+    default_transition_length: 0s
+    effects:
+      - automation:
+          name: Custom Automation Effect
+          sequence:
+            - light.control:
+                id: light_0
+                state: on
+                red: 100%
+                green: 0%
+                blue: 0%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_1
+                state: on
+                red: 0%
+                green: 100%
+                blue: 0%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_2
+                state: on
+                red: 0%
+                green: 0%
+                blue: 100%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_3
+                state: on
+                red: 0%
+                green: 0%
+                blue: 0%
+                cold_white: 100%
+                warm_white: 100%
+                color_mode: RGB_COLD_WARM_WHITE
+            - delay: 250ms
+            - light.control:
+                id: light_0
+                state: on
+                red: 0%
+                green: 100%
+                blue: 0%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_1
+                state: on
+                red: 0%
+                green: 0%
+                blue: 100%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_2
+                state: on
+                red: 0%
+                green: 0%
+                blue: 0%
+                cold_white: 100%
+                warm_white: 100%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_3
+                state: on
+                red: 100%
+                green: 0%
+                blue: 0%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - delay: 250ms
+            - light.control:
+                id: light_0
+                state: on
+                red: 0%
+                green: 0%
+                blue: 100%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_1
+                state: on
+                red: 0%
+                green: 0%
+                blue: 0%
+                cold_white: 100%
+                warm_white: 100%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_2
+                state: on
+                red: 100%
+                green: 0%
+                blue: 0%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_3
+                state: on
+                red: 0%
+                green: 100%
+                blue: 0%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - delay: 250ms
+            - light.control:
+                id: light_0
+                state: on
+                red: 0%
+                green: 0%
+                blue: 0%
+                cold_white: 100%
+                warm_white: 100%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_1
+                state: on
+                red: 100%
+                green: 0%
+                blue: 0%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_2
+                state: on
+                red: 0%
+                green: 100%
+                blue: 0%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - light.control:
+                id: light_3
+                state: on
+                red: 0%
+                green: 0%
+                blue: 100%
+                cold_white: 0%
+                warm_white: 0%
+                color_mode: RGB_COLD_WARM_WHITE
+            - delay: 250ms
+
+# "All Device" baseline stuff here
+
+<<: !include 
+  file: /workspace/include/esp32-device-baseline.yaml
+  vars:
+    logger_baud_rate: "0"
+    device_hostname: "803-esphome"
+    device_comment: "Wifi connected DMX512 master controller"
+    device_friendly_name: "DMX512 controller proto (803-esphome)"
+
+

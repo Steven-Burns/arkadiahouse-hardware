@@ -1,0 +1,2104 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "cac1c6ac-c529-402c-b343-ff5ebf258f51")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Connector:RJ45_Shielded"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -5.08 13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Value" "RJ45_Shielded"
+				(at 2.54 13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0.635 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0.635 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "RJ connector, 8P8C (8 positions 8 connected), Shielded"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "8P8C RJ jack socket connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "8P8C* RJ31* RJ32* RJ33* RJ34* RJ35* RJ41* RJ45* RJ49* RJ61*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "RJ45_Shielded_0_1"
+				(polyline
+					(pts
+						(xy -6.35 1.905) (xy -5.08 1.905) (xy -5.08 1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 0.635) (xy -5.08 0.635) (xy -5.08 0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 -0.635) (xy -5.08 -0.635) (xy -5.08 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 -1.905) (xy -5.08 -1.905) (xy -5.08 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 -3.175) (xy -5.08 -3.175) (xy -5.08 -3.175)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 -4.445) (xy -6.35 6.985) (xy 3.81 6.985) (xy 3.81 4.445) (xy 5.08 4.445) (xy 5.08 3.175)
+						(xy 6.35 3.175) (xy 6.35 -0.635) (xy 5.08 -0.635) (xy 5.08 -1.905) (xy 3.81 -1.905) (xy 3.81 -4.445)
+						(xy -6.35 -4.445) (xy -6.35 -4.445)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 5.715) (xy -6.35 5.715)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 4.445) (xy -6.35 4.445)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 3.175) (xy -6.35 3.175) (xy -6.35 3.175)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 12.7)
+					(end -7.62 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "RJ45_Shielded_1_1"
+				(pin passive line
+					(at 0 -12.7 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "SH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 10.16 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 7.62 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 5.08 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 2.54 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -2.54 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -5.08 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -7.62 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PoE Surge project library:GDT_2Pin"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "GD"
+				(at 5.08 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GDT_2Pin"
+				(at 7.62 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Gas Discharge Tube with 2 Pins"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "gdt"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GDT_2Pin_0_1"
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27) (xy -1.27 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27) (xy 1.27 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 3.5814)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy -1.27 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.905 0)
+					(radius 0.127)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.905 0)
+					(radius 0.127)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.905 0)
+					(radius 0.2794)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.127)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GDT_2Pin_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:Earth"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "Earth"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"Earth\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global ground gnd"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Earth_0_1"
+				(polyline
+					(pts
+						(xy -0.635 -1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.127 -2.54) (xy 0.127 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Earth_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "This design does not have any PoE breakout.  Surge protection only."
+		(exclude_from_sim no)
+		(at 115.316 106.934 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "780810a1-6188-4780-a635-516ffe9d8107")
+	)
+	(junction
+		(at 121.92 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "136821d4-07d8-4ddb-b73b-778713ab2cd2")
+	)
+	(junction
+		(at 106.68 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2e32c01e-c499-4bcf-aa88-7d4295dfc059")
+	)
+	(junction
+		(at 137.16 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2fb136a9-35c8-4b66-8ec4-e6e789c3c4a7")
+	)
+	(junction
+		(at 114.3 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "40293598-0c37-4eb3-a9db-8ad9f1949b9b")
+	)
+	(junction
+		(at 91.44 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "48fb46a7-5181-4a87-9a4b-5ae23263e321")
+	)
+	(junction
+		(at 91.44 59.69)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "492fddef-681e-4320-9c13-0c07737b3929")
+	)
+	(junction
+		(at 129.54 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5b6e6a13-f659-45f4-928c-7ca06801506f")
+	)
+	(junction
+		(at 121.92 49.53)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "624843a8-4ee5-401d-8661-96e764ae9ff9")
+	)
+	(junction
+		(at 144.78 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8fdf1e3c-8204-4759-aecd-57627e634efa")
+	)
+	(junction
+		(at 99.06 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9cfcb0a9-1b9c-45e8-9fdb-3356681c2261")
+	)
+	(junction
+		(at 137.16 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a7b9b967-d819-4754-9b2b-cf759bf84dca")
+	)
+	(junction
+		(at 114.3 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b45bd1d1-c0ba-47c1-a4e5-385f3c3b71cb")
+	)
+	(junction
+		(at 99.06 57.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d1513006-72d5-4950-9fc2-8979b99488a9")
+	)
+	(junction
+		(at 129.54 46.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d5bdcac8-409e-4073-99d7-e098dae43756")
+	)
+	(junction
+		(at 118.11 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "db2a6d19-5d3a-41fe-8794-831fd960f5c9")
+	)
+	(junction
+		(at 144.78 41.91)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eb87c0ff-215b-4532-b75a-0b281d086ebf")
+	)
+	(junction
+		(at 106.68 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fd65cb7e-6fa4-42df-a679-7981f3a904d7")
+	)
+	(wire
+		(pts
+			(xy 106.68 82.55) (xy 114.3 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0091f471-1ac5-4be7-af52-77ce1596d099")
+	)
+	(wire
+		(pts
+			(xy 87.63 46.99) (xy 129.54 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01adb7ee-eab1-4097-9b92-ea73ba570b22")
+	)
+	(wire
+		(pts
+			(xy 114.3 52.07) (xy 148.59 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06a92f7f-6c79-4f5b-ae3e-9f90f89e7767")
+	)
+	(wire
+		(pts
+			(xy 158.75 64.77) (xy 158.75 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07568ffd-5adf-476d-b078-b8f6cd9764b2")
+	)
+	(wire
+		(pts
+			(xy 106.68 72.39) (xy 106.68 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e1f5c95-5504-4a7b-b6c4-4694474df6a1")
+	)
+	(wire
+		(pts
+			(xy 87.63 57.15) (xy 99.06 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18d3e24f-e277-4914-aa4d-60433f8e8056")
+	)
+	(wire
+		(pts
+			(xy 129.54 46.99) (xy 148.59 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a5600bf-15b6-41e8-957c-d99b9a7da117")
+	)
+	(wire
+		(pts
+			(xy 118.11 87.63) (xy 118.11 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "252cbbbc-6cd0-4b63-ac3c-321974ae41f6")
+	)
+	(wire
+		(pts
+			(xy 99.06 72.39) (xy 99.06 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "397f5753-f3d2-4134-a21b-62d867a11230")
+	)
+	(wire
+		(pts
+			(xy 144.78 82.55) (xy 137.16 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f8b32f1-0478-4acd-8503-b4193f550853")
+	)
+	(wire
+		(pts
+			(xy 77.47 82.55) (xy 91.44 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41cca673-a377-4848-8f98-5b6f3586c171")
+	)
+	(wire
+		(pts
+			(xy 87.63 54.61) (xy 106.68 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "579d257d-a889-4941-878f-06fe749455c6")
+	)
+	(wire
+		(pts
+			(xy 87.63 49.53) (xy 121.92 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5aea1188-55c7-497d-9003-0c4a444d5368")
+	)
+	(wire
+		(pts
+			(xy 91.44 59.69) (xy 148.59 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5bf63863-8536-40b3-a18b-8e1865e7b272")
+	)
+	(wire
+		(pts
+			(xy 99.06 57.15) (xy 99.06 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c26cd93-ccd3-4553-af93-ec4c7222288d")
+	)
+	(wire
+		(pts
+			(xy 129.54 46.99) (xy 129.54 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6943009b-5ec4-4ff5-a606-635d3a8e0a20")
+	)
+	(wire
+		(pts
+			(xy 129.54 82.55) (xy 121.92 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f8e4705-7cac-4043-9c4e-fd8181377e4e")
+	)
+	(wire
+		(pts
+			(xy 144.78 41.91) (xy 144.78 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7082eee1-5a3f-4cee-880c-e2294f79534b")
+	)
+	(wire
+		(pts
+			(xy 144.78 72.39) (xy 144.78 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70a4922f-27d2-43b7-8ee7-c77f9a571999")
+	)
+	(wire
+		(pts
+			(xy 137.16 82.55) (xy 129.54 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "71b39633-1908-40f3-88e0-e7ede2531586")
+	)
+	(wire
+		(pts
+			(xy 137.16 44.45) (xy 148.59 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72695e1d-a069-4ea6-9670-9f3070cc12d9")
+	)
+	(wire
+		(pts
+			(xy 121.92 72.39) (xy 121.92 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7414f8fd-67b0-492f-b5e5-f751fa2fbbf8")
+	)
+	(wire
+		(pts
+			(xy 87.63 44.45) (xy 137.16 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75028bcc-9dda-43b5-ae03-8d3509ab1b59")
+	)
+	(wire
+		(pts
+			(xy 118.11 82.55) (xy 121.92 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "759b0bfb-fb93-4535-8f16-4acfb395630c")
+	)
+	(wire
+		(pts
+			(xy 129.54 72.39) (xy 129.54 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7869d817-48ac-4b7b-8f6c-469942a842d1")
+	)
+	(wire
+		(pts
+			(xy 106.68 54.61) (xy 148.59 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d6bd865-5ea1-49d9-80f8-69a1be15c680")
+	)
+	(wire
+		(pts
+			(xy 114.3 82.55) (xy 118.11 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81f37960-5522-42fa-a520-853783e33538")
+	)
+	(wire
+		(pts
+			(xy 137.16 72.39) (xy 137.16 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "899e6ebf-61e3-451f-a1e9-f5c910747535")
+	)
+	(wire
+		(pts
+			(xy 91.44 82.55) (xy 99.06 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9567d679-75d8-411f-a285-0459ff610d82")
+	)
+	(wire
+		(pts
+			(xy 144.78 41.91) (xy 148.59 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab313e55-af47-4271-803c-d8d3326ddde9")
+	)
+	(wire
+		(pts
+			(xy 114.3 72.39) (xy 114.3 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af7a684c-95f6-462d-b4e3-3f79cc56ea91")
+	)
+	(wire
+		(pts
+			(xy 106.68 62.23) (xy 106.68 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b00a3eab-c080-4321-af5e-7f72e739d71c")
+	)
+	(wire
+		(pts
+			(xy 87.63 59.69) (xy 91.44 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b16f7783-9540-499d-8e91-65c8f776ef9e")
+	)
+	(wire
+		(pts
+			(xy 99.06 82.55) (xy 106.68 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbcf8fc9-cbe1-463d-9223-2b902b6fa273")
+	)
+	(wire
+		(pts
+			(xy 121.92 49.53) (xy 148.59 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc92769d-8722-4ee1-9648-1d7d440e6d42")
+	)
+	(wire
+		(pts
+			(xy 87.63 52.07) (xy 114.3 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf631350-f76d-4924-9d4c-73546b6b971b")
+	)
+	(wire
+		(pts
+			(xy 87.63 41.91) (xy 144.78 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4cdd3f2-ce88-4c59-854e-564d45f23f1a")
+	)
+	(wire
+		(pts
+			(xy 137.16 44.45) (xy 137.16 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5fdf6e6-1039-4435-b423-4809e9776a92")
+	)
+	(wire
+		(pts
+			(xy 158.75 82.55) (xy 144.78 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c6d07cd0-a8d6-4a7f-b3ab-bd11d93e6aad")
+	)
+	(wire
+		(pts
+			(xy 114.3 52.07) (xy 114.3 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1d2d3b8-a748-4fcc-91fe-9074c5e6b8e9")
+	)
+	(wire
+		(pts
+			(xy 99.06 57.15) (xy 148.59 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d754d14b-cc53-48eb-b7a6-a19094cb76a7")
+	)
+	(wire
+		(pts
+			(xy 77.47 64.77) (xy 77.47 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8d62b80-66c4-43fb-b615-e67ac034b317")
+	)
+	(wire
+		(pts
+			(xy 121.92 49.53) (xy 121.92 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9c133b6-a0ae-43d7-b42e-722d0634eaba")
+	)
+	(wire
+		(pts
+			(xy 91.44 59.69) (xy 91.44 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb6853a2-81ff-489d-a0af-53582567fd66")
+	)
+	(wire
+		(pts
+			(xy 91.44 72.39) (xy 91.44 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc3d4b39-b049-4aaf-868e-7cea62056bf7")
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 118.11 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "02e051de-bc92-4dd7-9b88-5d536107f0e8")
+		(property "Reference" "#PWR01"
+			(at 118.11 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "Earth"
+			(at 118.11 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 118.11 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 118.11 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7990423e-0fd2-4b86-af4f-db79f4746ecf")
+		)
+		(instances
+			(project ""
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PoE Surge project library:GDT_2Pin")
+		(at 121.92 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "03979f38-f0d8-4760-926a-3501cd0d08ef")
+		(property "Reference" "GD5"
+			(at 118.618 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GDT_2Pin"
+			(at 127 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1218_3246Metric_Pad1.22x4.75mm_HandSolder"
+			(at 121.92 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Gas Discharge Tube with 2 Pins"
+			(at 121.92 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4481dd14-a22c-4e00-ae08-b7d68d8f6ac3")
+		)
+		(pin "1"
+			(uuid "9239e857-741c-4f90-83f3-8df38806e322")
+		)
+		(instances
+			(project "PoESurgeProtector"
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "GD5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PoE Surge project library:GDT_2Pin")
+		(at 144.78 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "24e1c258-6970-4af5-93c0-4a080f6d2bfa")
+		(property "Reference" "GD8"
+			(at 141.478 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GDT_2Pin"
+			(at 149.86 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1218_3246Metric_Pad1.22x4.75mm_HandSolder"
+			(at 144.78 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 144.78 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Gas Discharge Tube with 2 Pins"
+			(at 144.78 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "33ed31bd-07ac-4a63-91b2-47154e059440")
+		)
+		(pin "1"
+			(uuid "f9549a50-aa57-4dea-aa06-0a6b83b16377")
+		)
+		(instances
+			(project "PoESurgeProtector"
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "GD8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PoE Surge project library:GDT_2Pin")
+		(at 91.44 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "296520ba-78ad-4d53-9df8-183e07cc8362")
+		(property "Reference" "GD1"
+			(at 92.202 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "GDT_2Pin"
+			(at 96.52 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1218_3246Metric_Pad1.22x4.75mm_HandSolder"
+			(at 91.44 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 91.44 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Gas Discharge Tube with 2 Pins"
+			(at 91.44 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5a36a47c-1844-4c55-9082-cadf0f0051b6")
+		)
+		(pin "1"
+			(uuid "7af496a2-2f1b-4006-a0af-49e0563f0b9a")
+		)
+		(instances
+			(project ""
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "GD1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45_Shielded")
+		(at 77.47 52.07 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2cb493ab-808a-47cb-af2b-d12bbc7f9383")
+		(property "Reference" "J1"
+			(at 77.47 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RJ45_Shielded"
+			(at 77.47 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_Ninigi_GE"
+			(at 77.47 51.435 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 77.47 51.435 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected), Shielded"
+			(at 77.47 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "1c8bc01d-1a58-4006-9db2-a0d5ab22dc7d")
+		)
+		(pin "7"
+			(uuid "24069e8e-845e-42c2-a3b3-83fbcc113369")
+		)
+		(pin "SH"
+			(uuid "5d87978f-bfbf-47b5-8590-f73f6fad17f0")
+		)
+		(pin "4"
+			(uuid "ef9240be-7ac1-4a8e-972f-181d1fd5a778")
+		)
+		(pin "2"
+			(uuid "d03d0f8c-cef1-41f0-9fe6-d9c584710c2d")
+		)
+		(pin "1"
+			(uuid "4336bfda-694e-429f-8563-7d39a04cc93c")
+		)
+		(pin "8"
+			(uuid "4e2e9f52-03f9-45ca-8d1f-f1e088ebc311")
+		)
+		(pin "5"
+			(uuid "a399b03e-ab9b-4878-8625-17790bb01c11")
+		)
+		(pin "3"
+			(uuid "c239f78b-81ab-44a1-ae81-58f70e350342")
+		)
+		(instances
+			(project ""
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PoE Surge project library:GDT_2Pin")
+		(at 129.54 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3c2bf9be-1867-4b9c-b1dd-70f895ff60b4")
+		(property "Reference" "GD6"
+			(at 126.238 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GDT_2Pin"
+			(at 134.62 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1218_3246Metric_Pad1.22x4.75mm_HandSolder"
+			(at 129.54 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 129.54 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Gas Discharge Tube with 2 Pins"
+			(at 129.54 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "09814f3e-f82a-41c8-aaa6-3326de58d9b0")
+		)
+		(pin "1"
+			(uuid "9aa3e026-0f61-4292-92b3-0b8035f026f9")
+		)
+		(instances
+			(project "PoESurgeProtector"
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "GD6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PoE Surge project library:GDT_2Pin")
+		(at 114.3 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a31b2957-b75f-4a0a-9ff1-686cbb6c479a")
+		(property "Reference" "GD4"
+			(at 110.998 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GDT_2Pin"
+			(at 119.38 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1218_3246Metric_Pad1.22x4.75mm_HandSolder"
+			(at 114.3 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 114.3 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Gas Discharge Tube with 2 Pins"
+			(at 114.3 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a099c21e-c11e-42f4-81ce-73454859332e")
+		)
+		(pin "1"
+			(uuid "66ec0f4e-2181-4c1d-930c-0f4e776618fd")
+		)
+		(instances
+			(project "PoESurgeProtector"
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "GD4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45_Shielded")
+		(at 158.75 52.07 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bc570ccb-701d-4891-85ae-828ecc229fea")
+		(property "Reference" "J2"
+			(at 158.75 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RJ45_Shielded"
+			(at 158.75 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_Ninigi_GE"
+			(at 158.75 51.435 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 158.75 51.435 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected), Shielded"
+			(at 158.75 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "afc872ea-665d-4108-9891-128b2e527c56")
+		)
+		(pin "3"
+			(uuid "f8cc5b94-3be1-4e5f-9f62-5b3fee9da321")
+		)
+		(pin "2"
+			(uuid "bf358a46-88e0-4311-966e-61722a491577")
+		)
+		(pin "1"
+			(uuid "2ad9d85f-0284-43b5-9c35-f006ce72ad67")
+		)
+		(pin "SH"
+			(uuid "d9fc1d55-1ddf-4b4c-841f-012a08701a6b")
+		)
+		(pin "4"
+			(uuid "6eab224f-c71d-4aa1-a48f-3f710b9d4656")
+		)
+		(pin "6"
+			(uuid "f58ae48e-5169-4170-b753-e40f07cbe29a")
+		)
+		(pin "8"
+			(uuid "0aa96414-690b-4e9e-8276-f9a6cd301f9c")
+		)
+		(pin "7"
+			(uuid "fa091d37-8d95-4b26-be59-d0fef1dffaa1")
+		)
+		(instances
+			(project ""
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PoE Surge project library:GDT_2Pin")
+		(at 137.16 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cae4c474-1fd5-4782-8790-610310f2751a")
+		(property "Reference" "GD7"
+			(at 133.858 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GDT_2Pin"
+			(at 142.24 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1218_3246Metric_Pad1.22x4.75mm_HandSolder"
+			(at 137.16 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 137.16 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Gas Discharge Tube with 2 Pins"
+			(at 137.16 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0274ea2f-778f-42b3-8245-d1a061bfda66")
+		)
+		(pin "1"
+			(uuid "f0144bbc-5832-4c2d-9d39-dd57a49af76f")
+		)
+		(instances
+			(project "PoESurgeProtector"
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "GD7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PoE Surge project library:GDT_2Pin")
+		(at 99.06 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dfb2610b-c867-436e-a0ec-8caf24575ac7")
+		(property "Reference" "GD2"
+			(at 96.012 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GDT_2Pin"
+			(at 104.14 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1218_3246Metric_Pad1.22x4.75mm_HandSolder"
+			(at 99.06 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 99.06 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Gas Discharge Tube with 2 Pins"
+			(at 99.06 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f4f30005-4a95-477d-912f-cbce20cc4270")
+		)
+		(pin "1"
+			(uuid "02205412-a853-4efd-a09d-d0b7cffa8b6a")
+		)
+		(instances
+			(project "PoESurgeProtector"
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "GD2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PoE Surge project library:GDT_2Pin")
+		(at 106.68 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fb74784a-d5fa-40fa-acb6-edbb2059f81a")
+		(property "Reference" "GD3"
+			(at 103.378 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GDT_2Pin"
+			(at 111.76 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1218_3246Metric_Pad1.22x4.75mm_HandSolder"
+			(at 106.68 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Gas Discharge Tube with 2 Pins"
+			(at 106.68 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "18c07904-e867-42dd-9b3b-eb586da81c34")
+		)
+		(pin "1"
+			(uuid "1c8979d2-b5ae-4215-8341-e968c547dadb")
+		)
+		(instances
+			(project "PoESurgeProtector"
+				(path "/cac1c6ac-c529-402c-b343-ff5ebf258f51"
+					(reference "GD3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
