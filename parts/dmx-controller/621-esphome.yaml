@@ -1,7 +1,7 @@
 <<: !include 
   file: ./arkadia-wired-dmx-base.yaml
   vars:
-  device_comment: "Arkadia House DMX controller on board 621."
+    device_comment: "Arkadia House DMX controller on board 621. Controls lights DLxxx through DLyyy."
 
 # uncomment this line to create single channel on/off lights for each DMX channel of both universes, which can be useful for testing and debugging.
 #<<: !include ./arkadia-dmx-debug-lights.yaml 

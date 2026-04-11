@@ -1,5 +1,4 @@
 substitutions:
-  device_hostname: SPECIFY_HOSTNAME_TO_BASELINE_YAML_INCLUDE
   logger_baud_rate: "115200"
 
 esp32:
@@ -17,8 +16,5 @@ esp32:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    device_hostname: ${device_hostname} 
-    device_friendly_name: ${device_friendly_name}
-    device_comment: ${device_comment}
     logger_baud_rate: ${logger_baud_rate}
 

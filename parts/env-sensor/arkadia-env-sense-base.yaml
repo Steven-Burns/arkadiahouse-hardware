@@ -38,7 +38,6 @@ packages:
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
     logger_baud_rate: 115200
-    device_hostname: ${device_hostname}
     device_friendly_name: "Arkadia House Env Sensor v1 (${device_hostname})"
     device_comment: "Arkadia House Evnironmental Sensor."
 

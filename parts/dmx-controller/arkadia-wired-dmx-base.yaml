@@ -1000,7 +1000,6 @@ output:
     # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
     # logger baud rate to 0.  Then uart initialization would start with UART0.
     logger_baud_rate: "115200"
-    device_hostname: ${device_hostname}
     device_friendly_name: "Arkadia House Wired DMX controller (${device_hostname})"
     device_comment: ${device_comment}
 
