@@ -21,6 +21,8 @@ docker run --interactive --user root --volume arkadiahouse-docker-volume:/clone-
 
 (The above steps are assumed to have been completed by the devcontainer.json file checked into this repo.)
 
+Copy/create the secrets.yaml file to /include/secrets.yaml. There is a template example /include/secrets.example.yaml in case you need to create a new one from scratch.  The actual secrets.yaml is not version-controlled and is git-ignored.
+
 # startup
 
 Start docker desktop on the docker host computer.
@@ -37,3 +39,6 @@ Use VSCode "Reopen in container" to attach to a container that will have a mount
 
 The devcontainer will offer a powershell (pwsh) terminal window option. That terminal configuration provides a command line in which ESPHome code can be built, deployed, etc.
 
+# building
+
+Use the ESPHome command line.

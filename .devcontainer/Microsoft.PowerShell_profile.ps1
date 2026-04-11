@@ -1,6 +1,6 @@
 $VerbosePreference = "Continue"
 
-write-host ("sburns startup script at $PSCommandPath last updated {0:u}" -f (Get-ChildItem $PSCommandPath).LastWriteTime)
+write-host ("PowerShell startup script at $PSCommandPath last updated {0:u}" -f (Get-ChildItem $PSCommandPath).LastWriteTime)
 
 function global:rdir { Get-ChildItem -path . -recurse -include $args }
 
@@ -58,6 +58,6 @@ function global:ll { Get-ChildItem -Force $args }
 #
 
 $global:sburnsProfileRun = $true
-write-host "sburns startup script done."
+write-host "PowerShell startup script done."
 
 
