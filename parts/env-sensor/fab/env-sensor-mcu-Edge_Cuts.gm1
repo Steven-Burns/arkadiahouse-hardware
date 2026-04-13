@@ -1,0 +1,23 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,10.0.0*%
+%TF.CreationDate,2026-04-13T15:31:41-05:00*%
+%TF.ProjectId,env-sensor-mcu,656e762d-7365-46e7-936f-722d6d63752e,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Profile,NP*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 10.0.0) date 2026-04-13 15:31:41*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,Profile*%
+%ADD10C,0.200000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+X40640000Y-109220000D02*
+X93980000Y-109220000D01*
+X93980000Y-142240000D01*
+X40640000Y-142240000D01*
+X40640000Y-109220000D01*
+M02*
