@@ -30,6 +30,9 @@ fp-info-cache
 *.xml
 *.csv
 
+# KiCad stores it's local autosaves in a git repo, which is not really useful to include in the main project repo.
+/**/.history/
+
 # Gitignore settings for ESPHome
 
 /**/.esphome/
