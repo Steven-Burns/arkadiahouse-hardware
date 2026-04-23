@@ -52,7 +52,7 @@ binary_sensor:
           id(keypad_key_states)[0] = x;    
           auto b = id(buzzer_0_id); 
           b->turn_on();
-          b->set_frequency(5000.0);
+          b->set_frequency(10000.0);
           b->set_level(0.5);
           b->turn_off();
   - platform: gpio
@@ -70,7 +70,7 @@ binary_sensor:
         - lambda: |-
             id(keypad_key_states)[1] = x;   
         - rtttl.play: !lambda |-
-            return "keysw1:d=64,o=5,b=120:g4,g5,g4";
+            return "keysw1:d=32,o=5,b=180:g4,g5";
   - platform: gpio
     name: "KSW 2"
     id: keypad_button_2
@@ -86,7 +86,7 @@ binary_sensor:
         - lambda: |-
             id(keypad_key_states)[2] = x;        
         - rtttl.play: !lambda |-
-            return "keysw2:d=64,o=5,b=120:c5,g4,d5";
+            return "keysw2:d=32,o=5,b=180:c5,d5";
   - platform: gpio
     name: "KSW 3"
     id: keypad_button_3
