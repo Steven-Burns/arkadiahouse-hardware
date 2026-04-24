@@ -19,9 +19,10 @@ function do-esphome-command
 	foreach ($arg in $args)
 	{
 		$file = get-item $arg
-		if ($file -eq $null)
+		if ([String]::IsNullOrEmpty($file))
 		{
-			throw "File $arg not found."	
+			write-host "Skipping null/empty filename"
+			continue	
 		}
 		write-host "Processing ESPHome configuration file $file"
 
@@ -32,14 +33,18 @@ function do-esphome-command
 		if ($?) 
 		{
 			write-host "Successfully processed $file"
-			$binfile = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin"
-			if ((split-path -resolve $binfile -erroraction silentlycontinue) -ne $null) 
+			if ($command -eq "compile")  # somewhat inelegant, so sue me.
 			{
-				copy-item -verbose -path $binfile -destination "./fab/$hostname.bin" -force
-			}
-			else
-			{
-				write-host "No binary file found for $hostname, skipping copy to fab directory."
+				write-host "Looking for compiled binary for $hostname to copy to fab directory..."
+				$binfile = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin"
+				if ((split-path -resolve $binfile -erroraction silentlycontinue) -ne $null) 
+				{
+					copy-item -verbose -path $binfile -destination "./fab/$hostname.bin" -force
+				}
+				else
+				{
+					write-host "No binary file found for $hostname, skipping copy to fab directory."
+				}
 			}
 		}
 		else
@@ -96,4 +101,56 @@ function esphome-upload
 	)
 
 	do-esphome-command "upload" $args
+}
+
+
+function do-all-command
+{
+	param
+	(
+		[Parameter(Mandatory = $true, Position = 0)]
+		[string]
+		$command
+	)
+	
+	$yamlFiles = get-childitem -path . -filter ???-*.yaml -recurse
+	if ($yamlFiles.Count -eq 0)
+	{
+		throw "No YAML files found in the current directory or subdirectories."
+	}
+
+	$failed = @()
+	foreach ($yamlFile in $yamlFiles)
+	{
+		write-host "Processing file: $($yamlFile.FullName)"
+	
+		trap 
+		{ 
+			write-host "Error processing file: $($yamlFile.FullName). "
+			$failed += $yamlFile.FullName
+			continue
+		}
+		do-esphome-command $command $yamlFile.FullName
+	}
+
+	if (($null -ne $failed) -and ($failed.Count -gt 0))
+	{
+		write-host "The following files failed to process:"
+		foreach ($fail in $failed)
+		{
+			write-host $fail
+		}
+	}
+}
+
+
+function esphome-compile-all
+{
+	do-all-command "compile"
+}	
+
+
+function esphome-upload-all
+{
+	do-all-command "upload"
 }
