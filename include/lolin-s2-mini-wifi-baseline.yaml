@@ -3,7 +3,7 @@ esp32:
   variant: ESP32S2
   cpu_frequency: 240MHZ
   framework:
-    type: arduino
+    type: esp-idf
 
 packages:
   diagnostics: !include 

@@ -6,6 +6,7 @@ substitutions:
 mcp23017:
   - id: 'mcp23017_0'
     address: 0x20
+    # TODO need to experiment with this --> interrupt_pin: GPIO0
 
 globals:
    - id: keypad_key_states
