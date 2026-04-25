@@ -3,14 +3,6 @@
 substitutions:
   device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
 
-esp32:
-  board: wemos_d1_mini32
-  cpu_frequency: 240MHZ
-  framework:
-    type: esp-idf
-    advanced:
-      minimum_chip_revision: "3.1"
-
 packages:
   diagnostics: !include 
     file: /workspace/include/diagnostics.yaml
