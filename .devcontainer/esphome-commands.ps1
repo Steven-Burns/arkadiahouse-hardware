@@ -5,15 +5,19 @@ function do-esphome-command
 		[Parameter(Mandatory = $true, Position = 0)]
 		[string]
 		$command,
+
+		[Parameter(Mandatory = $false, Position = 1)]
+		[bool]
+		$copyBinaries = $false,
 		
-		[Parameter(Mandatory = $true, ValueFromRemainingArguments = $true, Position = 1)]
+		[Parameter(Mandatory = $true, ValueFromRemainingArguments = $true, Position = 2)]
 		[string[]]
 		$args
 	)
 
-	if ($args.Count -eq 0 -or $command -notin @("compile", "run", "config", "upload")) 
+	if ($args.Count -eq 0) 
 	{
-		throw "Usage: esphome-<command> <device yaml file> [<device yaml file> ...]"
+		throw "Usage: do-esphome-command> -command <command> -copyBinaries <true/false> <device yaml file> [<device yaml file> ...]"
 	}
 
 	foreach ($arg in $args)
@@ -26,14 +30,24 @@ function do-esphome-command
 		}
 		write-host "Processing ESPHome configuration file $file"
 
-		# derive the hostname from the file name, which is expected to be in the format <hostname>.yaml
-		$hostname = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
+		# derive the hostname from the file name, which is expected to be in the format <hostname>.<ignored.><ext>
+		# this loop strips off all extensions.
+		$before = $file.Name
+		$bLen = 0; 
+		do 
+		{ 
+			$bLen = $before.Length
+			$after = [System.IO.Path]::GetFileNameWithoutExtension($before)
+			$before = $after
+		} while ($after.Length -ne $bLen)  
+		$hostname = $after
+		write-verbose "Derived hostname '$hostname' from file name '$($file.Name)'"
 
 		esphome -s device_hostname $hostname $command $file
 		if ($?) 
 		{
 			write-host "Successfully processed $file"
-			if ($command -eq "compile")  # somewhat inelegant, so sue me.
+			if ($copyBinaries)
 			{
 				write-host "Looking for compiled binaries for $hostname to copy to fab directory..."
 				$binPath = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\"
@@ -45,7 +59,7 @@ function do-esphome-command
 					}
 					else
 					{
-						write-host "No binary files found for $hostname, skipping copy to fab directory."
+						write-host "No binary files found for $hostname, skipping copy to fab folder."
 					}
 				}
 			}
@@ -66,7 +80,7 @@ function esphome-compile
 		$args
 	)
 
-	do-esphome-command "compile" $args
+	do-esphome-command -command "compile" -copyBinaries $true $args
 }
 
 function esphome-run
@@ -78,7 +92,7 @@ function esphome-run
 		$args
 	)
 
-	do-esphome-command "run" $args
+	do-esphome-command -command "run" -copyBinaries $true $args
 }
 
 function esphome-config
@@ -119,7 +133,7 @@ function do-all-command
 	$yamlFiles = get-childitem -path . -filter ???-*.yaml -recurse
 	if ($yamlFiles.Count -eq 0)
 	{
-		throw "No YAML files found in the current directory or subdirectories."
+		throw "No YAML files found in the current folder or subfolders."
 	}
 
 	$failed = @()
@@ -130,7 +144,7 @@ function do-all-command
 		trap 
 		{ 
 			write-host "Error processing file: $($yamlFile.FullName). "
-			$failed += $yamlFile.FullName
+			$failed += @($yamlFile.FullName)
 			continue
 		}
 		do-esphome-command $command $yamlFile.FullName
