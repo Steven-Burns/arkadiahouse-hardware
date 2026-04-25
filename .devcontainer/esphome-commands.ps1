@@ -104,7 +104,7 @@ function esphome-config
 		$args
 	)
 
-	do-esphome-command "config" $args
+	do-esphome-command -command "config" -copyBinaries $false $args
 }
 
 
@@ -117,7 +117,7 @@ function esphome-upload
 		$args
 	)
 
-	do-esphome-command "upload" $args
+	do-esphome-command -command "upload" -copyBinaries $false $args
 }
 
 
@@ -127,9 +127,13 @@ function do-all-command
 	(
 		[Parameter(Mandatory = $true, Position = 0)]
 		[string]
-		$command
+		$command,
+
+		[Parameter(Mandatory = $false, Position = 1)]
+		[bool]
+		$copyBinaries = $false
 	)
-	
+		
 	$yamlFiles = get-childitem -path . -filter ???-*.yaml -recurse
 	if ($yamlFiles.Count -eq 0)
 	{
@@ -147,7 +151,7 @@ function do-all-command
 			$failed += @($yamlFile.FullName)
 			continue
 		}
-		do-esphome-command $command $yamlFile.FullName
+		do-esphome-command -command $command -copyBinaries $copyBinaries $yamlFile.FullName
 	}
 
 	if (($null -ne $failed) -and ($failed.Count -gt 0))
@@ -163,11 +167,11 @@ function do-all-command
 
 function esphome-compile-all
 {
-	do-all-command "compile"
+	do-all-command -command "compile" -copyBinaries $true
 }	
 
 
 function esphome-upload-all
 {
-	do-all-command "upload"
+	do-all-command -command "upload" -copyBinaries $false
 }
