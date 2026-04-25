@@ -35,15 +35,18 @@ function do-esphome-command
 			write-host "Successfully processed $file"
 			if ($command -eq "compile")  # somewhat inelegant, so sue me.
 			{
-				write-host "Looking for compiled binary for $hostname to copy to fab directory..."
-				$binfile = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\firmware.ota.bin"
-				if ((split-path -resolve $binfile -erroraction silentlycontinue) -ne $null) 
+				write-host "Looking for compiled binaries for $hostname to copy to fab directory..."
+				$binPath = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\"
+				foreach ($binfile in get-childitem $binPath -filter firmware.*.bin)
 				{
-					copy-item -verbose -path $binfile -destination "./fab/$hostname.bin" -force
-				}
-				else
-				{
-					write-host "No binary file found for $hostname, skipping copy to fab directory."
+					if ($binfile -ne $null) 
+					{
+						copy-item -verbose -path $binfile -destination "./fab/$hostname.$($binfile.BaseName).bin" -force
+					}
+					else
+					{
+						write-host "No binary files found for $hostname, skipping copy to fab directory."
+					}
 				}
 			}
 		}
