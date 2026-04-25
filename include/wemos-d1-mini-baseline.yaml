@@ -1,16 +1,18 @@
 substitutions:
+  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
   device_friendly_name: "Baseline (${device_hostname})"
   device_comment: "Baseline for Wemos D1 Mini boards."
   logger_baud_rate: "115200"
 
 esp32:
-  # board: nodemcu-32s <-- This also works
+  # board: nodemcu-32s <-- This also works for the wemos d1 mini 
   board: wemos_d1_mini32
   cpu_frequency: 240MHZ
   framework:
     type: esp-idf
     advanced:
       minimum_chip_revision: "3.1"
+      sram1_as_iram: true
 #      enable_ota_rollback: false
       
 # "All Device" baseline stuff here
@@ -18,7 +20,8 @@ esp32:
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
-    logger_baud_rate: ${logger_baud_rate}
+    device_hostname: ${device_hostname}
     device_friendly_name: ${device_friendly_name}
     device_comment: ${device_comment}
+    logger_baud_rate: ${logger_baud_rate}
 

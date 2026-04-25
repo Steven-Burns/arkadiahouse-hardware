@@ -1,7 +1,8 @@
 substitutions:
-  device_hostname: SPECIFY_HOSTNAME_ON_COMPILE_COMMAND_OR_USE_ESP_COMPILE
-  device_friendly_name: SPECIFY_FRIENDLY_NAME_TO_BASELINE_YAML_INCLUDE
-  device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
+  # these defaults are just placeholders to make it clear that these values should be set when including this baseline yaml in a device yaml.
+  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
+  device_friendly_name: SPECIFY_FRIENDLY_NAME_WHEN_INCLUDING_BASELINE_YAML
+  device_comment: SPECIFY_DEVICE_COMMENT_WHEN_INCLUDING_BASELINE_YAML
   logger_baud_rate: 115200
 
 esphome:

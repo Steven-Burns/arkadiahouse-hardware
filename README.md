@@ -53,3 +53,15 @@ esphome-compile <your-device-configuration.yaml>
 esphome-run <your-device-configuration.yaml>
 ```
 The wrapper functions normalize device hostnames and copy build outputs to the part's ./fab folder.
+
+# flashing
+
+Compilation will produce firmware bin files in the fab subfolder of the folder containing the .yaml esphome configuration.
+
+Flash the "factory" version -- the one that has "factory" in the filename.
+
+```DOS
+esptool write-flash 0 <flash-factory-file.bin>
+```
+
+or use https://adafruit.github.io/Adafruit_WebSerial_ESPTool/
