@@ -2,6 +2,7 @@
 
 substitutions:
   device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
+  source_env_sensor_hostname: "no_host_specified_in_config"  
 
 packages:
   diagnostics: !include 
@@ -24,7 +25,7 @@ packages:
     vars:
       buzzer_pin: "GPIO33"
   ha_chime: !include
-    file: /workspace/include/home-asst-tone-player.yaml
+    file: ./home-asst-chime-player.yaml
   radar_0: !include
     file: /workspace/include/HLK-LD2410-radar-motion.yaml
     vars:
@@ -45,20 +46,12 @@ packages:
       i2c_sda_pin: "GPIO21"
       i2c_scl_pin: "GPIO22"
       i2c_freq: "420kHz"
-
-# the env sensor data needs to get updated to be something that remotely reads the data points from a given set of sensors in Home Assistant
-# which are in turn updated by a separate MCU in the 6.0 iteration of the Arkadia House project.
-  temp_humidity: !include
-    file: /workspace/include/BMP280-AHT20-temp-humidity.yaml
-    vars: 
-      temperature_offset: "0"      
-  illuminance: !include
-    file: /workspace/include/photoresistor-illuminance.yaml
-    vars:
-      illuminance_pin: "GPIO39"
-
   display: !include
-    file: /workspace/include/SDD1306-display-arkadia.yaml
+    file: ./SDD1306-display.yaml
+    vars:
+      # note the underscore replacing the hyphen; this is because Home Assistant converts
+      # all device and entity names to snake case when creating the corresponding entity_id
+      source_env_sensor_hostname: ${source_env_sensor_hostname}  
   keypad: !include
     file: /workspace/include/10-key-keypad.yaml
   door_lock_0: !include 
