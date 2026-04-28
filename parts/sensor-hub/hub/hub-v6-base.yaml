@@ -47,7 +47,7 @@ packages:
       i2c_scl_pin: "GPIO22"
       i2c_freq: "420kHz"
   display: !include
-    file: ./SDD1306-display-arkadia.yaml
+    file: ./SDD1306-display.yaml
     vars:
       # note the underscore replacing the hyphen; this is because Home Assistant converts
       # all device and entity names to snake case when creating the corresponding entity_id

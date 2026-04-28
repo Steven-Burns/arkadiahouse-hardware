@@ -3,8 +3,8 @@
 
 text_sensor:
   - platform: homeassistant
-    name: "Home Assistant Ringtone"
-    id: ha_ringtone
+    name: "Home Assistant Global Chime RTTTL"
+    id: ha_global_chime
     internal: true
     entity_id: input_text.server_globals_sensor_hub_chime_rtttl
     on_value:
