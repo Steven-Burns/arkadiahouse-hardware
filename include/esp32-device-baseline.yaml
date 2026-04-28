@@ -34,7 +34,8 @@ api:
   # password is deprecated in favor of encryption key
   # password: !secret api_password
   # reboot_timeout set to 0s will keep the board running even when networking (connection to the home asst api)
-  # is lost, even if lost forever. 
+  # is lost, even if lost forever. A non-zero timeout will cause the board to reboot if it can't connect to the API within the specified time, 
+  # which is the most useful option for our purposes.
   # reboot_timeout: 0s
   encryption:
      key: !secret api_encryption_key

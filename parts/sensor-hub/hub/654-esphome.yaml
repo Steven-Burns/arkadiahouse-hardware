@@ -2,3 +2,6 @@
   file: ./hub-v6-base.yaml
   vars:
     device_comment: "Arkadia Sensor Hub Version 6.8 hardware with board 654."
+    # note the underscore replacing the hyphen; this is because Home Assistant converts
+    # all device and entity names to snake case when creating the corresponding entity_id
+    source_env_sensor_hostname: "910_esphome"  

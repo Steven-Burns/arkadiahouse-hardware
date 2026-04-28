@@ -14,6 +14,7 @@ sensor:
       id: temperature_id
       device_class: "temperature"
       state_class: "measurement"
+      unit_of_measurement: "°C"
       oversampling: 2x
       accuracy_decimals: 1
       filters:
@@ -25,6 +26,7 @@ sensor:
       oversampling: 16x
       device_class: atmospheric_pressure
       state_class: "measurement"
+      unit_of_measurement: "hPa"
       icon: mdi:gauge
       accuracy_decimals: 2
       filters:
@@ -38,6 +40,7 @@ sensor:
       id: aht20_temp
       device_class: "temperature"
       state_class: "measurement"
+      unit_of_measurement: "°C"
       accuracy_decimals: 1
       filters:
         delta: 0.1
@@ -50,6 +53,8 @@ sensor:
       name: "Humidity"
       id: humidity_id
       state_class: "measurement"
+      device_class: humidity
+      unit_of_measurement: "%"
       accuracy_decimals: 1
       filters:
         delta: 0.1

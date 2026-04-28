@@ -1,3 +1,39 @@
+substitutions:
+  source_env_sensor_hostname: no_host_specified_in_config
+  
+# The sensors we declare here get their values from Home Assistant via the API; 
+# They can be used in the display lambda to show data from other devices.
+sensor:
+  - platform: homeassistant
+    name: Humidity (${source_env_sensor_hostname})
+    id: humidity_id
+    entity_id: sensor.${source_env_sensor_hostname}_humidity
+    # attribute:
+    device_class: humidity
+    state_class: measurement
+    unit_of_measurement: "%"
+  - platform: homeassistant
+    name: "Air Temperature (${source_env_sensor_hostname})"
+    id: temperature_id
+    entity_id: sensor.${source_env_sensor_hostname}_air_temperature_bmp280
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°F"
+  - platform: homeassistant
+    name: "Air Pressure (${source_env_sensor_hostname})"
+    id: pressure_id
+    entity_id: sensor.${source_env_sensor_hostname}_air_pressure
+    device_class: atmospheric_pressure
+    state_class: measurement
+    unit_of_measurement: "inHg"
+  - platform: homeassistant
+    name: "Photoresistor (${source_env_sensor_hostname})"
+    id: illuminance_id
+    entity_id: sensor.${source_env_sensor_hostname}_photoresistor_0
+    device_class: illuminance
+    state_class: measurement
+    unit_of_measurement: "cV"
+
 font:
   - file: "/workspace/lib/fonts/spleen-5x8.bdf"
     id: tiny_font_id
