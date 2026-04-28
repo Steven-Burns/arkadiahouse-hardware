@@ -25,7 +25,7 @@ packages:
     vars:
       buzzer_pin: "GPIO33"
   ha_chime: !include
-    file: ./home-asst-tone-player.yaml
+    file: ./home-asst-chime-player.yaml
   radar_0: !include
     file: /workspace/include/HLK-LD2410-radar-motion.yaml
     vars:
