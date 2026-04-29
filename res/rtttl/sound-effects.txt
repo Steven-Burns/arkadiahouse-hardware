@@ -7,7 +7,7 @@ FastBaBeep:d=64,o=5,b=120:g4,p,g5
 warble:d=32,o=7,b=180:d#,e,g,d#,g,d#,f#,e,f
 triplewarble:d=32,o=7,b=180:d#,e,g,d#,g,d#,f#,e,f,2p,d#,e,g,d#,g,d#,f#,e,f,2p,d#,e,g,d#,g,d#,f#,e,f
 StarTrekBosun:d=32,o=7,b=225:16c#,d,d#,4e.,d#,d,8c#
-BatmanTrill:d=8,o=5,b=160:16a,16g#,16g,16f#,16f,16f#,16g,16g#,4a.
+BatmanTrill:d=16,o=5,b=200:a,g#,g,f#,f,f#,g,g#,4a
 StarTrek:d=32,o=7,b=180:d#,e,g,d#,g,d#,f#,e,f,2p,d#,e,g,d#,g,d#,f#,e,f,2p,d#,e,g,d#,g,d#,f#,e,f
 Double:d=16,o=5,b=200:c6,f6,c7,c6,f6,c7,c6,f6,c7,8p,c,f,c6,c,f,c6,c,f,c6
 RingRing:d=4,o=5,b=100:32b,32d6,32g6,32g6,32g6,8p,32b,32d6,32g6,32g6,32g6,2p,32b,32d6,32g6,32g6,32g6,8p,32b,32d6,32g6,32g6,32g6,2p,32b,32d6,32g6,32g6,32g6,8p,32b,32d6,32g6,32g6,32g6
