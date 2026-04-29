@@ -64,7 +64,7 @@ packages:
     vars: 
       temperature_offset: "0"      
   display: !include
-    file: /workspace/include/SDD1306-display-arkadia.yaml
+    file: /workspace/include/SDD1306-display.yaml
   keypad: !include
     file: /workspace/include/10-key-keypad.yaml
   door_lock_0: !include 
