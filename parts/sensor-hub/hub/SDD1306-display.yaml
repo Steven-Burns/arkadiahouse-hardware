@@ -77,6 +77,9 @@ display:
           int yellow_line = 0;
           int blue_line = 0;
 
+          std::string device_name = App.get_name();
+          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%.3s", device_name.c_str());
+
           std::string ip_addr = id(ip_address_id)->get_state();
           std::string last_octet = "---";
           std::string::size_type last_dot = ip_addr.rfind('.');
@@ -86,9 +89,8 @@ display:
           }
           it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%s", last_octet.c_str());
 
-          float lux = 0.0;
-          lux = id(illuminance_id)->state;
-          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%3.0f", lux);
+          int ill = (int) id(illuminance_id)->state;
+          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%3d", ill);
 
           // the encapsulation of data is ... not, as here we start to read all sorts of global data with 
           // 'well-known' names...
@@ -98,8 +100,8 @@ display:
 
           it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
             "R%s%s",
-            radar_target0 ? "0" : "-",
-            radar_target1 ? "1" : "-");
+            radar_target0 ? "D" : "-",
+            radar_target1 ? "D" : "-");
 
           bool is_door_lock_0_sensor_opened = id(door_lock_0_sensor).state;
           bool is_door_lock_1_sensor_opened = id(door_lock_1_sensor).state;
@@ -107,12 +109,12 @@ display:
           bool is_door_1_sensor_opened = id(door_sensor_1).state;
           it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
             "D%s%s", 
-            is_door_lock_0_sensor_opened ? "a" : "C",
-            is_door_lock_1_sensor_opened ? "a" : "C");
+            is_door_lock_0_sensor_opened ? "A" : "C",
+            is_door_lock_1_sensor_opened ? "A" : "C");
           it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
-            "d%s%s", 
-            is_door_0_sensor_opened ? "a" : "C",
-            is_door_1_sensor_opened ? "a" : "C");
+            "D%s%s", 
+            is_door_0_sensor_opened ? "A" : "C",
+            is_door_1_sensor_opened ? "A" : "C");
 
           int door_lock_0_state = id(door_lock_0).state;
           int door_lock_1_state = id(door_lock_1).state;
@@ -165,7 +167,7 @@ display:
           // blue section
           // 
 
-          // it.printf(blue_width, blue_line, tiny_font, TextAlign::BASELINE_RIGHT, "%s", App.get_name().c_str());
+          it.printf(blue_width, blue_line, tiny_font, TextAlign::BASELINE_RIGHT, "%s", App.get_name().c_str());
 
           float hum = 0.0;
           hum = id(humidity_id)->state;
@@ -176,7 +178,7 @@ display:
           temp = id(temperature_id)->state;
           temp = temp * 1.8 + 32;
           it.printf(blue_width, blue_line, med_font, TextAlign::TOP_RIGHT, "%1d", (int)(temp * 10) % 10);
-          it.printf(blue_width, blue_line += big_char_height, big_font, TextAlign::BASELINE_RIGHT, "%2.0f ", truncf(temp));
+          it.printf(blue_width, blue_line += big_char_height, big_font, TextAlign::BASELINE_RIGHT, "%2d ", (int)temp);
           it.print(blue_width, blue_line, tiny_font, TextAlign::BOTTOM_RIGHT, "F");
 
 
