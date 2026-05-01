@@ -51,7 +51,8 @@ display:
   - platform: ssd1306_i2c
     id: ssd1306_id
     model: "SSD1306_128x64"
-    update_interval: 0.1s
+    update_interval: 0.10s
+    auto_clear_enabled: true
     contrast: 40%
     invert: false
     rotation: 270
@@ -103,44 +104,105 @@ display:
             radar_target0 ? "D" : "-",
             radar_target1 ? "D" : "-");
 
-          bool is_door_lock_0_sensor_opened = id(door_lock_0_sensor).state;
-          bool is_door_lock_1_sensor_opened = id(door_lock_1_sensor).state;
-          bool is_door_0_sensor_opened = id(door_sensor_0).state;
-          bool is_door_1_sensor_opened = id(door_sensor_1).state;
-          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
-            "D%s%s", 
-            is_door_lock_0_sensor_opened ? "A" : "C",
-            is_door_lock_1_sensor_opened ? "A" : "C");
-          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
-            "D%s%s", 
-            is_door_0_sensor_opened ? "A" : "C",
-            is_door_1_sensor_opened ? "A" : "C");
-
-          int door_lock_0_state = id(door_lock_0).state;
-          int door_lock_1_state = id(door_lock_1).state;
-          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
-            "L%s%s",
-            (door_lock_0_state == 1) ? "L" : "U",
-            (door_lock_1_state == 1) ? "L" : "U");
-
           auto key_states = id(keypad_key_states); 
-          for (int i = 0; i < 10; i += 2)
-          {
-            it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT,
-            "%s %s",
-            key_states[i] ? std::to_string(i).c_str() : "-",
-            key_states[i+1] ? std::to_string(i+1).c_str() : "-");
-          }
+          //for (int i = 0; i < 10; i += 2)
+          //{
+            // it.line(full_width - yellow_width, yellow_line + i, full_width, yellow_line + i, COLOR_ON);
+            //it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT,
+            //"%s %s",
+            //key_states[i] ? std::to_string(i).c_str() : "-",
+            //key_states[i+1] ? std::to_string(i+1).c_str() : "-");
+          //}
+
+          int x = blue_width;
+          int y = yellow_line + 2;
+          it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
+
+          x = blue_width;
+          y += 1;
+          it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
+
+          x = blue_width;
+          y += 1;
+          it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
+
+
+          x = blue_width;
+          y += 4;
+          it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
+
+          x = blue_width;
+          y += 1;
+          it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
+
+          x = blue_width;
+          y += 1;
+          it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
+
+
+          x = blue_width;
+          y += 4;
+          it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
+
+          x = blue_width;
+          y += 1;
+          it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
+
+          x = blue_width;
+          y += 1;
+          it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
+          x += 4;
+          it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
 
           // blinky routine as an array of connected points.
           static const int NUM_BLINKIES = 3;
           static const int MIN_X = full_width - yellow_width;
           static const int MAX_X = full_width - 1;
-          static const int MIN_Y = height - 20;
-          static const int MAX_Y = height;
+          static const int MIN_Y = y + 1;
+          static const int MAX_Y = height - 35;
           static int blinky_x[] = {0, 30, 10, 75};
           static int blinky_y[] = {0, 5, 127, 30};
-          static int blinky_dx[] = {1, 1, -2, -3};
+          static int blinky_dx[] = {1, 1, -2, -2};
           static int blinky_dy[] = {1, -2, 1, 1};
           for (int i = 0; i < NUM_BLINKIES; ++i) 
           {
@@ -167,19 +229,66 @@ display:
           // blue section
           // 
 
-          it.printf(blue_width, blue_line, tiny_font, TextAlign::BASELINE_RIGHT, "%s", App.get_name().c_str());
+          // it.printf(blue_width, blue_line, tiny_font, TextAlign::BASELINE_RIGHT, "%s", App.get_name().c_str());
 
           float hum = 0.0;
           hum = id(humidity_id)->state;
-          it.printf(blue_width, blue_line += med_char_height, med_font, TextAlign::BASELINE_RIGHT, "%2.1f ", hum);
+          it.print(blue_width, blue_line += (tiny_char_height - 2), tiny_font, TextAlign::BASELINE_RIGHT, "Humidity");
+          it.printf(blue_width, blue_line - 1, med_font, TextAlign::TOP_RIGHT, "%1d", (int)(hum * 10) % 10);
+          it.printf(blue_width, blue_line += (big_char_height - 2), big_font, TextAlign::BASELINE_RIGHT, "%2d ", (int)hum);
           it.print(blue_width, blue_line, tiny_font, TextAlign::BOTTOM_RIGHT, "%");
+
+          blue_line += 4;
 
           float temp = 0.0;
           temp = id(temperature_id)->state;
-          temp = temp * 1.8 + 32;
+          it.print(blue_width, blue_line += tiny_char_height - 2, tiny_font, TextAlign::BASELINE_RIGHT, "Temp");
           it.printf(blue_width, blue_line, med_font, TextAlign::TOP_RIGHT, "%1d", (int)(temp * 10) % 10);
-          it.printf(blue_width, blue_line += big_char_height, big_font, TextAlign::BASELINE_RIGHT, "%2d ", (int)temp);
+          it.printf(blue_width, blue_line += big_char_height -2, big_font, TextAlign::BASELINE_RIGHT, "%2d ", (int)temp);
           it.print(blue_width, blue_line, tiny_font, TextAlign::BOTTOM_RIGHT, "F");
+
+          blue_line += tiny_char_height;
+
+          // doors with locks can have states: open, closed+unlocked, closed+locked
+          bool is_door_lock_0_sensor_opened = id(door_lock_0_sensor).state;
+          bool is_door_lock_1_sensor_opened = id(door_lock_1_sensor).state;
+          int door_lock_0_state = id(door_lock_0).state;
+          int door_lock_1_state = id(door_lock_1).state;
+          yellow_line = blue_line;
+          it.print(blue_width, blue_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "Door 1");
+          it.print(blue_width, blue_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "Door 2");
+          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
+            "%s", is_door_lock_0_sensor_opened ? "OPN" : ( door_lock_0_state == 1 ? "LCK" : "CLS") );
+          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
+            "%s", is_door_lock_1_sensor_opened ? "OPN" : ( door_lock_1_state == 1 ? "LCK" : "CLS") );
+
+          // doors without locks can have states: open, closed.
+          bool is_door_0_sensor_opened = id(door_sensor_0).state;
+          bool is_door_1_sensor_opened = id(door_sensor_1).state;
+          it.print(blue_width, blue_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "Door 3");
+          it.print(blue_width, blue_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "Door 4");
+          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
+            "%s", is_door_0_sensor_opened ? "OPN" : "CLS");
+          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
+            "%s", is_door_1_sensor_opened ? "OPN" : "CLS");
+
+          // it.print(blue_width, blue_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "ARKADIA");
+
+
+
+
+
+
+
+
+
+# /*
+# it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
+#   "L%s%s",
+#   (door_lock_0_state == 1) ? "L" : "U",
+#   (door_lock_1_state == 1) ? "L" : "U");
+
+
 
 
 
