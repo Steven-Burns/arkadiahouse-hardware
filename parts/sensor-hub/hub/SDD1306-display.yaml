@@ -78,10 +78,11 @@ display:
           int yellow_line = 0;
           int blue_line = 0;
 
-          std::string device_name = App.get_name();
+          static std::string device_name = App.get_name();
           it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%.3s", device_name.c_str());
 
-          std::string ip_addr = id(ip_address_id)->get_state();
+          std::string ip_addr = id(ip_address_id).get_state();
+          //ESP_LOGD("steve", "text sensor %s", ip_addr.c_str()); 
           std::string last_octet = "---";
           std::string::size_type last_dot = ip_addr.rfind('.');
           if (last_dot != std::string::npos) 
