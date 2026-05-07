@@ -5,6 +5,8 @@ graph TD;
     esp32-device-baseline-->wemos-d1-mini-baseline;
     wemos-d1-mini-baseline-->wemos-d1-mini-wifi-baseline;
     wemos-d1-mini-baseline-->wemos-d1-mini-wired-baseline;
+
+    esp32-device-baseline-->lolin-s2-mini-wifi-baseline;
 ```
 
 Each layer specializes the previous layer.
