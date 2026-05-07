@@ -86,7 +86,7 @@
 			(mirror no)
 			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "fab outputs/")
+			(outputdirectory "../fab/")
 		)
 	)
 	(footprint "LED_THT:LED_D3.0mm"
