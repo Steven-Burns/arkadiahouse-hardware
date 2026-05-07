@@ -14,6 +14,12 @@ globals:
      restore_value: no
 
 
+          # auto b = id(buzzer_0_id); 
+          # b->turn_on();
+          # b->set_frequency(10000.0);
+          # b->set_level(0.5);
+          # b->turn_off();
+
 # # Example usage in an automation
 # on_press:
 #     then:
@@ -51,11 +57,10 @@ binary_sensor:
       then:
         lambda: |-
           id(keypad_key_states)[0] = x;    
-          auto b = id(buzzer_0_id); 
-          b->turn_on();
-          b->set_frequency(10000.0);
-          b->set_level(0.5);
-          b->turn_off();
+    on_release:
+      then:
+        - rtttl.play: !lambda |-
+            return "keysw0:d=32,o=5,b=180:a4,a5";
   - platform: gpio
     name: "KSW 1"
     id: keypad_button_1
@@ -73,7 +78,7 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw1:d=32,o=5,b=180:g4,g5";
+            return "keysw1:d=32,o=5,b=180:b4,b5";
   - platform: gpio
     name: "KSW 2"
     id: keypad_button_2
@@ -91,7 +96,7 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw2:d=32,o=5,b=180:c5,d5";
+            return "keysw2:d=32,o=5,b=180:c4,c5";
   - platform: gpio
     name: "KSW 3"
     id: keypad_button_3
@@ -109,7 +114,7 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw2:d=32,o=5,b=180:c5,d5";
+            return "keysw3:d=32,o=5,b=180:d4,d5";
   - platform: gpio
     name: "KSW 4"
     id: keypad_button_4
@@ -127,7 +132,7 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw2:d=32,o=5,b=180:c5,d5";
+            return "keysw4:d=32,o=5,b=180:e4,e5";
   - platform: gpio
     name: "KSW 5"
     id: keypad_button_5
@@ -145,7 +150,7 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw2:d=32,o=5,b=180:c5,d5";
+            return "keysw5:d=32,o=5,b=180:f4,f5";
   - platform: gpio
     name: "KSW 6"
     id: keypad_button_6
@@ -163,7 +168,7 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw2:d=32,o=5,b=180:c5,d5";
+            return "keysw6:d=32,o=5,b=180:g4,g5";
   - platform: gpio
     name: "KSW 7"
     id: keypad_button_7
@@ -181,7 +186,7 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw2:d=32,o=5,b=180:c5,d5";
+            return "keysw7:d=32,o=5,b=180:a5,b5";
   - platform: gpio
     name: "KSW 8"
     id: keypad_button_8
@@ -199,7 +204,7 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw2:d=32,o=5,b=180:c5,d5";
+            return "keysw8:d=32,o=5,b=180:b5,d5";
   - platform: gpio
     name: "KSW 9"
     id: keypad_button_9
@@ -217,4 +222,4 @@ binary_sensor:
     on_release:
       then:
         - rtttl.play: !lambda |-
-            return "keysw2:d=32,o=5,b=180:c5,d5";
+            return "keysw9:d=32,o=5,b=180:c5,e5";
