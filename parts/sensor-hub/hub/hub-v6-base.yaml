@@ -53,7 +53,7 @@ packages:
       # all device and entity names to snake case when creating the corresponding entity_id
       source_env_sensor_hostname: ${source_env_sensor_hostname}  
   keypad: !include
-    file: /workspace/include/10-key-keypad.yaml
+    file: ./10-key-keypad.yaml
   door_lock_0: !include 
     file: /workspace/include/door-lock.yaml
     vars: 
