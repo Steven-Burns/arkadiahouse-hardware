@@ -33,6 +33,9 @@ fp-info-cache
 # KiCad stores it's local autosaves in a git repo, which is not really useful to include in the main project repo.
 /**/.history/
 
+# dxf plots are always disposable
+/**/fab/*.dxf
+
 # Gitignore settings for ESPHome
 
 /**/.esphome/
@@ -41,3 +44,4 @@ fp-info-cache
 # Sketchup
 
 *.skb
+
