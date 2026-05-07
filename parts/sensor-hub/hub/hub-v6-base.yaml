@@ -5,12 +5,6 @@ substitutions:
   source_env_sensor_hostname: "no_host_specified_in_config"  
 
 packages:
-  diagnostics: !include 
-    file: /workspace/include/diagnostics.yaml
-  blinky: !include
-    file: /workspace/include/interval-blinky.yaml
-    vars:
-      builtin_led_pin: "GPIO2"
   wired_ethernet: !include
     file: /workspace/include/wired-ethernet.yaml
     vars:
@@ -27,14 +21,14 @@ packages:
   ha_chime: !include
     file: ./home-asst-chime-player.yaml
   radar_0: !include
-    file: /workspace/include/HLK-LD2410-radar-motion.yaml
+    file: ./HLK-LD2410-radar-motion.yaml
     vars:
       uart_id: "uart_1"
       radar_id: "ld2410_0"
       uart_tx_pin: "GPIO17" 
       uart_rx_pin: "GPIO16" 
   radar_1: !include
-    file: /workspace/include/HLK-LD2410-radar-motion.yaml
+    file: ./HLK-LD2410-radar-motion.yaml
     vars:
       uart_id: "uart_0"
       radar_id: "ld2410_1"
@@ -55,26 +49,26 @@ packages:
   keypad: !include
     file: ./10-key-keypad.yaml
   door_lock_0: !include 
-    file: /workspace/include/door-lock.yaml
+    file: ./door-lock.yaml
     vars: 
       door_lock_id: "door_lock_0"
       sensor_pin: "GPIO36"
       motor_pin_1: "GPIO32"
       motor_pin_2: "GPIO27"
   door_lock_1: !include 
-    file: /workspace/include/door-lock.yaml
+    file: ./door-lock.yaml
     vars: 
       door_lock_id: "door_lock_1"
       sensor_pin: "GPIO34"
       motor_pin_1: "GPIO15"
       motor_pin_2: "GPIO25"
   door_sensor_0: !include
-    file: /workspace/include/door-sensor.yaml
+    file: ./door-sensor.yaml
     vars:
       door_sensor_id: "door_sensor_0"
       sensor_pin: "GPIO35"
   door_sensor_1: !include
-    file: /workspace/include/door-sensor.yaml
+    file: ./door-sensor.yaml
     vars:
       door_sensor_id: "door_sensor_1"
       sensor_pin: "GPIO13"
