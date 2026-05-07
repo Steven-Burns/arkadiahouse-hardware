@@ -14,10 +14,10 @@ sensor:
     filters:
       - multiply: 100
       - delta: 2.0
-      # - clamp:
-      #     min_value: 0
-      #     max_value: 210
-      #     ignore_out_of_range: true
+      - clamp:
+          min_value: 0
+          max_value: 600
+          ignore_out_of_range: true
       - calibrate_linear:
           method: exact
           datapoints:
