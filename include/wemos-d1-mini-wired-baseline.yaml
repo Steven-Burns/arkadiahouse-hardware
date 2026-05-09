@@ -5,12 +5,6 @@ substitutions:
   logger_baud_rate: "115200"
 
 packages:
-  diagnostics: !include 
-    file: /workspace/include/diagnostics.yaml
-  blinky: !include
-    file: /workspace/include/interval-blinky.yaml
-    vars:
-      builtin_led_pin: "GPIO2"
   wired_ethernet: !include
     file: /workspace/include/wired-ethernet.yaml
     vars:

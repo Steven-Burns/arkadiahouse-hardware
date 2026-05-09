@@ -1,4 +1,10 @@
-esp32:
+substitutions:
+  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
+  device_friendly_name: "Baseline (${device_hostname})"
+  device_comment: "Baseline for Lolin S2 Mini boards."
+  logger_baud_rate: "115200"
+  
+  esp32:
   board: lolin_s2_mini
   variant: ESP32S2
   cpu_frequency: 240MHZ
@@ -8,10 +14,6 @@ esp32:
 packages:
   diagnostics: !include 
     file: /workspace/include/diagnostics.yaml
-  blinky: !include
-    file: /workspace/include/interval-blinky.yaml
-    vars:
-      builtin_led_pin: "GPIO15"
   wifi: !include  
     file: /workspace/include/wifi.yaml
 
@@ -23,4 +25,4 @@ packages:
     device_friendly_name: ${device_hostname}
     device_comment: "Baseline for board."
     logger_baud_rate: "115200"
-
+    builtin_led_pin: "GPIO15"
