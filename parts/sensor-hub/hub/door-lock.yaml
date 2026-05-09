@@ -27,21 +27,23 @@ output:
 lock:
   - platform: template
     id: ${door_lock_id}
+    name: ${door_lock_id} Lock
+    internal: false
     lock_action:
-      - output.turn_off: ${door_lock_id}_motor_pin_1
-      - output.turn_on: ${door_lock_id}_motor_pin_2
+      - output.turn_off: ${door_lock_id}_motor_pin_2
+      - output.turn_on: ${door_lock_id}_motor_pin_1
       - lock.template.publish:
           id: ${door_lock_id}
           state: LOCKED
     unlock_action:
-      - output.turn_on: ${door_lock_id}_motor_pin_1
-      - output.turn_off: ${door_lock_id}_motor_pin_2
+      - output.turn_on: ${door_lock_id}_motor_pin_2
+      - output.turn_off: ${door_lock_id}_motor_pin_1
       - lock.template.publish:
           id: ${door_lock_id}
           state: UNLOCKED
     open_action:
-      - output.turn_on: ${door_lock_id}_motor_pin_1
-      - output.turn_off: ${door_lock_id}_motor_pin_2
+      - output.turn_on: ${door_lock_id}_motor_pin_2
+      - output.turn_off: ${door_lock_id}_motor_pin_1
       - lock.template.publish:
           id: ${door_lock_id}
           state: UNLOCKED
