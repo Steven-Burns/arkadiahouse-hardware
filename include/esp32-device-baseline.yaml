@@ -4,6 +4,7 @@ substitutions:
   device_friendly_name: SPECIFY_FRIENDLY_NAME_WHEN_INCLUDING_BASELINE_YAML
   device_comment: SPECIFY_DEVICE_COMMENT_WHEN_INCLUDING_BASELINE_YAML
   logger_baud_rate: 115200
+  builtin_led_pin: GPIO2
 
 esphome:
   name: ${device_hostname}
@@ -67,3 +68,26 @@ button:
     name: "Safely Restart Device"
     entity_category: diagnostic
 
+# this combination of output and interval will blink the on-board led
+# without creating a home assistant entity. No entity means that the 
+# state transitions will not be communicated with Home Assistant and 
+# therefore generate no traffic no data logging history. This blinky is 
+# just to tell me that the "loop is running."
+
+output:
+  - platform: gpio
+    pin:
+      number: ${builtin_led_pin}
+      mode: output
+      # ignore_strapping_warning: true
+    id: on_board_led_id
+
+interval:
+  - interval: 500ms
+    then:
+      # - logger.log:
+      #     format: "toggle blinky"
+      - lambda: |- 
+          static bool led_is_on = false;
+          led_is_on = !led_is_on;
+          id(on_board_led_id)->set_state(led_is_on);
