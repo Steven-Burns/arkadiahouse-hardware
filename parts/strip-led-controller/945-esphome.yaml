@@ -61,14 +61,14 @@ light:
     name: "pixel strip 0"
     rgb_order: RGB
     pin: GPIO27
-    num_leds: 1290
+    num_leds: 144
 
   - <<: *light_strip_defaults
     id: light_1_id
     name: "pixel strip 1"
     rgb_order: RGB
     pin: GPIO25
-    num_leds: 1290
+    num_leds: 96
 
 # "All Device" baseline stuff here
 

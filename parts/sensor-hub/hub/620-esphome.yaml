@@ -1,5 +1,0 @@
-<<: !include 
-  file: ./hub-v4-base.yaml
-  vars:
-    device_comment: "v4 hardware design. Used as component testing harness."
-    source_env_sensor_hostname: "910_esphome"  
