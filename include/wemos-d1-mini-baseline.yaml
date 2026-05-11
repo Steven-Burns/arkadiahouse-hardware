@@ -15,11 +15,8 @@ esp32:
       sram1_as_iram: true
 #      enable_ota_rollback: false
 
-packages:
-  diagnostics: !include 
-    file: /workspace/include/diagnostics.yaml
-   
-# "All Device" baseline stuff here
+<<: !include 
+  file: /workspace/include/diagnostics.yaml
 
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
@@ -29,4 +26,7 @@ packages:
     device_comment: ${device_comment}
     logger_baud_rate: ${logger_baud_rate}
     builtin_led_pin: GPIO2
+
+  
+
 
