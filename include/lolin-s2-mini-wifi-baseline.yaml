@@ -4,20 +4,18 @@ substitutions:
   device_comment: "Baseline for Lolin S2 Mini boards."
   logger_baud_rate: "115200"
   
-  esp32:
+esp32:
   board: lolin_s2_mini
   variant: ESP32S2
   cpu_frequency: 240MHZ
   framework:
     type: esp-idf
 
-packages:
-  diagnostics: !include 
-    file: /workspace/include/diagnostics.yaml
-  wifi: !include  
-    file: /workspace/include/wifi.yaml
+<<: !include 
+  file: /workspace/include/diagnostics.yaml
 
-# "All Device" baseline stuff here
+<<: !include  
+  file: /workspace/include/wifi.yaml
 
 <<: !include 
   file: /workspace/include/esp32-device-baseline.yaml

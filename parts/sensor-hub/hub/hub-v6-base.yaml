@@ -64,18 +64,6 @@ packages:
       door_sensor_id: "door_sensor_1"
       sensor_pin: "GPIO13"
 
-# why is this repeated here instead of just appearing in the baseline?
-# because the esphome !include machinery is borked borked borked.
-  wired_ethernet: !include
-    file: /workspace/include/wired-ethernet.yaml
-    vars:
-      ethernet_clk_pin: "GPIO18"  
-      ethernet_mosi_pin: "GPIO23" 
-      ethernet_miso_pin: "GPIO19" 
-      ethernet_cs_pin: "GPIO05" 
-      ethernet_interrupt_pin: "GPIO26" 
-      ethernet_reset_pin: "GPIO4"
-
 <<: !include 
   file: /workspace/include/wemos-d1-mini-wired-baseline.yaml
   vars:

@@ -4,11 +4,8 @@ substitutions:
   device_comment: "Baseline for Wemos D1 Mini boards, with WiFi."
   logger_baud_rate: "115200"
 
-packages:
-  wifi: !include  
-    file: /workspace/include/wifi.yaml
-
-# "All Device" baseline stuff here
+<<: !include  
+  file: /workspace/include/wifi.yaml
 
 <<: !include 
   file: /workspace/include/wemos-d1-mini-baseline.yaml

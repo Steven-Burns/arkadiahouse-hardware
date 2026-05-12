@@ -4,18 +4,15 @@ substitutions:
   device_comment: "Baseline for Wemos D1 Mini boards, with Wired Ethernet."
   logger_baud_rate: "115200"
 
-packages:
-  wired_ethernet: !include
-    file: /workspace/include/wired-ethernet.yaml
-    vars:
-      ethernet_clk_pin: "GPIO18"  
-      ethernet_mosi_pin: "GPIO23" 
-      ethernet_miso_pin: "GPIO19" 
-      ethernet_cs_pin: "GPIO05" 
-      ethernet_interrupt_pin: "GPIO26" 
-      ethernet_reset_pin: "GPIO4"
-
-# "All Device" baseline stuff here
+<<: !include
+  file: /workspace/include/wired-ethernet.yaml
+  vars:
+    ethernet_clk_pin: "GPIO18"  
+    ethernet_mosi_pin: "GPIO23" 
+    ethernet_miso_pin: "GPIO19" 
+    ethernet_cs_pin: "GPIO05" 
+    ethernet_interrupt_pin: "GPIO26" 
+    ethernet_reset_pin: "GPIO4"
 
 <<: !include 
   file: /workspace/include/wemos-d1-mini-baseline.yaml
