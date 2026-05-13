@@ -1,0 +1,926 @@
+output:
+  - platform: dmx512
+    channel: 1
+    universe: dmx_u1
+    id: dmx_u1_ch1  
+  - platform: dmx512
+    channel: 2
+    universe: dmx_u1
+    id: dmx_u1_ch2
+  - platform: dmx512
+    channel: 3
+    universe: dmx_u1
+    id: dmx_u1_ch3  
+  - platform: dmx512
+    channel: 4
+    universe: dmx_u1
+    id: dmx_u1_ch4
+  - platform: dmx512
+    channel: 5
+    universe: dmx_u1
+    id: dmx_u1_ch5  
+  - platform: dmx512
+    channel: 6
+    universe: dmx_u1
+    id: dmx_u1_ch6
+  - platform: dmx512
+    channel: 7
+    universe: dmx_u1
+    id: dmx_u1_ch7  
+  - platform: dmx512
+    channel: 8
+    universe: dmx_u1
+    id: dmx_u1_ch8
+  - platform: dmx512
+    channel: 9
+    universe: dmx_u1
+    id: dmx_u1_ch9  
+  - platform: dmx512
+    channel: 10
+    universe: dmx_u1
+    id: dmx_u1_ch10
+  - platform: dmx512
+    channel: 11
+    universe: dmx_u1
+    id: dmx_u1_ch11  
+  - platform: dmx512
+    channel: 12
+    universe: dmx_u1
+    id: dmx_u1_ch12
+  - platform: dmx512
+    channel: 13 
+    universe: dmx_u1
+    id: dmx_u1_ch13  
+  - platform: dmx512
+    channel: 14
+    universe: dmx_u1
+    id: dmx_u1_ch14
+  - platform: dmx512
+    channel: 15
+    universe: dmx_u1
+    id: dmx_u1_ch15  
+  - platform: dmx512
+    channel: 16
+    universe: dmx_u1
+    id: dmx_u1_ch16
+  - platform: dmx512
+    channel: 17 
+    universe: dmx_u1
+    id: dmx_u1_ch17  
+  - platform: dmx512
+    channel: 18
+    universe: dmx_u1
+    id: dmx_u1_ch18
+  - platform: dmx512
+    channel: 19
+    universe: dmx_u1
+    id: dmx_u1_ch19  
+  - platform: dmx512
+    channel: 20
+    universe: dmx_u1
+    id: dmx_u1_ch20
+  - platform: dmx512
+    channel: 21
+    universe: dmx_u1
+    id: dmx_u1_ch21
+  - platform: dmx512
+    channel: 22
+    universe: dmx_u1
+    id: dmx_u1_ch22
+  - platform: dmx512
+    channel: 23
+    universe: dmx_u1
+    id: dmx_u1_ch23
+  - platform: dmx512
+    channel: 24
+    universe: dmx_u1
+    id: dmx_u1_ch24
+  - platform: dmx512
+    channel: 25
+    universe: dmx_u1
+    id: dmx_u1_ch25
+  - platform: dmx512
+    channel: 26
+    universe: dmx_u1
+    id: dmx_u1_ch26
+  - platform: dmx512
+    channel: 27
+    universe: dmx_u1
+    id: dmx_u1_ch27
+  - platform: dmx512
+    channel: 28
+    universe: dmx_u1
+    id: dmx_u1_ch28
+  - platform: dmx512
+    channel: 29
+    universe: dmx_u1
+    id: dmx_u1_ch29
+  - platform: dmx512
+    channel: 30
+    universe: dmx_u1
+    id: dmx_u1_ch30
+  - platform: dmx512
+    channel: 31
+    universe: dmx_u1
+    id: dmx_u1_ch31
+  - platform: dmx512
+    channel: 32
+    universe: dmx_u1
+    id: dmx_u1_ch32
+  - platform: dmx512
+    channel: 33
+    universe: dmx_u1
+    id: dmx_u1_ch33
+  - platform: dmx512
+    channel: 34 
+    universe: dmx_u1
+    id: dmx_u1_ch34
+  - platform: dmx512
+    channel: 35
+    universe: dmx_u1
+    id: dmx_u1_ch35
+  - platform: dmx512
+    channel: 36
+    universe: dmx_u1
+    id: dmx_u1_ch36
+  - platform: dmx512
+    channel: 37
+    universe: dmx_u1
+    id: dmx_u1_ch37
+  - platform: dmx512
+    channel: 38
+    universe: dmx_u1
+    id: dmx_u1_ch38
+  - platform: dmx512
+    channel: 39
+    universe: dmx_u1
+    id: dmx_u1_ch39
+  - platform: dmx512
+    channel: 40
+    universe: dmx_u1
+    id: dmx_u1_ch40
+  - platform: dmx512
+    channel: 41
+    universe: dmx_u1
+    id: dmx_u1_ch41
+  - platform: dmx512
+    channel: 42 
+    universe: dmx_u1
+    id: dmx_u1_ch42
+  - platform: dmx512
+    channel: 43
+    universe: dmx_u1
+    id: dmx_u1_ch43
+  - platform: dmx512
+    channel: 44 
+    universe: dmx_u1
+    id: dmx_u1_ch44
+  - platform: dmx512
+    channel: 45
+    universe: dmx_u1
+    id: dmx_u1_ch45  
+  - platform: dmx512
+    channel: 46
+    universe: dmx_u1
+    id: dmx_u1_ch46
+  - platform: dmx512
+    channel: 47
+    universe: dmx_u1
+    id: dmx_u1_ch47  
+  - platform: dmx512
+    channel: 48
+    universe: dmx_u1
+    id: dmx_u1_ch48
+  - platform: dmx512
+    channel: 49
+    universe: dmx_u1
+    id: dmx_u1_ch49  
+  - platform: dmx512
+    channel: 50
+    universe: dmx_u1
+    id: dmx_u1_ch50
+  - platform: dmx512
+    channel: 51
+    universe: dmx_u1
+    id: dmx_u1_ch51  
+  - platform: dmx512
+    channel: 52
+    universe: dmx_u1
+    id: dmx_u1_ch52
+  - platform: dmx512
+    channel: 53
+    universe: dmx_u1
+    id: dmx_u1_ch53  
+  - platform: dmx512
+    channel: 54
+    universe: dmx_u1
+    id: dmx_u1_ch54
+  - platform: dmx512
+    channel: 55
+    universe: dmx_u1
+    id: dmx_u1_ch55  
+  - platform: dmx512
+    channel: 56
+    universe: dmx_u1
+    id: dmx_u1_ch56
+  - platform: dmx512
+    channel: 57
+    universe: dmx_u1
+    id: dmx_u1_ch57
+  - platform: dmx512
+    channel: 58 
+    universe: dmx_u1
+    id: dmx_u1_ch58  
+  - platform: dmx512
+    channel: 59
+    universe: dmx_u1
+    id: dmx_u1_ch59
+  - platform: dmx512
+    channel: 60
+    universe: dmx_u1
+    id: dmx_u1_ch60  
+  - platform: dmx512
+    channel: 61
+    universe: dmx_u1
+    id: dmx_u1_ch61
+  - platform: dmx512
+    channel: 62
+    universe: dmx_u1
+    id: dmx_u1_ch62
+  - platform: dmx512
+    channel: 63
+    universe: dmx_u1
+    id: dmx_u1_ch63
+  - platform: dmx512
+    channel: 64
+    universe: dmx_u1
+    id: dmx_u1_ch64
+  - platform: dmx512
+    channel: 65
+    universe: dmx_u1
+    id: dmx_u1_ch65
+  - platform: dmx512
+    channel: 66
+    universe: dmx_u1
+    id: dmx_u1_ch66
+  - platform: dmx512
+    channel: 67
+    universe: dmx_u1
+    id: dmx_u1_ch67
+  - platform: dmx512
+    channel: 68
+    universe: dmx_u1
+    id: dmx_u1_ch68
+  - platform: dmx512
+    channel: 69
+    universe: dmx_u1
+    id: dmx_u1_ch69
+  - platform: dmx512
+    channel: 70
+    universe: dmx_u1
+    id: dmx_u1_ch70
+  - platform: dmx512
+    channel: 71
+    universe: dmx_u1
+    id: dmx_u1_ch71
+  - platform: dmx512
+    channel: 72
+    universe: dmx_u1
+    id: dmx_u1_ch72
+  - platform: dmx512
+    channel: 73
+    universe: dmx_u1
+    id: dmx_u1_ch73
+  - platform: dmx512
+    channel: 74 
+    universe: dmx_u1
+    id: dmx_u1_ch74
+  - platform: dmx512
+    channel: 75
+    universe: dmx_u1
+    id: dmx_u1_ch75
+  - platform: dmx512
+    channel: 76
+    universe: dmx_u1
+    id: dmx_u1_ch76
+  - platform: dmx512
+    channel: 77
+    universe: dmx_u1
+    id: dmx_u1_ch77
+  - platform: dmx512
+    channel: 78 
+    universe: dmx_u1
+    id: dmx_u1_ch78
+  - platform: dmx512
+    channel: 79
+    universe: dmx_u1
+    id: dmx_u1_ch79
+  - platform: dmx512
+    channel: 80
+    universe: dmx_u1
+    id: dmx_u1_ch80
+  - platform: dmx512
+    channel: 81
+    universe: dmx_u1
+    id: dmx_u1_ch81
+  - platform: dmx512
+    channel: 82
+    universe: dmx_u1
+    id: dmx_u1_ch82
+  - platform: dmx512
+    channel: 83
+    universe: dmx_u1
+    id: dmx_u1_ch83
+  - platform: dmx512
+    channel: 84
+    universe: dmx_u1
+    id: dmx_u1_ch84
+  - platform: dmx512
+    channel: 85
+    universe: dmx_u1
+    id: dmx_u1_ch85
+  - platform: dmx512
+    channel: 86
+    universe: dmx_u1
+    id: dmx_u1_ch86
+  - platform: dmx512
+    channel: 87
+    universe: dmx_u1
+    id: dmx_u1_ch87
+  - platform: dmx512
+    channel: 88
+    universe: dmx_u1
+    id: dmx_u1_ch88
+  - platform: dmx512
+    channel: 89
+    universe: dmx_u1
+    id: dmx_u1_ch89
+  - platform: dmx512
+    channel: 90
+    universe: dmx_u1
+    id: dmx_u1_ch90
+  - platform: dmx512
+    channel: 91
+    universe: dmx_u1
+    id: dmx_u1_ch91
+  - platform: dmx512
+    channel: 92
+    universe: dmx_u1
+    id: dmx_u1_ch92
+  - platform: dmx512
+    channel: 93
+    universe: dmx_u1
+    id: dmx_u1_ch93
+  - platform: dmx512
+    channel: 94
+    universe: dmx_u1
+    id: dmx_u1_ch94
+  - platform: dmx512
+    channel: 95
+    universe: dmx_u1
+    id: dmx_u1_ch95
+  - platform: dmx512
+    channel: 96
+    universe: dmx_u1
+    id: dmx_u1_ch96
+  - platform: dmx512
+    channel: 97
+    universe: dmx_u1
+    id: dmx_u1_ch97
+  - platform: dmx512
+    channel: 98
+    universe: dmx_u1
+    id: dmx_u1_ch98
+  - platform: dmx512
+    channel: 99
+    universe: dmx_u1
+    id: dmx_u1_ch99
+  - platform: dmx512
+    channel: 100
+    universe: dmx_u1
+    id: dmx_u1_ch100
+  - platform: dmx512
+    channel: 101
+    universe: dmx_u1
+    id: dmx_u1_ch101
+  - platform: dmx512
+    channel: 102
+    universe: dmx_u1
+    id: dmx_u1_ch102
+  - platform: dmx512
+    channel: 103
+    universe: dmx_u1
+    id: dmx_u1_ch103
+  - platform: dmx512
+    channel: 104
+    universe: dmx_u1
+    id: dmx_u1_ch104
+  - platform: dmx512
+    channel: 105
+    universe: dmx_u1
+    id: dmx_u1_ch105
+  - platform: dmx512
+    channel: 106
+    universe: dmx_u1
+    id: dmx_u1_ch106
+  - platform: dmx512
+    channel: 107
+    universe: dmx_u1
+    id: dmx_u1_ch107
+  - platform: dmx512
+    channel: 108
+    universe: dmx_u1
+    id: dmx_u1_ch108
+  - platform: dmx512
+    channel: 109
+    universe: dmx_u1
+    id: dmx_u1_ch109
+  - platform: dmx512
+    channel: 110
+    universe: dmx_u1
+    id: dmx_u1_ch110
+  - platform: dmx512
+    channel: 111
+    universe: dmx_u1
+    id: dmx_u1_ch111
+  - platform: dmx512
+    channel: 112
+    universe: dmx_u1
+    id: dmx_u1_ch112
+  - platform: dmx512
+    channel: 113
+    universe: dmx_u1
+    id: dmx_u1_ch113
+  - platform: dmx512
+    channel: 114
+    universe: dmx_u1
+    id: dmx_u1_ch114
+  - platform: dmx512
+    channel: 115
+    universe: dmx_u1
+    id: dmx_u1_ch115
+  - platform: dmx512
+    channel: 116
+    universe: dmx_u1
+    id: dmx_u1_ch116
+  - platform: dmx512
+    channel: 117
+    universe: dmx_u1
+    id: dmx_u1_ch117
+  - platform: dmx512
+    channel: 118
+    universe: dmx_u1
+    id: dmx_u1_ch118
+  - platform: dmx512
+    channel: 119
+    universe: dmx_u1
+    id: dmx_u1_ch119
+  - platform: dmx512
+    channel: 120
+    universe: dmx_u1
+    id: dmx_u1_ch120
+  - platform: dmx512
+    channel: 121
+    universe: dmx_u1
+    id: dmx_u1_ch121
+  - platform: dmx512
+    channel: 122
+    universe: dmx_u1
+    id: dmx_u1_ch122
+  - platform: dmx512
+    channel: 123
+    universe: dmx_u1
+    id: dmx_u1_ch123
+  - platform: dmx512
+    channel: 124
+    universe: dmx_u1
+    id: dmx_u1_ch124
+  - platform: dmx512
+    channel: 125
+    universe: dmx_u1
+    id: dmx_u1_ch125
+  - platform: dmx512
+    channel: 126
+    universe: dmx_u1
+    id: dmx_u1_ch126
+  - platform: dmx512
+    channel: 127
+    universe: dmx_u1
+    id: dmx_u1_ch127
+  - platform: dmx512
+    channel: 128
+    universe: dmx_u1
+    id: dmx_u1_ch128
+  - platform: dmx512
+    channel: 129
+    universe: dmx_u1
+    id: dmx_u1_ch129
+  - platform: dmx512
+    channel: 130
+    universe: dmx_u1
+    id: dmx_u1_ch130
+  - platform: dmx512
+    channel: 131
+    universe: dmx_u1
+    id: dmx_u1_ch131
+  - platform: dmx512
+    channel: 132
+    universe: dmx_u1
+    id: dmx_u1_ch132
+  - platform: dmx512
+    channel: 133
+    universe: dmx_u1
+    id: dmx_u1_ch133
+  - platform: dmx512
+    channel: 134 
+    universe: dmx_u1
+    id: dmx_u1_ch134
+  - platform: dmx512
+    channel: 135
+    universe: dmx_u1
+    id: dmx_u1_ch135
+  - platform: dmx512
+    channel: 136
+    universe: dmx_u1
+    id: dmx_u1_ch136
+  - platform: dmx512
+    channel: 137
+    universe: dmx_u1
+    id: dmx_u1_ch137
+  - platform: dmx512
+    channel: 138
+    universe: dmx_u1
+    id: dmx_u1_ch138
+  - platform: dmx512
+    channel: 139
+    universe: dmx_u1
+    id: dmx_u1_ch139
+  - platform: dmx512
+    channel: 140
+    universe: dmx_u1
+    id: dmx_u1_ch140
+  - platform: dmx512
+    channel: 141 
+    universe: dmx_u1
+    id: dmx_u1_ch141
+  - platform: dmx512
+    channel: 142
+    universe: dmx_u1
+    id: dmx_u1_ch142
+  - platform: dmx512
+    channel: 143
+    universe: dmx_u1
+    id: dmx_u1_ch143
+  - platform: dmx512
+    channel: 144
+    universe: dmx_u1
+    id: dmx_u1_ch144
+  - platform: dmx512
+    channel: 145
+    universe: dmx_u1
+    id: dmx_u1_ch145
+  - platform: dmx512
+    channel: 146
+    universe: dmx_u1
+    id: dmx_u1_ch146
+  - platform: dmx512
+    channel: 147
+    universe: dmx_u1
+    id: dmx_u1_ch147
+  - platform: dmx512
+    channel: 148
+    universe: dmx_u1
+    id: dmx_u1_ch148
+  - platform: dmx512
+    channel: 149
+    universe: dmx_u1
+    id: dmx_u1_ch149
+  - platform: dmx512
+    channel: 150
+    universe: dmx_u1
+    id: dmx_u1_ch150
+  - platform: dmx512
+    channel: 151
+    universe: dmx_u1
+    id: dmx_u1_ch151
+  - platform: dmx512
+    channel: 152
+    universe: dmx_u1
+    id: dmx_u1_ch152
+  - platform: dmx512
+    channel: 153
+    universe: dmx_u1
+    id: dmx_u1_ch153
+  - platform: dmx512
+    channel: 154
+    universe: dmx_u1
+    id: dmx_u1_ch154
+  - platform: dmx512
+    channel: 155
+    universe: dmx_u1
+    id: dmx_u1_ch155
+
+
+
+light:
+  - &light_defaults
+    platform: rgbww
+    name: "Light 00 (${device_hostname})"
+    id: light_0
+    default_transition_length: 0s
+    gamma_correct: 0
+    disabled_by_default: false
+    restore_mode: ALWAYS_OFF
+    flash_transition_length: 0s
+    constant_brightness: false
+    color_interlock: false
+    cold_white_color_temperature: 5700 K
+    warm_white_color_temperature: 3700 K    
+    red: dmx_u1_ch1
+    green: dmx_u1_ch2
+    blue: dmx_u1_ch3
+    cold_white: dmx_u1_ch4
+    warm_white: dmx_u1_ch5
+    effects:
+      - strobe:
+          colors:
+            - state: true
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+            - state: false
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+          name: Strobe
+      - pulse:
+          transition_length: 1s
+          update_interval: 1s
+          min_brightness: 0.0
+          max_brightness: 1.0
+          name: Pulse
+      - random:
+          transition_length: 7500ms
+          update_interval: 10s
+          name: Random
+      - flicker:
+          alpha: 0.95
+          intensity: 0.015
+          name: Flicker
+
+  - <<: *light_defaults
+    name: "Light 01 (${device_hostname})"
+    id: light_1
+    red: dmx_u1_ch6
+    green: dmx_u1_ch7
+    blue: dmx_u1_ch8
+    cold_white: dmx_u1_ch9
+    warm_white: dmx_u1_ch10
+  - <<: *light_defaults
+    name: "Light 02 (${device_hostname})"
+    id: light_2
+    red: dmx_u1_ch11
+    green: dmx_u1_ch12
+    blue: dmx_u1_ch13
+    cold_white: dmx_u1_ch14
+    warm_white: dmx_u1_ch15
+  - <<: *light_defaults
+    name: "Light 03 (${device_hostname})"
+    id: light_3
+    red: dmx_u1_ch16
+    green: dmx_u1_ch17
+    blue: dmx_u1_ch18
+    cold_white: dmx_u1_ch19
+    warm_white: dmx_u1_ch20
+  - <<: *light_defaults
+    name: "Light 04 (${device_hostname})"
+    id: light_4
+    red: dmx_u1_ch21
+    green: dmx_u1_ch22
+    blue: dmx_u1_ch23
+    cold_white: dmx_u1_ch24
+    warm_white: dmx_u1_ch25
+  - <<: *light_defaults
+    name: "Light 05 (${device_hostname})"
+    id: light_5
+    red: dmx_u1_ch26
+    green: dmx_u1_ch27
+    blue: dmx_u1_ch28
+    cold_white: dmx_u1_ch29
+    warm_white: dmx_u1_ch30
+  - <<: *light_defaults
+    name: "Light 06 (${device_hostname})"
+    id: light_6
+    red: dmx_u1_ch31
+    green: dmx_u1_ch32
+    blue: dmx_u1_ch33
+    cold_white: dmx_u1_ch34
+    warm_white: dmx_u1_ch35
+  - <<: *light_defaults
+    name: "Light 07 (${device_hostname})"
+    id: light_7
+    red: dmx_u1_ch36
+    green: dmx_u1_ch37
+    blue: dmx_u1_ch38
+    cold_white: dmx_u1_ch39
+    warm_white: dmx_u1_ch40
+  - <<: *light_defaults
+    name: "Light 08 (${device_hostname})"
+    id: light_8
+    red: dmx_u1_ch41
+    green: dmx_u1_ch42
+    blue: dmx_u1_ch43
+    cold_white: dmx_u1_ch44
+    warm_white: dmx_u1_ch45
+  - <<: *light_defaults
+    name: "Light 09 (${device_hostname})"
+    id: light_9
+    red: dmx_u1_ch46
+    green: dmx_u1_ch47
+    blue: dmx_u1_ch48
+    cold_white: dmx_u1_ch49
+    warm_white: dmx_u1_ch50
+  - <<: *light_defaults
+    name: "Light 10 (${device_hostname})"
+    id: light_10
+    red: dmx_u1_ch51
+    green: dmx_u1_ch52
+    blue: dmx_u1_ch53
+    cold_white: dmx_u1_ch54
+    warm_white: dmx_u1_ch55
+  - <<: *light_defaults
+    name: "Light 11 (${device_hostname})"
+    id: light_11
+    red: dmx_u1_ch56
+    green: dmx_u1_ch57
+    blue: dmx_u1_ch58
+    cold_white: dmx_u1_ch59
+    warm_white: dmx_u1_ch60
+  - <<: *light_defaults
+    name: "Light 12 (${device_hostname})"
+    id: light_12
+    red: dmx_u1_ch61
+    green: dmx_u1_ch62
+    blue: dmx_u1_ch63
+    cold_white: dmx_u1_ch64
+    warm_white: dmx_u1_ch65
+  - <<: *light_defaults
+    name: "Light 13 (${device_hostname})"
+    id: light_13
+    red: dmx_u1_ch66
+    green: dmx_u1_ch67
+    blue: dmx_u1_ch68
+    cold_white: dmx_u1_ch69
+    warm_white: dmx_u1_ch70
+  - <<: *light_defaults
+    name: "Light 14 (${device_hostname})"
+    id: light_14
+    red: dmx_u1_ch71
+    green: dmx_u1_ch72
+    blue: dmx_u1_ch73
+    cold_white: dmx_u1_ch74
+    warm_white: dmx_u1_ch75
+  - <<: *light_defaults
+    name: "Light 15 (${device_hostname})"
+    id: light_15
+    red: dmx_u1_ch76
+    green: dmx_u1_ch77
+    blue: dmx_u1_ch78
+    cold_white: dmx_u1_ch79
+    warm_white: dmx_u1_ch80
+  - <<: *light_defaults
+    name: "Light 16 (${device_hostname})"
+    id: light_16
+    red: dmx_u1_ch81
+    green: dmx_u1_ch82
+    blue: dmx_u1_ch83
+    cold_white: dmx_u1_ch84
+    warm_white: dmx_u1_ch85
+  - <<: *light_defaults
+    name: "Light 17 (${device_hostname})"
+    id: light_17
+    red: dmx_u1_ch86
+    green: dmx_u1_ch87
+    blue: dmx_u1_ch88
+    cold_white: dmx_u1_ch89
+    warm_white: dmx_u1_ch90
+  - <<: *light_defaults
+    name: "Light 19 (${device_hostname})"
+    id: light_19
+    red: dmx_u1_ch91
+    green: dmx_u1_ch92
+    blue: dmx_u1_ch93
+    cold_white: dmx_u1_ch94
+    warm_white: dmx_u1_ch95
+  - <<: *light_defaults
+    name: "Light 20 (${device_hostname})"
+    id: light_20
+    red: dmx_u1_ch96
+    green: dmx_u1_ch97
+    blue: dmx_u1_ch98
+    cold_white: dmx_u1_ch99
+    warm_white: dmx_u1_ch100
+  - <<: *light_defaults
+    name: "Light 21 (${device_hostname})"
+    id: light_21
+    red: dmx_u1_ch101
+    green: dmx_u1_ch102
+    blue: dmx_u1_ch103
+    cold_white: dmx_u1_ch104
+    warm_white: dmx_u1_ch105
+  - <<: *light_defaults
+    name: "Light 22 (${device_hostname})"
+    id: light_22
+    red: dmx_u1_ch106
+    green: dmx_u1_ch107
+    blue: dmx_u1_ch108
+    cold_white: dmx_u1_ch109
+    warm_white: dmx_u1_ch110
+  - <<: *light_defaults
+    name: "Light 23 (${device_hostname})"
+    id: light_23
+    red: dmx_u1_ch111
+    green: dmx_u1_ch112
+    blue: dmx_u1_ch113
+    cold_white: dmx_u1_ch114
+    warm_white: dmx_u1_ch115
+  - <<: *light_defaults
+    name: "Light 24 (${device_hostname})"
+    id: light_24
+    red: dmx_u1_ch116
+    green: dmx_u1_ch117
+    blue: dmx_u1_ch118
+    cold_white: dmx_u1_ch119
+    warm_white: dmx_u1_ch120
+  - <<: *light_defaults
+    name: "Light 25 (${device_hostname})"
+    id: light_25
+    red: dmx_u1_ch121
+    green: dmx_u1_ch122
+    blue: dmx_u1_ch123
+    cold_white: dmx_u1_ch124
+    warm_white: dmx_u1_ch125
+  - <<: *light_defaults
+    name: "Light 26 (${device_hostname})"
+    id: light_26
+    red: dmx_u1_ch126
+    green: dmx_u1_ch127
+    blue: dmx_u1_ch128
+    cold_white: dmx_u1_ch129
+    warm_white: dmx_u1_ch130
+  - <<: *light_defaults
+    name: "Light 27 (${device_hostname})"
+    id: light_27
+    red: dmx_u1_ch131
+    green: dmx_u1_ch132
+    blue: dmx_u1_ch133
+    cold_white: dmx_u1_ch134
+    warm_white: dmx_u1_ch135
+  - <<: *light_defaults
+    name: "Light 28 (${device_hostname})"
+    id: light_28
+    red: dmx_u1_ch136
+    green: dmx_u1_ch137
+    blue: dmx_u1_ch138
+    cold_white: dmx_u1_ch139
+    warm_white: dmx_u1_ch140
+  - <<: *light_defaults
+    name: "Light 29 (${device_hostname})"
+    id: light_29
+    red: dmx_u1_ch141
+    green: dmx_u1_ch142
+    blue: dmx_u1_ch143
+    cold_white: dmx_u1_ch144
+    warm_white: dmx_u1_ch145
+  - <<: *light_defaults
+    name: "Light 30 (${device_hostname})"
+    id: light_30
+    red: dmx_u1_ch146
+    green: dmx_u1_ch147
+    blue: dmx_u1_ch148
+    cold_white: dmx_u1_ch149
+    warm_white: dmx_u1_ch150
+  - <<: *light_defaults
+    name: "Light 31 (${device_hostname})"
+    id: light_31
+    red: dmx_u1_ch151
+    green: dmx_u1_ch152
+    blue: dmx_u1_ch153
+    cold_white: dmx_u1_ch154
+    warm_white: dmx_u1_ch155
+
+

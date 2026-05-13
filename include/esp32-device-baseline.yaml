@@ -76,18 +76,17 @@ button:
 
 output:
   - platform: gpio
+    id: on_board_led_id
     pin:
       number: ${builtin_led_pin}
       mode: output
       # ignore_strapping_warning: true
-    id: on_board_led_id
 
 interval:
   - interval: 500ms
     then:
-      # - logger.log:
-      #     format: "toggle blinky"
-      - lambda: |- 
-          static bool led_is_on = false;
-          led_is_on = !led_is_on;
-          id(on_board_led_id)->set_state(led_is_on);
+      lambda: |- 
+        static bool led_is_on = false;
+        led_is_on = !led_is_on;
+        id(on_board_led_id)->set_state(led_is_on);
+        
