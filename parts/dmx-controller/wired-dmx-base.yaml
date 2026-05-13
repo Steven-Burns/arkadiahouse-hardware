@@ -2,9 +2,7 @@
 # two DMX universes on the same device, with 2 RGBCW fixtures (10 channels) on each universe.
 
 substitutions:
-  
   device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
-
 
 external_components:
   - source: github://andyboeh/esphome-dmx512
@@ -42,7 +40,6 @@ uart:
     data_bits: 8
     parity: NONE
 
-
 dmx512:
   # - id: dmx_u0   
   #   uart_id: uart_bus0
@@ -75,6 +72,17 @@ dmx512:
     uart_num: 2
     force_full_frames: false
     periodic_update: true
+
+<<: !include 
+  file: /workspace/include/wemos-d1-mini-wired-baseline.yaml
+  vars:
+    # we explicitly set the logger baud rate to 115200 so that UART0 is allocated, and our uart components start with 
+    # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
+    # logger baud rate to 0.  Then uart initialization would start with UART0.
+    logger_baud_rate: "115200"
+    device_friendly_name: "Arkadia House Wired DMX controller (${device_hostname})"
+    device_comment: ${device_comment}
+
 
 output:
   # universe 0 commented out for future reference...
@@ -551,7 +559,6 @@ output:
     universe: dmx_u1
     id: dmx_u1_ch109
 
-
 # Same for universe 2.
 
   - platform: dmx512
@@ -990,19 +997,6 @@ output:
     channel: 109
     universe: dmx_u2
     id: dmx_u2_ch109
-
-# "All Device" baseline stuff here
-
-<<: !include 
-  file: /workspace/include/wemos-d1-mini-wired-baseline.yaml
-  vars:
-    # we explicitly set the logger baud rate to 115200 so that UART0 is allocated, and our uart components start with 
-    # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
-    # logger baud rate to 0.  Then uart initialization would start with UART0.
-    logger_baud_rate: "115200"
-    device_friendly_name: "Arkadia House Wired DMX controller (${device_hostname})"
-    device_comment: ${device_comment}
-
-
+    
 
 
