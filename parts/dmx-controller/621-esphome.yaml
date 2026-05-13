@@ -9,4 +9,4 @@
 
 packages:
   light1: !include
-    file: ./rgbww-light.yaml
+    file: ./rgbww-lights-u1.yaml
