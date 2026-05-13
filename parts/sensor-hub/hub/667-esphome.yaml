@@ -2,4 +2,4 @@
   file: ./hub-v6-base.yaml
   vars:
     device_comment: "Arkadia Sensor Hub Version 6.x hardware with board 667."
-    source_env_sensor_hostname: "910_esphome"  
+    source_env_sensor_entity_id_prefix: "env_sensor_625_esphome" 
