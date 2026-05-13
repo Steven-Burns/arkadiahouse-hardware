@@ -9,21 +9,23 @@ This repo hosts both ESPHome firmware configuration and KiCad circuit diagram "s
 1. Host computer has cloned the repo on the host's local disk somewhere.
 1. VSCode is installed on the host computer.
 
-# bootstrapping
+# bootstrap prep
 
-Create a docker named volume named "arkadiahouse-docker-volume"
+Complete these steps once, before the steps in the section 'startup.'
+
+Create a docker named volume named "arkadiahouse-docker-volume".
+
 ```DOS
 docker volume create arkadiahouse-docker-volume
 ```
+
 Clone the repo into that volume at a folder named arkdiahouse-hardware. That folder will be mounted as /workspace when the container is run.
 
 ```DOS
 docker run --interactive --user root --volume arkadiahouse-docker-volume:/clone-destination --rm cleanstart/git:latest clone https://github.com/Steven-Burns/arkadiahouse-hardware.git /clone-destination/arkadiahouse-hardware --verbose
 ```
 
-(The above steps are assumed to have been completed by the devcontainer.json file checked into this repo.)
-
-Copy/create the secrets.yaml file to /include/secrets.yaml. There is a template example /include/secrets.example.yaml in case you need to create a new one from scratch.  The actual secrets.yaml is not version-controlled and is git-ignored.
+The devcontainer.json file checked into this repo assumes that the above have been completed before VS Code attempts to open the project in a container.
 
 # startup
 
@@ -37,9 +39,17 @@ Refresh the host computer's repo
 git pull origin main 
 ```
 
-Use VSCode "Reopen in container" to attach to a container that will have a mount to the named volume created in the 'bootstrapping' step.
+Use VSCode "Reopen in container" to attach to a container that will have a mount to the named volume created in the 'bootstrapping prep' step.  If opening in container fails, check to make sure you cloned the repo in the named volume exactly as described in 'the bootstrapping prep' step.
 
 The devcontainer will offer a powershell (pwsh) terminal window option. That terminal configuration provides a command line in which ESPHome code can be built, deployed, etc.
+
+# bootstrap coda
+
+Complete this step once, after starting up the VS Code session at least once.
+
+Copy/create the secrets.yaml file to /include/secrets.yaml (in the container volume's cloned repo). There is a template example /include/secrets.example.yaml in case you need to create a new one from scratch. The actual secrets.yaml is not version-controlled and is git-ignored.
+
+If you have a secrets.yaml file on a cloned repo outside the container, note that the devcontainer.json configures a volume mount to the host's c:\temp folder.  The mount is /host/temp
 
 # building
 
@@ -52,7 +62,19 @@ esphome-compile <your-device-configuration.yaml>
 ```DOS
 esphome-run <your-device-configuration.yaml>
 ```
+
+```DOS
+esphome-upload <your-device-configuration.yaml>
+```
+
 The wrapper functions normalize device hostnames and copy build outputs to the part's ./fab folder.
+
+There are batch commands that are also helpful:
+
+```DOS
+esphome-compile-all 
+esphome-upload-all
+```
 
 # flashing
 
