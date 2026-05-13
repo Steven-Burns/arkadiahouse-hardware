@@ -20,6 +20,6 @@ packages:
   file: /workspace/include/lolin-s2-mini-wifi-baseline.yaml
   vars:
     logger_baud_rate: 115200
-    device_friendly_name: "Arkadia House Env Sensor (${device_hostname})"
+    device_friendly_name: "Env Sensor (${device_hostname})"
     device_comment: "Arkadia House Environmental Sensor."
 

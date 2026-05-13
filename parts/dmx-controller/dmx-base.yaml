@@ -1,9 +1,6 @@
 # base configuration for all v1.x Arkadia wired DMX controller hardware.
 # two DMX universes on the same device, with 2 RGBCW fixtures (10 channels) on each universe.
 
-substitutions:
-  device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
-
 external_components:
   - source: github://andyboeh/esphome-dmx512
 
@@ -80,8 +77,8 @@ dmx512:
     # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
     # logger baud rate to 0.  Then uart initialization would start with UART0.
     logger_baud_rate: "115200"
-    device_friendly_name: "Arkadia House Wired DMX controller (${device_hostname})"
-    device_comment: ${device_comment}
+    device_friendly_name: "DMX controller (${device_hostname})"
+    device_comment: "Arkadia House Wired DMX-512 Controller." 
 
 
 
