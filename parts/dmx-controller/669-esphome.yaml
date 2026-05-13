@@ -1,5 +1,5 @@
 <<: !include 
-  file: ./wired-dmx-base.yaml
+  file: ./dmx-base.yaml
   vars:
     device_comment: "Arkadia House DMX controller on board 669. Controls lights DLxxx through DLyyy."
 
