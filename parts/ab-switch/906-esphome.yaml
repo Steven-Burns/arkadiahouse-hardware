@@ -7,10 +7,6 @@ esp32:
 packages:
   diagnostics: !include 
     file: /workspace/include/diagnostics.yaml
-  blinky: !include
-    file: /workspace/include/interval-blinky.yaml
-    vars:
-      builtin_led_pin: "GPIO2"
   wifi: !include  
     file: /workspace/include/wifi.yaml
 
