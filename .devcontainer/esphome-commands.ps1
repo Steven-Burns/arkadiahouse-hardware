@@ -49,13 +49,13 @@ function do-esphome-command
 			write-host "Successfully processed $file"
 			if ($copyBinaries)
 			{
-				write-host "Looking for compiled binaries for $hostname to copy to fab directory..."
-				$binPath = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\"
-				foreach ($binfile in get-childitem $binPath -filter firmware.*.bin)
+				write-host "Looking for compiled binaries for $hostname to copy to fab folder..."
+				$binSourcePath = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\"
+				foreach ($binfile in get-childitem $binSourcePath -filter firmware.*.bin)
 				{
-					if ($binfile -ne $null) 
+					if ($null -ne $binfile) 
 					{
-						copy-item -verbose -path $binfile -destination "./fab/$hostname.$($binfile.BaseName).bin" -force
+						copy-item -verbose -path $binfile -destination "$($file.DirectoryName)/fab/$hostname.$($binfile.BaseName).bin" -force
 					}
 					else
 					{
