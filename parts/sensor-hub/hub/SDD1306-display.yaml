@@ -32,7 +32,7 @@ sensor:
     entity_id: sensor.${source_env_sensor_entity_id_prefix}_photoresistor_0
     device_class: illuminance
     state_class: measurement
-    unit_of_measurement: "cV"
+    unit_of_measurement: "lx"
 
 font:
   - file: "/workspace/res/fonts/spleen-5x8.bdf"
