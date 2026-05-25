@@ -45,3 +45,4 @@ fp-info-cache
 
 *.skb
 
+.devcontainer/devcontainer-lock.json
