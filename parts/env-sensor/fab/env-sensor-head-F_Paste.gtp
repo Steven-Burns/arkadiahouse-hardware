@@ -1,0 +1,24 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,10.0.2*%
+%TF.CreationDate,2026-05-26T14:34:51-05:00*%
+%TF.ProjectId,env-sensor-head,656e762d-7365-46e7-936f-722d68656164,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Paste,Top*%
+%TF.FilePolarity,Positive*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 10.0.2) date 2026-05-26 14:34:51*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,Profile*%
+%ADD10C,0.200000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+X58580000Y-76200000D02*
+X98580000Y-76200000D01*
+X98580000Y-94454000D01*
+X58580000Y-94454000D01*
+X58580000Y-76200000D01*
+M02*
