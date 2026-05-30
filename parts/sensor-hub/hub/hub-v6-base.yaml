@@ -2,9 +2,19 @@
 
 substitutions:
   device_comment: SPECIFY_DEVICE_COMMENT_TO_BASELINE_YAML_INCLUDE
-  source_env_sensor_hostname: "no_host_specified_in_config"  
+  device_friendly_name: "Sensor Hub (${device_hostname})"
+  source_env_sensor_hostname: SPECIFY_ENV_SENSOR_HOSTNAME_FOR_DISPLAY_PACKAGE  
 
 packages:
+  wired_eth: !include
+    file: /workspace/include/wired-ethernet.yaml
+    vars:
+      ethernet_clk_pin: "GPIO18"  
+      ethernet_mosi_pin: "GPIO23" 
+      ethernet_miso_pin: "GPIO19" 
+      ethernet_cs_pin: "GPIO05" 
+      ethernet_interrupt_pin: "GPIO26" 
+      ethernet_reset_pin: "GPIO4"
   tone_player: !include
     file: /workspace/include/rtttl-player.yaml
     vars:
@@ -64,10 +74,204 @@ packages:
       door_sensor_id: "door_sensor_1"
       sensor_pin: "GPIO13"
 
-<<: !include 
-  file: /workspace/include/wemos-d1-mini-wired-baseline.yaml
-  vars:
-    # turn off UART0 logging so that we can use it for radar1
-    logger_baud_rate: "0"
-    device_friendly_name: "Sensor Hub (${device_hostname})"
-    device_comment: ${device_comment}
+esp32:
+  # board: nodemcu-32s <-- This also works for the wemos d1 mini 
+  board: wemos_d1_mini32
+  cpu_frequency: 240MHZ
+  toolchain: esp-idf  # or 'platformio' (default)  
+  framework:
+    type: esp-idf
+    advanced:
+      minimum_chip_revision: "3.1"
+      sram1_as_iram: true
+#      enable_ota_rollback: false
+
+debug:
+  update_interval: 60s
+
+text_sensor:
+  - platform: debug
+    device:
+      name: "Device Info"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+    reset_reason:
+      name: "Previous Reset Reason"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+  - platform: version
+    name: Firmware Version
+    entity_category: "diagnostic"
+    icon: "mdi:information-box"
+    internal: false
+  # the ESPHome version is the first chunk of the Firmware Version; commenting 
+  # this out as it is redundant
+  # - platform: version
+  #   id: esphome_version
+  #   name: ESPHome Version
+  #   hide_timestamp: true
+  #   entity_category: diagnostic
+  #   internal: true
+
+  # device fw version is build timestamp and esphome ver, so this timestamp info
+  # is redundant. Commenting in case someday I think I need just the timestamp.
+  - platform: template
+    name: "Firmware Build Timestamp"
+    id: firmware_build_timestamp
+    entity_category: "diagnostic"
+    internal: false
+    lambda: return { __DATE__ " " __TIME__ };
+  #
+  # this is not super useful, and just creates update noise because template
+  # platform text sensors don't have good controls on when to update
+  # - platform: template
+  #   name: "Project"
+  #   id: esphome_project_name
+  #   icon: "mdi:information-box"
+  #   entity_category: "diagnostic"
+  #   internal: true
+  #   lambda: return { ESPHOME_PROJECT_NAME " " ESPHOME_PROJECT_VERSION };
+
+sensor:
+# this platform thingy does not appear to work. Emits error messages in
+# debug spew.
+  # - platform: internal_temperature
+  #   name: "CPU Temperature"
+  #   unit_of_measurement: °C
+  #   device_class: temperature
+  #   state_class: measurement
+  #   update_interval: 60s
+  #   entity_category: "diagnostic"
+  #   icon: "mdi:information-box"
+  #   filters:
+  #     delta: 1.0
+  - platform: uptime
+    name: Uptime (approx)
+    id: sys_uptime_id
+    state_class: total_increasing
+    update_interval: 60s
+    entity_category: "diagnostic"
+    icon: "mdi:information-box"
+  - platform: debug
+    cpu_frequency:
+      name: "CPU Speed"
+      id: sys_esp_cpu_freq
+      unit_of_measurement: Hz
+      state_class: measurement
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+      internal: true
+      filters:
+        delta: 1
+    free:
+      name: "Heap Free"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+      unit_of_measurement: B
+      state_class: measurement
+      device_class: data_size
+      internal: true
+      filters:
+        delta: 100
+    block:
+      name: "Heap Max Block"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+      unit_of_measurement: B
+      device_class: data_size
+      internal: true
+      filters:
+        delta: 100
+    loop_time:
+      name: "Loop Time"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+      filters:
+        delta: 5
+    
+binary_sensor:
+  - platform: status
+    name: "Is Device Online"
+    entity_category: "diagnostic"
+    icon: "mdi:information-box"
+
+esphome:
+  name: ${device_hostname}
+  friendly_name: ${device_friendly_name} 
+  comment: ${device_comment}
+  name_add_mac_suffix: false
+  project:
+    name: "Arkadia House.ESPHome"
+    version: "0.2"
+
+logger:
+  level: DEBUG
+  # baud_rate = 0 will disable serial logging (API access to logs should still work, tho)
+  # We set it to 0 so that we can use the UART0 pins for radar1
+  baud_rate: 0
+  logs:
+    # turn the volume down on sensors as some are really noisy
+    sensor: ERROR
+    dmx512: ERROR
+
+network:
+  #enable_ipv6: true
+  #min_ipv6_addr_count: 2
+  #enable_high_performance: true
+
+api:
+  # reboot_timeout set to 0s will keep the board running even when networking (connection to the home asst api)
+  # is lost, even if lost forever. A non-zero timeout will cause the board to reboot if it can't connect to the API within the specified time, 
+  # which is the most useful option for our purposes.
+  # reboot_timeout: 0s
+  # password is deprecated in favor of encryption key
+  encryption:
+     key: !secret api_encryption_key
+  on_client_connected:
+    - logger.log:
+        format: "Client %s connected to API with IP %s"
+        args: ["client_info.c_str()", "client_address.c_str()"]     
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+      
+web_server:
+  port: 80
+  version: 3
+  include_internal: true
+  log: true
+  local: true
+
+time:
+  - platform: homeassistant
+    id: esptime
+
+button:
+  - platform: restart
+    icon: mdi:power-cycle
+    name: "Safely Restart Device"
+    entity_category: diagnostic
+
+# this combination of output and interval will blink the on-board led
+# without creating a home assistant entity. No entity means that the 
+# state transitions will not be communicated with Home Assistant and 
+# therefore generate no traffic no data logging history. This blinky is 
+# just to tell me that the "loop is running."
+
+output:
+  - platform: gpio
+    id: on_board_led_id
+    pin:
+      number: GPIO2
+      mode: output
+      # ignore_strapping_warning: true
+
+interval:
+  - interval: 500ms
+    then:
+      lambda: |- 
+        static bool led_is_on = false;
+        led_is_on = !led_is_on;
+        id(on_board_led_id)->set_state(led_is_on);
+        
