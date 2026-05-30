@@ -1,6 +1,7 @@
 esp32:
   board: nodemcu-32s
   cpu_frequency: 240MHZ
+  toolchain: esp-idf  
   framework:
     type: esp-idf
 
