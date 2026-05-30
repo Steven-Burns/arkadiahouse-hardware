@@ -1,4 +1,15 @@
+substitutions:
+  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
+
 packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+    vars:
+      builtin_led_pin: "GPIO15"
+  standard_device: !include
+    file: /workspace/include/standard-home-assistant-device.yaml
+  wifi: !include  
+    file: /workspace/include/wifi.yaml
   i2c: !include
     file: /workspace/include/i2c.yaml
     vars:
@@ -14,12 +25,29 @@ packages:
     vars:
       illuminance_pin: "GPIO2"
 
-# "All Device" baseline stuff here
+esp32:
+  board: lolin_s2_mini
+  variant: ESP32S2
+  cpu_frequency: 240MHZ
+  toolchain: esp-idf  
+  framework:
+    type: esp-idf
 
-<<: !include 
-  file: /workspace/include/lolin-s2-mini-wifi-baseline.yaml
-  vars:
-    logger_baud_rate: 115200
-    device_friendly_name: "Env Sensor (${device_hostname})"
-    device_comment: "Arkadia House Environmental Sensor."
+esphome:
+  name: ${device_hostname}
+  friendly_name: "Env Sensor (${device_hostname})"
+  comment: "Arkadia House Environmental Sensor."
+  name_add_mac_suffix: false
+  project:
+    name: "ArkadiaHouse.EnvSensor"
+    version: "1.4"
 
+logger:
+  level: DEBUG
+  # baud_rate = 0 will disable serial logging (API access to logs should still work, tho)
+  baud_rate: 115200
+  logs:
+    # turn the volume down on sensors as some are really noisy
+    sensor: ERROR
+
+        

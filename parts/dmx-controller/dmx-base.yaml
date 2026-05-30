@@ -1,11 +1,31 @@
 # base configuration for all v1.x Arkadia wired DMX controller hardware.
 # two DMX universes on the same device, with 2 RGBCW fixtures (10 channels) on each universe.
 
+substitutions:
+  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
+  device_comment: SPECIFY_COMMENT_WHEN_INCLUDING_BASELINE_YAML
+
 external_components:
   - source: github://andyboeh/esphome-dmx512
 
-uart:
+packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+    vars:
+      builtin_led_pin: "GPIO2"
+  standard_device: !include
+    file: /workspace/include/standard-home-assistant-device.yaml
+  wired_eth: !include
+    file: /workspace/include/wired-ethernet.yaml
+    vars:
+      ethernet_clk_pin: "GPIO18"  
+      ethernet_mosi_pin: "GPIO23" 
+      ethernet_miso_pin: "GPIO19" 
+      ethernet_cs_pin: "GPIO05" 
+      ethernet_interrupt_pin: "GPIO26" 
+      ethernet_reset_pin: "GPIO4"
 
+uart:
 # Leaving use of UART0 commented out here in case I ever need to remember how to utilize all 3 UARTs on a single controller.
 
   # - id: uart_bus0
@@ -70,15 +90,38 @@ dmx512:
     force_full_frames: false
     periodic_update: true
 
-<<: !include 
-  file: /workspace/include/wemos-d1-mini-wired-baseline.yaml
-  vars:
-    # we explicitly set the logger baud rate to 115200 so that UART0 is allocated, and our uart components start with 
-    # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
-    # logger baud rate to 0.  Then uart initialization would start with UART0.
-    logger_baud_rate: "115200"
-    device_friendly_name: "DMX controller (${device_hostname})"
-    device_comment: "Arkadia House Wired DMX-512 Controller." 
 
+esp32:
+  # board: nodemcu-32s <-- This also works for the wemos d1 mini 
+  board: wemos_d1_mini32
+  cpu_frequency: 240MHZ
+  toolchain: esp-idf  
+  framework:
+    type: esp-idf
+    advanced:
+      minimum_chip_revision: "3.1"
+      sram1_as_iram: true
+#      enable_ota_rollback: false
+
+esphome:
+  name: ${device_hostname}
+  friendly_name: "DMX controller (${device_hostname})" 
+  comment: ${device_comment}
+  name_add_mac_suffix: false
+  project:
+    name: "ArkadiaHouse.DMXController"
+    version: "1.2"
+
+logger:
+  level: DEBUG
+  # baud_rate = 0 will disable serial logging (API access to logs should still work, tho)
+  # we explicitly set the logger baud rate to 115200 so that UART0 is allocated, and our uart components start with 
+  # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
+  # logger baud rate to 0.  Then uart initialization would start with UART0.
+  baud_rate: 115200
+  logs:
+    # turn the volume down on sensors as some are really noisy
+    sensor: ERROR
+    dmx512: ERROR
 
 

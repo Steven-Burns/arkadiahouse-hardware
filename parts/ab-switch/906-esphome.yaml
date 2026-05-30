@@ -1,13 +1,13 @@
-esp32:
-  board: nodemcu-32s
-  cpu_frequency: 240MHZ
-  toolchain: esp-idf  
-  framework:
-    type: esp-idf
+substitutions:
+  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
 
 packages:
   diagnostics: !include 
     file: /workspace/include/diagnostics.yaml
+    vars:
+      builtin_led_pin: "GPIO2"
+  standard_device: !include
+    file: /workspace/include/standard-home-assistant-device.yaml
   wifi: !include  
     file: /workspace/include/wifi.yaml
 
@@ -22,11 +22,27 @@ switch:
         output: true
         pulldown: true
 
-# "All Device" baseline stuff here
+esp32:
+  board: nodemcu-32s
+  cpu_frequency: 240MHZ
+  toolchain: esp-idf  
+  framework:
+    type: esp-idf
 
-<<: !include 
-  file: /workspace/include/esp32-device-baseline.yaml
-  vars:
-    device_friendly_name: "A-B switch on board 906."
-    device_comment: "A-B selector for stereo speaker output."
+esphome:
+  name: ${device_hostname}
+  friendly_name: "A-B switch (${device_hostname})" 
+  comment: "A-B selector for stereo speaker output."
+  name_add_mac_suffix: false
+  project:
+    name: "ArkadiaHouse.ABSwitch"
+    version: "0.2"
+
+logger:
+  level: DEBUG
+  # baud_rate = 0 will disable serial logging (API access to logs should still work, tho)
+  baud_rate: 115200
+  logs:
+    # turn the volume down on sensors as some are really noisy
+    sensor: ERROR
 

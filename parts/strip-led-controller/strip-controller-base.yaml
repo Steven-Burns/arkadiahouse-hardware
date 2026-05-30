@@ -1,10 +1,32 @@
+# base configuration for all v1.x Arkadia wired LED strip controller hardware.
+
+substitutions:
+  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
+  device_comment: SPECIFY_COMMENT_WHEN_INCLUDING_BASELINE_YAML
+
+packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+    vars:
+      builtin_led_pin: "GPIO2"
+  standard_device: !include
+    file: /workspace/include/standard-home-assistant-device.yaml
+  wired_eth: !include
+    file: /workspace/include/wired-ethernet.yaml
+    vars:
+      ethernet_clk_pin: "GPIO18"  
+      ethernet_mosi_pin: "GPIO23" 
+      ethernet_miso_pin: "GPIO19" 
+      ethernet_cs_pin: "GPIO05" 
+      ethernet_interrupt_pin: "GPIO26" 
+      ethernet_reset_pin: "GPIO4"
+
 # experimentally, it appears that:
 # - we are limited to basically two strips to RMT limitations, and 
 # - this chip does not offer a DMA option for the RMT peripheral. 
 # - IT IS IMPERATIVE that the ground line of the 5V power to the MCU be tied to the 
 # ground of the 12V power to the strips. Otherwise, the data signals will not be 
 # correctly received by the strips, and the colors will be all wrong. 
-
 
 light:
   - &light_strip_defaults
@@ -70,10 +92,34 @@ light:
     pin: GPIO25
     num_leds: 1290
 
-# "All Device" baseline stuff here
+esp32:
+  # board: nodemcu-32s <-- This also works for the wemos d1 mini 
+  board: wemos_d1_mini32
+  cpu_frequency: 240MHZ
+  toolchain: esp-idf  
+  framework:
+    type: esp-idf
+    advanced:
+      minimum_chip_revision: "3.1"
+      sram1_as_iram: true
+#      enable_ota_rollback: false
 
-<<: !include 
-  file: /workspace/include/wemos-d1-mini-wired-baseline.yaml
-  vars:
-    device_friendly_name: "Pixelstrip Controller (${device_hostname})"
-    device_comment: "Arkadia House Wired pixel strip controller."
+esphome:
+  name: ${device_hostname}
+  friendly_name: "Pixelstrip Controller (${device_hostname})"
+  comment: ${device_comment}
+  name_add_mac_suffix: false
+  project:
+    name: "ArkadiaHouse.PixelstripController"
+    version: "1.1"
+
+logger:
+  level: DEBUG
+  # baud_rate = 0 will disable serial logging (API access to logs should still work, tho)
+  # we explicitly set the logger baud rate to 115200 so that UART0 is allocated, and our uart components start with 
+  # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
+  # logger baud rate to 0.  Then uart initialization would start with UART0.
+  baud_rate: 115200
+  logs:
+    # turn the volume down on sensors as some are really noisy
+    sensor: ERROR

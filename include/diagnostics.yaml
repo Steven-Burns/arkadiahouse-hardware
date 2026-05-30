@@ -1,3 +1,6 @@
+substitutions:
+  builtin_led_pin: GPIO2
+
 debug:
   update_interval: 60s
 
@@ -31,8 +34,9 @@ text_sensor:
     name: "Firmware Build Timestamp"
     id: firmware_build_timestamp
     entity_category: "diagnostic"
+    icon: "mdi:information-box"
     internal: false
-    lambda: return { __DATE__ " " __TIME__ };
+    lambda: return { __DATE__ "::" __TIME__ };
   #
   # this is not super useful, and just creates update noise because template
   # platform text sensors don't have good controls on when to update
@@ -117,17 +121,29 @@ binary_sensor:
     entity_category: "diagnostic"
     icon: "mdi:information-box"
 
-# commenting this version of free heap as it is not as encapsulated 
-# and therefore not platform agnostic as is the debug component sensor, and 
-# the results appear to match between the two, making the debug component
-# preferred.
-  # - platform: template
-  #   id: sys_esp_memory_id
-  #   icon: mdi:memory
-  #   name: Free Heap
-  #   lambda: return heap_caps_get_free_size(MALLOC_CAP_INTERNAL) / 1024;
-  #   unit_of_measurement: 'kB'
-  #   state_class: measurement
-  #   entity_category: "diagnostic"
-  #   update_interval: 60s
+button:
+  - platform: restart
+    icon: mdi:power-cycle
+    name: "Safely Restart Device"
+    entity_category: diagnostic
 
+# this combination of output and interval will blink the on-board led
+# without creating a home assistant entity. No entity means that the 
+# state transitions will not be communicated with Home Assistant and 
+# therefore generate no traffic no data logging history. This blinky is 
+# just to tell me that the "loop is running."
+
+output:
+  - platform: gpio
+    id: on_board_led_id
+    pin:
+      number: ${builtin_led_pin}
+      mode: output
+
+interval:
+  - interval: 500ms
+    then:
+      lambda: |- 
+        static bool led_is_on = false;
+        led_is_on = !led_is_on;
+        id(on_board_led_id)->set_state(led_is_on);

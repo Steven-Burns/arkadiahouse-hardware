@@ -1,3 +1,4 @@
 <<: !include 
   file: ./strip-controller-base.yaml
   vars:
+    device_comment: "Controls lights xxx through yyy."
