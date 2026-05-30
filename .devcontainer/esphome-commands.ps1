@@ -50,7 +50,7 @@ function do-esphome-command
 			if ($copyBinaries)
 			{
 				write-host "Looking for compiled binaries for $hostname to copy to fab folder..."
-				$binSourcePath = "$($file.DirectoryName)\.esphome\build\$hostname\.pioenvs\$hostname\"
+				$binSourcePath = "$($file.DirectoryName)\.esphome\build\$hostname\build"
 				foreach ($binfile in get-childitem $binSourcePath -filter firmware.*.bin)
 				{
 					if ($null -ne $binfile) 
