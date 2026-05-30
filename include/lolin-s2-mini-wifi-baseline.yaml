@@ -12,9 +12,6 @@ esp32:
   framework:
     type: esp-idf
 
-<<: !include 
-  file: /workspace/include/diagnostics.yaml
-
 <<: !include  
   file: /workspace/include/wifi.yaml
 

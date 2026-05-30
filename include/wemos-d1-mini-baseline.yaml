@@ -17,9 +17,6 @@ esp32:
 #      enable_ota_rollback: false
 
 <<: !include 
-  file: /workspace/include/diagnostics.yaml
-
-<<: !include 
   file: /workspace/include/esp32-device-baseline.yaml
   vars:
     device_hostname: ${device_hostname}

@@ -6,6 +6,9 @@ substitutions:
   logger_baud_rate: 115200
   builtin_led_pin: GPIO2
 
+<<: !include 
+  file: /workspace/include/diagnostics.yaml
+
 esphome:
   name: ${device_hostname}
   friendly_name: ${device_friendly_name} 

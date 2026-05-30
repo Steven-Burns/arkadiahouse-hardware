@@ -15,7 +15,7 @@ text_sensor:
     name: Firmware Version
     entity_category: "diagnostic"
     icon: "mdi:information-box"
-    internal: true
+    internal: false
   # the ESPHome version is the first chunk of the Firmware Version; commenting 
   # this out as it is redundant
   # - platform: version
@@ -27,11 +27,12 @@ text_sensor:
 
   # device fw version is build timestamp and esphome ver, so this timestamp info
   # is redundant. Commenting in case someday I think I need just the timestamp.
-  # - platform: template
-  #   name: "Firmware Build Timestamp"
-  #   entity_category: "diagnostic"
-  #   internal: true
-  #   lambda: return { __DATE__ " " __TIME__ };
+  - platform: template
+    name: "Firmware Build Timestamp"
+    id: firmware_build_timestamp
+    entity_category: "diagnostic"
+    internal: false
+    lambda: return { __DATE__ " " __TIME__ };
   #
   # this is not super useful, and just creates update noise because template
   # platform text sensors don't have good controls on when to update
