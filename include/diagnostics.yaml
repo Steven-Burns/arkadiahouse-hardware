@@ -28,19 +28,21 @@ text_sensor:
   #   entity_category: diagnostic
   #   internal: true
 
+  # also available, but I don't know what I'd use them for:
+  #   lambda: return { ESPHOME_PROJECT_NAME " " ESPHOME_PROJECT_VERSION };
+
   - platform: template
     name: "Firmware Build Timestamp"
     id: firmware_build_timestamp
-    device_class: timestamp
+    # using device_class timestamp causes the value to stop updating the server. IDK why.
+    #device_class: timestamp
     entity_category: "diagnostic"
     icon: "mdi:information-box"
     internal: false
     lambda: return { __DATE__ "::" __TIME__ };
     # You'd think update_interval never would mean set it once, and never change it again.
     # But, no, it means "never set it."  Not useful.
-    # update_interval: 0s
-
-  #   lambda: return { ESPHOME_PROJECT_NAME " " ESPHOME_PROJECT_VERSION };
+    update_interval: 86400s
 
 sensor:
   - platform: internal_temperature

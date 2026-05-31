@@ -1,4 +1,6 @@
-<<: !include 
-  file: ./env-sense-base.yaml
-  vars:
+substitutions:
+  device_hostname: 641-esphome
+
+<<: !include ./env-sense-base.yaml
+
 

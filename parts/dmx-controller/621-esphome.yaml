@@ -12,6 +12,5 @@ substitutions:
 #   vars:
 #     light_prefix: ${device_hostname[:3]}
 
-<<: !include 
-  file: ./dmx-base.yaml
+<<: !include ./dmx-base.yaml
 
