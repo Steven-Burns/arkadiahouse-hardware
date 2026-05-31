@@ -1,0 +1,93 @@
+
+light:
+  - &light_defaults
+    platform: rgbww
+    name: "Light ${device_hostname[:3]}-U1-05"
+    id: light_u1_5
+    default_transition_length: 0s
+    gamma_correct: 0
+    disabled_by_default: false
+    restore_mode: ALWAYS_OFF
+    flash_transition_length: 0s
+    constant_brightness: false
+    color_interlock: false
+    #cold_white_color_temperature: 5700 K
+    #warm_white_color_temperature: 3700 K    
+    red: dmx_u1_ch26
+    green: dmx_u1_ch27
+    blue: dmx_u1_ch28
+    cold_white: dmx_u1_ch29
+    warm_white: dmx_u1_ch30
+    effects:
+      - strobe:
+          colors:
+            - state: true
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+            - state: false
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+          name: Strobe
+      - pulse:
+          transition_length: 1s
+          update_interval: 1s
+          min_brightness: 0.0
+          max_brightness: 1.0
+          name: Pulse
+      - random:
+          transition_length: 7500ms
+          update_interval: 10s
+          name: Random
+      - flicker:
+          alpha: 0.95
+          intensity: 0.015
+          name: Flicker
+
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-06"
+    id: light_u1_06
+    red: dmx_u1_ch31
+    green: dmx_u1_ch32
+    blue: dmx_u1_ch33
+    cold_white: dmx_u1_ch34
+    warm_white: dmx_u1_ch35
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-07"
+    id: light_u1_07
+    red: dmx_u1_ch36
+    green: dmx_u1_ch37
+    blue: dmx_u1_ch38
+    cold_white: dmx_u1_ch39
+    warm_white: dmx_u1_ch40
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-08"
+    id: light_u1_08
+    red: dmx_u1_ch41
+    green: dmx_u1_ch42
+    blue: dmx_u1_ch43
+    cold_white: dmx_u1_ch44
+    warm_white: dmx_u1_ch45
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-09"
+    id: light_u1_09
+    red: dmx_u1_ch46
+    green: dmx_u1_ch47
+    blue: dmx_u1_ch48
+    cold_white: dmx_u1_ch49
+    warm_white: dmx_u1_ch50

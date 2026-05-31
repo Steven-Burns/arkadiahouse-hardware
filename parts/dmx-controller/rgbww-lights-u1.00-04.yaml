@@ -1,0 +1,95 @@
+substitutions:
+  light_prefix: XYZ
+
+light:
+  - &light_defaults
+    platform: rgbww
+    name: "Light ${light_prefix}-U1-00"
+    id: light_u1_0
+    default_transition_length: 0s
+    gamma_correct: 0
+    disabled_by_default: false
+    restore_mode: ALWAYS_OFF
+    flash_transition_length: 0s
+    constant_brightness: false
+    color_interlock: false
+    #cold_white_color_temperature: 5700 K
+    #warm_white_color_temperature: 3700 K    
+    red: dmx_u1_ch1
+    green: dmx_u1_ch2
+    blue: dmx_u1_ch3
+    cold_white: dmx_u1_ch4
+    warm_white: dmx_u1_ch5
+    effects:
+      - strobe:
+          colors:
+            - state: true
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+            - state: false
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+          name: Strobe
+      - pulse:
+          transition_length: 1s
+          update_interval: 1s
+          min_brightness: 0.0
+          max_brightness: 1.0
+          name: Pulse
+      - random:
+          transition_length: 7500ms
+          update_interval: 10s
+          name: Random
+      - flicker:
+          alpha: 0.95
+          intensity: 0.015
+          name: Flicker
+
+  - <<: *light_defaults
+    name: "Light ${light_prefix}-U1-01"
+    id: light_u1_01
+    red: dmx_u1_ch6
+    green: dmx_u1_ch7
+    blue: dmx_u1_ch8
+    cold_white: dmx_u1_ch9
+    warm_white: dmx_u1_ch10
+  - <<: *light_defaults
+    name: "Light ${light_prefix}-U1-02"
+    id: light_u1_02
+    red: dmx_u1_ch11
+    green: dmx_u1_ch12
+    blue: dmx_u1_ch13
+    cold_white: dmx_u1_ch14
+    warm_white: dmx_u1_ch15
+  - <<: *light_defaults
+    name: "Light ${light_prefix}-U1-03"
+    id: light_u1_03
+    red: dmx_u1_ch16
+    green: dmx_u1_ch17
+    blue: dmx_u1_ch18
+    cold_white: dmx_u1_ch19
+    warm_white: dmx_u1_ch20
+  - <<: *light_defaults
+    name: "Light ${light_prefix}-U1-04"
+    id: light_u1_04
+    red: dmx_u1_ch21
+    green: dmx_u1_ch22
+    blue: dmx_u1_ch23
+    cold_white: dmx_u1_ch24
+    warm_white: dmx_u1_ch25
