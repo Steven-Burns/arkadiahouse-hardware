@@ -38,24 +38,21 @@ text_sensor:
     lambda: return { __DATE__ "::" __TIME__ };
     # You'd think update_interval never would mean set it once, and never change it again.
     # But, no, it means "never set it."  Not useful.
-    update_interval: 86400s
-    filters: {}
+    # update_interval: 0s
 
   #   lambda: return { ESPHOME_PROJECT_NAME " " ESPHOME_PROJECT_VERSION };
 
 sensor:
-# this platform thingy does not appear to work. Emits error messages in
-# debug spew.
-  # - platform: internal_temperature
-  #   name: "CPU Temperature"
-  #   unit_of_measurement: °C
-  #   device_class: temperature
-  #   state_class: measurement
-  #   update_interval: 60s
-  #   entity_category: "diagnostic"
-  #   icon: "mdi:information-box"
-  #   filters:
-  #     delta: 1.0
+  - platform: internal_temperature
+    name: "CPU Temperature"
+    unit_of_measurement: °C
+    device_class: temperature
+    state_class: measurement
+    update_interval: 60s
+    entity_category: "diagnostic"
+    icon: "mdi:information-box"
+    filters:
+      delta: 1.0
   - platform: uptime
     name: Uptime (approx)
     id: sys_uptime_id
