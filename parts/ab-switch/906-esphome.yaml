@@ -1,5 +1,5 @@
 substitutions:
-  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
+  device_hostname: 906-esphome
 
 packages:
   diagnostics: !include 

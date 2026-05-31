@@ -3,4 +3,5 @@
   vars:
     # note the underscore replacing the hyphen; this is because Home Assistant converts
     # all device and entity names to snake case when creating the corresponding entity_id
+    device_hostname: 654-esphome
     source_env_sensor_entity_id_prefix: "env_sensor_625_esphome" 
