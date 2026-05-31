@@ -1,14 +1,17 @@
-<<: !include 
-  file: ./dmx-base.yaml
-  vars:
-    device_comment: "Controls lights DLxxx through DLyyy."
+substitutions:
+  device_hostname: 621-esphome
+  device_comment: "Controls lights DLxxx through DLyyy."
+
+<<: !include ./outputs-u1-001-155.yaml
 
 # uncomment this line to create single channel on/off lights for each DMX channel of both universes, which can be useful for testing and debugging.
-#<<: !include ./dmx-debug-lights.yaml 
+<<: !include ./debug-lights-u1.yaml 
 
-packages:
-  light1: !include
-    file: ./rgbww-lights-u1.yaml
-  light2: !include
-    file: ./rgbww-lights-u2.yaml
-      
+# <<: !include
+#   file: ./rgbww-lights-u1.00-04.yaml
+#   vars:
+#     light_prefix: ${device_hostname[:3]}
+
+<<: !include 
+  file: ./dmx-base.yaml
+
