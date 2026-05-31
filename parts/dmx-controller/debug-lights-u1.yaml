@@ -10,6 +10,7 @@ light:  # Here we define simple on/off 'lights' for each individual DMX channel,
   - <<: *test_light_defaults
     id: light_u1_ch2
     name: "U1_Ch002"
+    output: dmx_u1_ch2
   - <<: *test_light_defaults
     id: light_u1_ch3
     name: "U1_Ch003"
