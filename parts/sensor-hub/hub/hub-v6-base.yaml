@@ -83,7 +83,7 @@ esp32:
   # board: nodemcu-32s <-- This also works for the wemos d1 mini 
   board: wemos_d1_mini32
   cpu_frequency: 240MHZ
-  toolchain: esp-idf  # or 'platformio' (default)  
+  toolchain: esp-idf   
   framework:
     type: esp-idf
     advanced:
