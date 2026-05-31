@@ -28,24 +28,19 @@ text_sensor:
   #   entity_category: diagnostic
   #   internal: true
 
-  # device fw version is build timestamp and esphome ver, so this timestamp info
-  # is redundant. Commenting in case someday I think I need just the timestamp.
   - platform: template
     name: "Firmware Build Timestamp"
     id: firmware_build_timestamp
+    device_class: timestamp
     entity_category: "diagnostic"
     icon: "mdi:information-box"
     internal: false
     lambda: return { __DATE__ "::" __TIME__ };
-  #
-  # this is not super useful, and just creates update noise because template
-  # platform text sensors don't have good controls on when to update
-  # - platform: template
-  #   name: "Project"
-  #   id: esphome_project_name
-  #   icon: "mdi:information-box"
-  #   entity_category: "diagnostic"
-  #   internal: true
+    # You'd think update_interval never would mean set it once, and never change it again.
+    # But, no, it means "never set it."  Not useful.
+    update_interval: 86400s
+    filters: {}
+
   #   lambda: return { ESPHOME_PROJECT_NAME " " ESPHOME_PROJECT_VERSION };
 
 sensor:
