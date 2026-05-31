@@ -105,7 +105,7 @@ esp32:
 
 esphome:
   name: ${device_hostname}
-  friendly_name: "DMX controller (${device_hostname})" 
+  friendly_name: "DMX Controller ${device_hostname[:3]}" 
   comment: ${device_comment}
   name_add_mac_suffix: false
   project:

@@ -35,7 +35,7 @@ esp32:
 
 esphome:
   name: ${device_hostname}
-  friendly_name: "Env Sensor (${device_hostname})"
+  friendly_name: "Env Sensor ${device_hostname[:3]}"
   comment: "Arkadia House Environmental Sensor."
   name_add_mac_suffix: false
   project:

@@ -93,7 +93,7 @@ esp32:
 
 esphome:
   name: ${device_hostname}
-  friendly_name: "Sensor Hub (${device_hostname})"
+  friendly_name: "Sensor Hub ${device_hostname[:3]}"
   comment: "Arkadia Sensor Hub Version 6.8"
   name_add_mac_suffix: false
   project:
