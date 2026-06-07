@@ -18,6 +18,7 @@ _autosave-*
 fp-info-cache
 ~*.lck
 \#auto_saved_files#
+.devcontainer/devcontainer-lock.json
 
 # Netlist files (exported from Eeschema)
 *.net
@@ -37,12 +38,16 @@ fp-info-cache
 /**/fab/*.dxf
 
 # Gitignore settings for ESPHome
-
 /**/.esphome/
 /**/secrets.yaml
 
-# Sketchup
+# annoyingly, ESPHome creates a .gitignore in every folder in which it builds.
+/parts/**/.gitignore
 
+# Sketchup
 *.skb
 
-.devcontainer/devcontainer-lock.json
+/parts/*/fab/**/*.svg
+
+
+
