@@ -47,7 +47,6 @@ fp-info-cache
 # Sketchup
 *.skb
 
-/parts/*/fab/**/*.svg
 
-
-
+#/parts/**/fab/*.zip
+parts/env-sensor/fab/env sensor.02.svg
