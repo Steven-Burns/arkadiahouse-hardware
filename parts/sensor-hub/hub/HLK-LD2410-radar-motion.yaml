@@ -22,9 +22,9 @@ ld2410:
 
 globals:
    - id: ${radar_id}_target_detected
-     type: bool
+     type: int
      restore_value: no
-     initial_value: "false"
+     initial_value: "2"
 
 binary_sensor:
   - platform: ld2410
@@ -38,7 +38,7 @@ binary_sensor:
           - globals.set:
               id: ${radar_id}_target_detected
               value: !lambda |-
-                return x;
+                if (x) { return 1; } else { return 0; }
     has_moving_target:
       # this changes immediately on motion detection.
       name: ${radar_id} Moving Target Detected

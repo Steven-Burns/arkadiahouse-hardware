@@ -97,13 +97,13 @@ display:
           // the encapsulation of data is ... not, as here we start to read all sorts of global data with 
           // 'well-known' names...
 
-          bool radar_target0 = id(ld2410_0_target_detected);
-          bool radar_target1 = id(ld2410_1_target_detected);
+          int radar_target0 = id(ld2410_0_target_detected);
+          int radar_target1 = id(ld2410_1_target_detected);
 
           it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
-            "R%s%s",
-            radar_target0 ? "D" : "-",
-            radar_target1 ? "D" : "-");
+            "R%1d%1d",
+            radar_target0 == 0 ? "U" : ( radar_target0 == 1 ? "D" : "X"), 
+            radar_target1 == 0 ? "U" : ( radar_target1 == 1 ? "D" : "X") );
 
           auto key_states = id(keypad_key_states); 
           //for (int i = 0; i < 10; i += 2)
