@@ -1,5 +1,6 @@
 # a string value settable in home assistant that when 
 # changed, plays on the local buzzer.  Requires rttl-player.yaml 
+# for the notation, see https://www.mobilefish.com/tutorials/rtttl/rtttl_quickguide_specification.html
 
 text_sensor:
   - platform: homeassistant
