@@ -1,5 +1,5 @@
 substitutions:
-  device_hostname: 621-esphome
+  device_hostname: 669-esphome
   device_comment: "Controls lights DLxxx through DLyyy."
 
 <<: !include ./outputs-u1-001-155.yaml
