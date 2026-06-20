@@ -101,7 +101,7 @@ display:
           int radar_target1 = id(ld2410_1_target_detected);
 
           it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
-            "R%1d%1d",
+            "R%s%s",
             radar_target0 == 0 ? "U" : ( radar_target0 == 1 ? "D" : "X"), 
             radar_target1 == 0 ? "U" : ( radar_target1 == 1 ? "D" : "X") );
 
