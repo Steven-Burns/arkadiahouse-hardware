@@ -1,11 +1,8 @@
-substitutions:
-  light_prefix: XYZ
-
 light:
   - &light_defaults
     platform: rgbww
-    name: "Light ${light_prefix}-U1-00"
-    id: light_u1_0
+    name: "Light ${device_hostname[:3]}-U1-11"
+    id: light_${device_hostname[:3]}_u1_11
     default_transition_length: 0s
     gamma_correct: 0
     disabled_by_default: false
@@ -15,11 +12,11 @@ light:
     color_interlock: false
     #cold_white_color_temperature: 5700 K
     #warm_white_color_temperature: 3700 K    
-    red: dmx_u1_ch1
-    green: dmx_u1_ch2
-    blue: dmx_u1_ch3
-    cold_white: dmx_u1_ch4
-    warm_white: dmx_u1_ch5
+    red: dmx_u1_ch51
+    green: dmx_u1_ch52
+    blue: dmx_u1_ch53
+    cold_white: dmx_u1_ch54
+    warm_white: dmx_u1_ch55
     effects:
       - strobe:
           colors:
@@ -62,34 +59,34 @@ light:
           name: Flicker
 
   - <<: *light_defaults
-    name: "Light ${light_prefix}-U1-01"
-    id: light_u1_01
-    red: dmx_u1_ch6
-    green: dmx_u1_ch7
-    blue: dmx_u1_ch8
-    cold_white: dmx_u1_ch9
-    warm_white: dmx_u1_ch10
+    name: "Light ${device_hostname[:3]}-U1-12"
+    id: light_${device_hostname[:3]}_u1_12
+    red: dmx_u1_ch56
+    green: dmx_u1_ch57
+    blue: dmx_u1_ch58
+    cold_white: dmx_u1_ch59
+    warm_white: dmx_u1_ch60
   - <<: *light_defaults
-    name: "Light ${light_prefix}-U1-02"
-    id: light_u1_02
-    red: dmx_u1_ch11
-    green: dmx_u1_ch12
-    blue: dmx_u1_ch13
-    cold_white: dmx_u1_ch14
-    warm_white: dmx_u1_ch15
+    name: "Light ${device_hostname[:3]}-U1-13"
+    id: light_${device_hostname[:3]}_u1_13 
+    red: dmx_u1_ch61
+    green: dmx_u1_ch62
+    blue: dmx_u1_ch63
+    cold_white: dmx_u1_ch64
+    warm_white: dmx_u1_ch65
   - <<: *light_defaults
-    name: "Light ${light_prefix}-U1-03"
-    id: light_u1_03
-    red: dmx_u1_ch16
-    green: dmx_u1_ch17
-    blue: dmx_u1_ch18
-    cold_white: dmx_u1_ch19
-    warm_white: dmx_u1_ch20
+    name: "Light ${device_hostname[:3]}-U1-14"
+    id: light_${device_hostname[:3]}_u1_14
+    red: dmx_u1_ch66
+    green: dmx_u1_ch67
+    blue: dmx_u1_ch68
+    cold_white: dmx_u1_ch69
+    warm_white: dmx_u1_ch70
   - <<: *light_defaults
-    name: "Light ${light_prefix}-U1-04"
-    id: light_u1_04
-    red: dmx_u1_ch21
-    green: dmx_u1_ch22
-    blue: dmx_u1_ch23
-    cold_white: dmx_u1_ch24
-    warm_white: dmx_u1_ch25
+    name: "Light ${device_hostname[:3]}-U1-15"
+    id: light_${device_hostname[:3]}_u1_15
+    red: dmx_u1_ch71
+    green: dmx_u1_ch72
+    blue: dmx_u1_ch73
+    cold_white: dmx_u1_ch74
+    warm_white: dmx_u1_ch75
