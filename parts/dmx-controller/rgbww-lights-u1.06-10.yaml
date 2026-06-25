@@ -4,7 +4,7 @@ light:
     name: "Light ${device_hostname[:3]}-U1-06"
     id: light_${device_hostname[:3]}_u1_06
     default_transition_length: 0s
-    gamma_correct: 0
+    gamma_correct: 1.0
     disabled_by_default: false
     restore_mode: ALWAYS_OFF
     flash_transition_length: 0s
