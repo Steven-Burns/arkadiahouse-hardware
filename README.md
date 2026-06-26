@@ -51,39 +51,28 @@ Copy/create the secrets.yaml file to /include/secrets.yaml (in the container vol
 
 If you have a secrets.yaml file on a cloned repo outside the container, note that the devcontainer.json configures a volume mount to the host's c:\temp folder.  The mount is /host/temp
 
-# building
+# batch building
 
-Use the following PowerShell wrappers instead of the corresponding esphome command line:
-
-```DOS
-esphome-compile <your-device-configuration.yaml>
-```
+PowerShell to the rescue.
 
 ```DOS
-esphome-run <your-device-configuration.yaml>
-```
-
-```DOS
-esphome-upload <your-device-configuration.yaml>
-```
-
-The wrapper functions normalize device hostnames and copy build outputs to the part's ./fab folder.
-
-There are batch commands that are also helpful:
-
-```DOS
-esphome-compile-all 
-esphome-upload-all
+dir ???-*.yaml | % { esphome compile $_ }
 ```
 
 # flashing
 
-Compilation will produce firmware bin files in the fab subfolder of the folder containing the .yaml esphome configuration.
+## option 1
 
-Flash the "factory" version -- the one that has "factory" in the filename.
+Use esphome's over-the-air updater: esphome upload or esphome run to flash a single device.
+
+## option 2
+
+Flash the "factory" .bin file (the one that has "factory" in the filename) with esptool
 
 ```DOS
 esptool write-flash 0 <flash-factory-file.bin>
 ```
 
-or use https://adafruit.github.io/Adafruit_WebSerial_ESPTool/
+## option 3
+
+Use https://adafruit.github.io/Adafruit_WebSerial_ESPTool/ to write a particular .bin via a COM port.  This is a useful option for 'bricked' devices that are not responding to over-the-air updates
