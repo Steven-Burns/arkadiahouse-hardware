@@ -1,17 +1,514 @@
 substitutions:
   device_hostname: 669-esphome
   device_comment: "Controls lights DLxxx through DLyyy."
-
-<<: !include ./outputs-u1-001-155.yaml
-
-# uncomment this line to create single channel on/off lights for each DMX channel of both universes, which can be useful for testing and debugging.
-<<: !include ./debug-lights-u1.yaml 
-
-# <<: !include
-#   file: ./rgbww-lights-u1.00-04.yaml
-#   vars:
-#     light_prefix: ${device_hostname[:3]}
+  light_prefix: ${device_hostname[:3]}
 
 <<: !include 
   file: ./dmx-base.yaml
 
+<<: !include ./outputs-u1-001-155.yaml
+
+
+# none of this goo compiles reliably.
+#packages:
+#  light0: !include ./rgbww-lights-u1.00-04.yaml
+#  light1: !include ./rgbww-lights-u1.05-09.yaml
+
+# <<: !include ./rgbww-lights-u1.00-04.yaml
+# <<: !include ./rgbww-lights-u1.05-09.yaml
+
+light:
+  - &light_defaults
+    platform: rgbww
+    name: "Light ${device_hostname[:3]}-U1-01"
+    id: light_${device_hostname[:3]}_u1_01
+    default_transition_length: 0s
+    gamma_correct: 1.0
+    disabled_by_default: false
+    restore_mode: ALWAYS_OFF
+    flash_transition_length: 0s
+    constant_brightness: false
+    color_interlock: false
+    cold_white_color_temperature: 5700K
+    warm_white_color_temperature: 3700K    
+    red: dmx_u1_ch1
+    green: dmx_u1_ch2
+    blue: dmx_u1_ch3
+    cold_white: dmx_u1_ch4
+    warm_white: dmx_u1_ch5
+    effects:
+      - strobe:
+          colors:
+            - state: true
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+            - state: false
+              duration: 500ms
+              brightness: 1.0
+              color_brightness: 1.0
+              red: 1.0
+              green: 1.0
+              blue: 1.0
+              white: 1.0
+              cold_white: 1.0
+              warm_white: 1.0
+              transition_length: 0s
+          name: Strobe
+      - pulse:
+          name: "Fast Pulse"
+          transition_length: 0.5s
+          update_interval: 0.5s
+          min_brightness: 0%
+          max_brightness: 100%
+      - pulse:
+          name: "Slow Pulse"
+          transition_length: 500ms
+          update_interval: 2s
+      - pulse:
+          name: "Asymmetrical Pulse"
+          transition_length:
+            on_length: 1s
+            off_length: 500ms
+          update_interval: 1.5s      
+      - random:
+          transition_length: 3s
+          update_interval: 7s
+          name: Random
+      - flicker:
+          alpha: 0.95
+          intensity: 0.015
+          name: Flicker
+
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-02"
+    id: light_${device_hostname[:3]}_u1_02
+    red: dmx_u1_ch6
+    green: dmx_u1_ch7
+    blue: dmx_u1_ch8
+    cold_white: dmx_u1_ch9
+    warm_white: dmx_u1_ch10
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-03"
+    id: light_${device_hostname[:3]}_u1_03
+    red: dmx_u1_ch11
+    green: dmx_u1_ch12
+    blue: dmx_u1_ch13
+    cold_white: dmx_u1_ch14
+    warm_white: dmx_u1_ch15
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-04"
+    id: light_${device_hostname[:3]}_u1_04
+    red: dmx_u1_ch16
+    green: dmx_u1_ch17
+    blue: dmx_u1_ch18
+    cold_white: dmx_u1_ch19
+    warm_white: dmx_u1_ch20
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-05"
+    id: light_${device_hostname[:3]}_u1_05
+    red: dmx_u1_ch21
+    green: dmx_u1_ch22
+    blue: dmx_u1_ch23
+    cold_white: dmx_u1_ch24
+    warm_white: dmx_u1_ch25
+  - <<: *light_defaults
+    platform: rgbww
+    name: "Light ${device_hostname[:3]}-U1-06"
+    id: light_${device_hostname[:3]}_u1_06
+    red: dmx_u1_ch26
+    green: dmx_u1_ch27
+    blue: dmx_u1_ch28
+    cold_white: dmx_u1_ch29
+    warm_white: dmx_u1_ch30
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-07"
+    id: light_${device_hostname[:3]}_u1_07
+    red: dmx_u1_ch31
+    green: dmx_u1_ch32
+    blue: dmx_u1_ch33
+    cold_white: dmx_u1_ch34
+    warm_white: dmx_u1_ch35
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-08"
+    id: light_${device_hostname[:3]}_u1_08
+    red: dmx_u1_ch36
+    green: dmx_u1_ch37
+    blue: dmx_u1_ch38
+    cold_white: dmx_u1_ch39
+    warm_white: dmx_u1_ch40
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-09"
+    id: light_${device_hostname[:3]}_u1_09
+    red: dmx_u1_ch41
+    green: dmx_u1_ch42
+    blue: dmx_u1_ch43
+    cold_white: dmx_u1_ch44
+    warm_white: dmx_u1_ch45
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-10"
+    id: light_${device_hostname[:3]}_u1_10
+    red: dmx_u1_ch46
+    green: dmx_u1_ch47
+    blue: dmx_u1_ch48
+    cold_white: dmx_u1_ch49
+    warm_white: dmx_u1_ch50
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-11"
+    id: light_${device_hostname[:3]}_u1_11
+    red: dmx_u1_ch51
+    green: dmx_u1_ch52
+    blue: dmx_u1_ch53
+    cold_white: dmx_u1_ch54
+    warm_white: dmx_u1_ch55
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-12"
+    id: light_${device_hostname[:3]}_u1_12
+    red: dmx_u1_ch56
+    green: dmx_u1_ch57
+    blue: dmx_u1_ch58
+    cold_white: dmx_u1_ch59
+    warm_white: dmx_u1_ch60
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-13"
+    id: light_${device_hostname[:3]}_u1_13 
+    red: dmx_u1_ch61
+    green: dmx_u1_ch62
+    blue: dmx_u1_ch63
+    cold_white: dmx_u1_ch64
+    warm_white: dmx_u1_ch65
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-14"
+    id: light_${device_hostname[:3]}_u1_14
+    red: dmx_u1_ch66
+    green: dmx_u1_ch67
+    blue: dmx_u1_ch68
+    cold_white: dmx_u1_ch69
+    warm_white: dmx_u1_ch70
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-15"
+    id: light_${device_hostname[:3]}_u1_15
+    red: dmx_u1_ch71
+    green: dmx_u1_ch72
+    blue: dmx_u1_ch73
+    cold_white: dmx_u1_ch74
+    warm_white: dmx_u1_ch75
+
+
+# If only this compiled properly:
+# uncomment this line to create single channel on/off lights for each DMX channel of both universes, which can be useful for testing and debugging.
+# <<: !include ./debug-lights-u1.yaml 
+
+
+# Here we define simple on/off 'lights' for each individual DMX channel, which can be useful for testing and debugging.
+  - &test_light_defaults
+    platform: monochromatic
+    internal: true
+    default_transition_length: 0s
+    gamma_correct: 0
+    id: light_u1_ch1
+    name: "U1_Ch001"
+    output: dmx_u1_ch1
+  - <<: *test_light_defaults
+    id: light_u1_ch2
+    name: "U1_Ch002"
+    output: dmx_u1_ch2
+  - <<: *test_light_defaults
+    id: light_u1_ch3
+    name: "U1_Ch003"
+    output: dmx_u1_ch3
+  - <<: *test_light_defaults
+    id: light_u1_ch4
+    name: "U1_Ch004"
+    output: dmx_u1_ch4
+  - <<: *test_light_defaults
+    id: light_u1_ch5
+    name: "U1_Ch005"
+    output: dmx_u1_ch5
+  - <<: *test_light_defaults
+    id: light_u1_ch6
+    name: "U1_Ch006"
+    output: dmx_u1_ch6
+  - <<: *test_light_defaults
+    id: light_u1_ch7
+    name: "U1_Ch007"
+    output: dmx_u1_ch7
+  - <<: *test_light_defaults
+    id: light_u1_ch8
+    name: "U1_Ch008"
+    output: dmx_u1_ch8
+  - <<: *test_light_defaults
+    id: light_u1_ch9
+    name: "U1_Ch009"
+    output: dmx_u1_ch9
+  - <<: *test_light_defaults
+    id: light_u1_ch10
+    name: "U1_Ch010"
+    output: dmx_u1_ch10
+  - <<: *test_light_defaults
+    id: light_u1_ch11
+    name: "U1_Ch011"
+    output: dmx_u1_ch11
+  - <<: *test_light_defaults
+    id: light_u1_ch12
+    name: "U1_Ch012"
+    output: dmx_u1_ch12
+  - <<: *test_light_defaults
+    id: light_u1_ch13
+    name: "U1_Ch013"
+    output: dmx_u1_ch13
+  - <<: *test_light_defaults
+    id: light_u1_ch14
+    name: "U1_Ch014"
+    output: dmx_u1_ch14
+  - <<: *test_light_defaults
+    id: light_u1_ch15
+    name: "U1_Ch015"
+    output: dmx_u1_ch15
+  - <<: *test_light_defaults
+    id: light_u1_ch16
+    name: "U1_Ch016"
+    output: dmx_u1_ch16
+  - <<: *test_light_defaults
+    id: light_u1_ch17
+    name: "U1_Ch017"
+    output: dmx_u1_ch17
+  - <<: *test_light_defaults
+    id: light_u1_ch18
+    name: "U1_Ch018"
+    output: dmx_u1_ch18
+  - <<: *test_light_defaults
+    id: light_u1_ch19
+    name: "U1_Ch019"
+    output: dmx_u1_ch19
+  - <<: *test_light_defaults
+    id: light_u1_ch20
+    name: "U1_Ch020"
+    output: dmx_u1_ch20
+  - <<: *test_light_defaults
+    id: light_u1_ch21
+    name: "U1_Ch021"
+    output: dmx_u1_ch21
+  - <<: *test_light_defaults
+    id: light_u1_ch22
+    name: "U1_Ch022"
+    output: dmx_u1_ch22
+  - <<: *test_light_defaults
+    id: light_u1_ch23
+    name: "U1_Ch023"
+    output: dmx_u1_ch23
+  - <<: *test_light_defaults
+    id: light_u1_ch24
+    name: "U1_Ch024"
+    output: dmx_u1_ch24
+  - <<: *test_light_defaults
+    id: light_u1_ch25
+    name: "U1_Ch025"
+    output: dmx_u1_ch25
+  - <<: *test_light_defaults
+    id: light_u1_ch26
+    name: "U1_Ch026"
+    output: dmx_u1_ch26
+  - <<: *test_light_defaults
+    id: light_u1_ch27
+    name: "U1_Ch027"
+    output: dmx_u1_ch27
+  - <<: *test_light_defaults
+    id: light_u1_ch28
+    name: "U1_Ch028"
+    output: dmx_u1_ch28
+  - <<: *test_light_defaults
+    id: light_u1_ch29
+    name: "U1_Ch029"
+    output: dmx_u1_ch29
+  - <<: *test_light_defaults
+    id: light_u1_ch30
+    name: "U1_Ch030"
+    output: dmx_u1_ch30
+  - <<: *test_light_defaults
+    id: light_u1_ch31
+    name: "U1_Ch031"
+    output: dmx_u1_ch31
+  - <<: *test_light_defaults
+    id: light_u1_ch32
+    name: "U1_Ch032"
+    output: dmx_u1_ch32
+  - <<: *test_light_defaults
+    id: light_u1_ch33
+    name: "U1_Ch033"
+    output: dmx_u1_ch33
+  - <<: *test_light_defaults
+    id: light_u1_ch34
+    name: "U1_Ch034"
+    output: dmx_u1_ch34
+  - <<: *test_light_defaults
+    id: light_u1_ch35
+    name: "U1_Ch035"
+    output: dmx_u1_ch35
+  - <<: *test_light_defaults
+    id: light_u1_ch36
+    name: "U1_Ch036"
+    output: dmx_u1_ch36
+  - <<: *test_light_defaults
+    id: light_u1_ch37
+    name: "U1_Ch037"
+    output: dmx_u1_ch37
+  - <<: *test_light_defaults
+    id: light_u1_ch38
+    name: "U1_Ch038"
+    output: dmx_u1_ch38
+  - <<: *test_light_defaults
+    id: light_u1_ch39
+    name: "U1_Ch039"
+    output: dmx_u1_ch39
+  - <<: *test_light_defaults
+    id: light_u1_ch40
+    name: "U1_Ch040"
+    output: dmx_u1_ch40
+  - <<: *test_light_defaults
+    id: light_u1_ch41
+    name: "U1_Ch041"
+    output: dmx_u1_ch41
+  - <<: *test_light_defaults
+    id: light_u1_ch42
+    name: "U1_Ch042"
+    output: dmx_u1_ch42
+  - <<: *test_light_defaults
+    id: light_u1_ch43
+    name: "U1_Ch043"
+    output: dmx_u1_ch43
+  - <<: *test_light_defaults
+    id: light_u1_ch44
+    name: "U1_Ch044"
+    output: dmx_u1_ch44
+  - <<: *test_light_defaults
+    id: light_u1_ch45
+    name: "U1_Ch045"
+    output: dmx_u1_ch45
+  - <<: *test_light_defaults
+    id: light_u1_ch46
+    name: "U1_Ch046"
+    output: dmx_u1_ch46
+  - <<: *test_light_defaults
+    id: light_u1_ch47
+    name: "U1_Ch047"
+    output: dmx_u1_ch47
+  - <<: *test_light_defaults
+    id: light_u1_ch48
+    name: "U1_Ch048"
+    output: dmx_u1_ch48
+  - <<: *test_light_defaults
+    id: light_u1_ch49
+    name: "U1_Ch049"
+    output: dmx_u1_ch49
+  - <<: *test_light_defaults
+    id: light_u1_ch50
+    name: "U1_Ch050"
+    output: dmx_u1_ch50
+  - <<: *test_light_defaults
+    id: light_u1_ch51
+    name: "U1_Ch051"
+    output: dmx_u1_ch51
+  - <<: *test_light_defaults
+    id: light_u1_ch52
+    name: "U1_Ch052"
+    output: dmx_u1_ch52
+  - <<: *test_light_defaults
+    id: light_u1_ch53
+    name: "U1_Ch053"
+    output: dmx_u1_ch53
+  - <<: *test_light_defaults
+    id: light_u1_ch54
+    name: "U1_Ch054"
+    output: dmx_u1_ch54
+  - <<: *test_light_defaults
+    id: light_u1_ch55
+    name: "U1_Ch055"
+    output: dmx_u1_ch55
+  - <<: *test_light_defaults
+    id: light_u1_ch56
+    name: "U1_Ch056"
+    output: dmx_u1_ch56
+  - <<: *test_light_defaults
+    id: light_u1_ch57
+    name: "U1_Ch057"
+    output: dmx_u1_ch57
+  - <<: *test_light_defaults
+    id: light_u1_ch58
+    name: "U1_Ch058"
+    output: dmx_u1_ch58
+  - <<: *test_light_defaults
+    id: light_u1_ch59
+    name: "U1_Ch059"
+    output: dmx_u1_ch59
+  - <<: *test_light_defaults
+    id: light_u1_ch60
+    name: "U1_Ch060"
+    output: dmx_u1_ch60
+  - <<: *test_light_defaults
+    id: light_u1_ch61
+    name: "U1_Ch061"
+    output: dmx_u1_ch61
+  - <<: *test_light_defaults
+    id: light_u1_ch62
+    name: "U1_Ch062"
+    output: dmx_u1_ch62
+  - <<: *test_light_defaults
+    id: light_u1_ch63
+    name: "U1_Ch063"
+    output: dmx_u1_ch63
+  - <<: *test_light_defaults
+    id: light_u1_ch64
+    name: "U1_Ch064"
+    output: dmx_u1_ch64
+  - <<: *test_light_defaults
+    id: light_u1_ch65
+    name: "U1_Ch065"
+    output: dmx_u1_ch65
+  - <<: *test_light_defaults
+    id: light_u1_ch66 
+    name: "U1_Ch066"
+    output: dmx_u1_ch66
+  - <<: *test_light_defaults
+    id: light_u1_ch67
+    name: "U1_Ch067"
+    output: dmx_u1_ch67
+  - <<: *test_light_defaults
+    id: light_u1_ch68
+    name: "U1_Ch068"
+    output: dmx_u1_ch68
+  - <<: *test_light_defaults
+    id: light_u1_ch69
+    name: "U1_Ch069"
+    output: dmx_u1_ch69
+  - <<: *test_light_defaults
+    id: light_u1_ch70
+    name: "U1_Ch070"
+    output: dmx_u1_ch70
+  - <<: *test_light_defaults
+    id: light_u1_ch71
+    name: "U1_Ch071"
+    output: dmx_u1_ch71
+  - <<: *test_light_defaults
+    id: light_u1_ch72
+    name: "U1_Ch072"
+    output: dmx_u1_ch72
+  - <<: *test_light_defaults
+    id: light_u1_ch73
+    name: "U1_Ch073"
+    output: dmx_u1_ch73
+  - <<: *test_light_defaults
+    id: light_u1_ch74
+    name: "U1_Ch074"
+    output: dmx_u1_ch74
+  - <<: *test_light_defaults
+    id: light_u1_ch75
+    name: "U1_Ch075"
+    output: dmx_u1_ch75
