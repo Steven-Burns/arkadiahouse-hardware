@@ -76,3 +76,15 @@ esptool write-flash 0 <flash-factory-file.bin>
 ## option 3
 
 Use https://adafruit.github.io/Adafruit_WebSerial_ESPTool/ to write a particular .bin via a COM port.  This is a useful option for 'bricked' devices that are not responding to over-the-air updates
+
+# updating the esphome version on an existing cloned repo
+
+## option 1
+
+pip3 install esphome --upgrade
+
+## option 2
+
+some docker incantation that will rebuild the container image. That might even be preferable to option 1 for hygenic reasons.
+
+Since the repo is cloned to a docker named volume, rebuilding the image should not torch the cloned repo.
