@@ -2,4 +2,4 @@
   file: ./hub-v6-base.yaml
   vars:
     device_hostname: 931-esphome
-    source_env_sensor_entity_id_prefix: "env_sensor_625_esphome" 
+    source_env_sensor_entity_id_prefix: "env_sensor_638_esphome" 
