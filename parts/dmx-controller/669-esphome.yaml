@@ -86,6 +86,65 @@ light:
           alpha: 0.95
           intensity: 0.015
           name: Flicker
+      - lambda:
+          name: Custom Effect 01
+          update_interval: 1s
+          lambda: |-
+            static int state = 0;
+            if (initial_run)
+            {
+              state = 0;
+            }
+            auto call = it.turn_on();
+            // Transition of 1000ms = 1s
+            call.set_transition_length(1000);
+            switch (state) {
+              case 0:
+                call.set_warm_white(0);
+                call.set_cold_white(0);
+                call.set_rgb(1.0, 1.0, 1.0);
+                break;
+              case 1:
+                call.set_rgb(1.0, 0.0, 1.0);
+                break;
+              case 2:
+                call.set_rgb(0.0, 0.0, 1.0);
+                break;
+              case 3:
+                call.set_rgb(0.0, 1.0, 0.0);
+                break;
+              case 4:
+                call.set_rgb(1.0, 1.0, 0.0);
+                break;
+              default:
+                call.set_rgb(1.0, 0.0, 0.0);
+            }
+            call.perform();
+            state++;
+            if (state == 5)
+            {
+              state = 0;
+            }
+
+# // Get all effects for a light
+# auto &effects = id(my_light).get_effects();
+# for (auto *effect : effects) {
+#   StringRef name = effect->get_name();
+#   // Compare with string literal
+#   if (name == "My Custom Effect") {
+#     ESP_LOGI("light", "Found my effect!");
+#   }
+#   // Safe logging with explicit size
+#   ESP_LOGI("light", "Effect: %.*s", (int) name.size(), name.c_str());
+# }
+
+# // Get currently active effect
+# StringRef current = id(my_light).get_effect_name();
+# if (current == "None") {
+#   ESP_LOGI("light", "No effect active");
+# } else {
+#   ESP_LOGI("light", "Active effect: %.*s", (int) current.size(), current.c_str());
+# }
 
   - <<: *light_defaults
     name: "Light ${device_hostname[:3]}-U1-02"
@@ -200,6 +259,15 @@ light:
     blue: dmx_u1_ch73
     cold_white: dmx_u1_ch74
     warm_white: dmx_u1_ch75
+
+  - <<: *light_defaults
+    name: "Light ${device_hostname[:3]}-U1-16"
+    id: light_${device_hostname[:3]}_u1_16
+    red: dmx_u1_ch76
+    green: dmx_u1_ch77
+    blue: dmx_u1_ch78
+    cold_white: dmx_u1_ch79
+    warm_white: dmx_u1_ch80
 
 
 # If only this compiled properly:
@@ -512,3 +580,23 @@ light:
     id: light_u1_ch75
     name: "U1_Ch075"
     output: dmx_u1_ch75
+  - <<: *test_light_defaults
+    id: light_u1_ch76
+    name: "U1_Ch076"
+    output: dmx_u1_ch76
+  - <<: *test_light_defaults
+    id: light_u1_ch77
+    name: "U1_Ch077"
+    output: dmx_u1_ch77
+  - <<: *test_light_defaults
+    id: light_u1_ch78
+    name: "U1_Ch078"
+    output: dmx_u1_ch78
+  - <<: *test_light_defaults
+    id: light_u1_ch79
+    name: "U1_Ch079"
+    output: dmx_u1_ch79
+  - <<: *test_light_defaults
+    id: light_u1_ch80
+    name: "U1_Ch080"
+    output: dmx_u1_ch80

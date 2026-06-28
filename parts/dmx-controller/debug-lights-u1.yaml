@@ -305,26 +305,27 @@ light:  # Here we define simple on/off 'lights' for each individual DMX channel,
     output: dmx_u1_ch75
     
 # as a matter of practicality, I don't have any hardware that needs more than 75 channels.
-  # - <<: *test_light_defaults
-  #   id: light_u1_ch76
-  #   name: "U1_Ch076"
-  #   output: dmx_u1_ch76
-  # - <<: *test_light_defaults
-  #   id: light_u1_ch77
-  #   name: "U1_Ch077"
-  #   output: dmx_u1_ch77
-  # - <<: *test_light_defaults
-  #   id: light_u1_ch78
-  #   name: "U1_Ch078"
-  #   output: dmx_u1_ch78
-  # - <<: *test_light_defaults
-  #   id: light_u1_ch79
-  #   name: "U1_Ch079"
-  #   output: dmx_u1_ch79
-  # - <<: *test_light_defaults
-  #   id: light_u1_ch80
-  #   name: "U1_Ch080"
-  #   output: dmx_u1_ch80
+
+  - <<: *test_light_defaults
+    id: light_u1_ch76
+    name: "U1_Ch076"
+    output: dmx_u1_ch76
+  - <<: *test_light_defaults
+    id: light_u1_ch77
+    name: "U1_Ch077"
+    output: dmx_u1_ch77
+  - <<: *test_light_defaults
+    id: light_u1_ch78
+    name: "U1_Ch078"
+    output: dmx_u1_ch78
+  - <<: *test_light_defaults
+    id: light_u1_ch79
+    name: "U1_Ch079"
+    output: dmx_u1_ch79
+  - <<: *test_light_defaults
+    id: light_u1_ch80
+    name: "U1_Ch080"
+    output: dmx_u1_ch80
   # - <<: *test_light_defaults
   #   id: light_u1_ch81
   #   name: "U1_Ch081"
