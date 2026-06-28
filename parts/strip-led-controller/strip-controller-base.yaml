@@ -1,9 +1,3 @@
-# base configuration for all v1.x Arkadia wired LED strip controller hardware.
-
-substitutions:
-  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
-  device_comment: SPECIFY_COMMENT_WHEN_INCLUDING_BASELINE_YAML
-
 packages:
   diagnostics: !include 
     file: /workspace/include/diagnostics.yaml
