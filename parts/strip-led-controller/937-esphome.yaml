@@ -1,5 +1,70 @@
+substitutions:
+  device_hostname: 937-esphome
+  device_comment: "Controls strip xxx and yyy."
+
 <<: !include 
   file: ./strip-controller-base.yaml
-  vars:
-    device_hostname: "937-esphome"
-    device_comment: "Controls lights xxx through yyy."
+
+light:
+  - &light_strip_defaults
+    platform: esp32_rmt_led_strip
+    pin: GPIO27
+    chipset: ws2812
+    is_wrgb: false
+    default_transition_length: 0s
+    gamma_correct: 1.0
+    effects:
+      - addressable_random_twinkle:
+      - addressable_fireworks:
+      - addressable_fireworks:
+          name: Fireworks 2
+          update_interval: 32ms
+          spark_probability: 30%
+          use_random_color: false
+          fade_out_rate: 120      
+      - addressable_twinkle:
+      - addressable_twinkle:
+          name: Twinkle 2
+          twinkle_probability: 75%
+          progress_interval: 4ms      
+      - addressable_scan:
+      - addressable_scan:
+          name: cylon eye
+          move_interval: 1ms
+          scan_width: 20      
+      - addressable_rainbow:
+      - strobe:
+      - pulse:
+      - addressable_color_wipe:
+      - addressable_color_wipe:
+          name: Color Wipe 2
+          colors:
+            - red: 100%
+              green: 100%
+              blue: 100%
+              num_leds: 5
+              gradient: true
+            - red: 0%
+              green: 0%
+              blue: 0%
+              num_leds: 1
+          add_led_interval: 100ms
+          reverse: false      
+      - random:
+      - flicker:
+      - addressable_flicker:
+      - addressable_flicker:
+          name: Flicker 2
+          update_interval: 16ms
+          intensity: 25%      
+    name: "Strip ${device_hostname[:3]}-1"
+    id: strip_${device_hostname[:3]}_1
+    rgb_order: RGB
+    num_leds: ${96 * 5}
+  - <<: *light_strip_defaults
+    pin: GPIO25
+    name: "Strip ${device_hostname[:3]}-2"
+    id: strip_${device_hostname[:3]}_2
+    num_leds: ${96 * 1}
+
+
