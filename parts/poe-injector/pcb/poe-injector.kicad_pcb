@@ -1580,6 +1580,7 @@
 		(property "Reference" "PWR_IN1"
 			(at 8.890001 -0.2231 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "5b4fed67-1b05-4b37-ad44-6ee97cb520d4")
 			(effects
 				(font
@@ -2731,6 +2732,7 @@
 		(property "Reference" "SW2"
 			(at -7.1628 0.6096 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "9b27bbee-7cd2-4c35-aa5a-fa0cc954195a")
 			(effects
 				(font
@@ -3380,31 +3382,8 @@
 		(layer "Edge.Cuts")
 		(uuid "487d49f0-c37a-4c22-ba2a-b56de1c4e1fd")
 	)
-	(gr_text "(+)"
-		(at 118.872 22.2758 0)
-		(layer "F.SilkS")
-		(uuid "81ae850c-2138-41f4-a845-b7d64db8077e")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify left bottom)
-		)
-	)
-	(gr_text "+12V GND"
-		(at 82.0928 21.1328 180)
-		(layer "F.SilkS")
-		(uuid "6b83ca7a-ddf6-4e44-87f7-c34f543be959")
-		(effects
-			(font
-				(size 1.5 1.5)
-				(thickness 0.1875)
-			)
-		)
-	)
-	(gr_text "PoE Inj + Surge Prot rev 1.5"
-		(at 88.138 50.1904 0)
+	(gr_text "PoE Inj + Surge Prot rev 1.5.1"
+		(at 85.725 50.165 0)
 		(layer "F.SilkS")
 		(uuid "7a8ca8bc-f746-4da7-a720-36335aea8f66")
 		(effects
@@ -3414,6 +3393,28 @@
 				(bold yes)
 			)
 			(justify left bottom)
+		)
+	)
+	(gr_text "DC-"
+		(at 74.93 23.495 90)
+		(layer "F.SilkS")
+		(uuid "921de9e2-343d-4758-b4f8-2db35b7ff185")
+		(effects
+			(font
+				(size 2 2)
+				(bold yes)
+			)
+		)
+	)
+	(gr_text "DC+"
+		(at 89.535 21.59 180)
+		(layer "F.SilkS")
+		(uuid "6b83ca7a-ddf6-4e44-87f7-c34f543be959")
+		(effects
+			(font
+				(size 2 2)
+				(bold yes)
+			)
 		)
 	)
 	(gr_text "IN"
@@ -3434,6 +3435,18 @@
 		(effects
 			(font
 				(size 3 3)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "(+)"
+		(at 118.11 21.59 0)
+		(layer "B.SilkS")
+		(uuid "81ae850c-2138-41f4-a845-b7d64db8077e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify left bottom)
 		)
@@ -3847,28 +3860,12 @@
 		(uuid "4419ed9c-bca2-46fb-870e-13125b9ebfc8")
 	)
 	(segment
-		(start 97.4511 22.7548)
+		(start 97.9555 22.2504)
 		(end 91.44 28.7659)
 		(width 0.4)
 		(layer "B.Cu")
 		(net "Net-(SW2-A)")
-		(uuid "044ab55a-002e-44a3-9460-509a6ed7615e")
-	)
-	(segment
-		(start 98.6028 22.2504)
-		(end 97.4511 22.2504)
-		(width 0.4)
-		(layer "B.Cu")
-		(net "Net-(SW2-A)")
-		(uuid "25747460-aab9-464d-b7e2-06a6f145b2e2")
-	)
-	(segment
-		(start 91.44 28.7659)
-		(end 91.44 35.56)
-		(width 0.4)
-		(layer "B.Cu")
-		(net "Net-(SW2-A)")
-		(uuid "2924ed61-6bee-463b-a5ce-c8fdae0dbb3b")
+		(uuid "9abcec79-83a6-4e06-abcd-4196bb355848")
 	)
 	(segment
 		(start 105.41 27.8279)
@@ -3879,12 +3876,20 @@
 		(uuid "b4408ba1-5c07-4fd1-8d60-9447a2fad22c")
 	)
 	(segment
-		(start 97.4511 22.2504)
-		(end 97.4511 22.7548)
+		(start 91.44 28.7659)
+		(end 91.44 35.56)
 		(width 0.4)
 		(layer "B.Cu")
 		(net "Net-(SW2-A)")
-		(uuid "e905e475-56ef-46cc-9ffa-5f723fcb0358")
+		(uuid "c593edbe-1682-4600-960f-c4702a96b8f0")
+	)
+	(segment
+		(start 98.6028 22.2504)
+		(end 97.9555 22.2504)
+		(width 0.4)
+		(layer "B.Cu")
+		(net "Net-(SW2-A)")
+		(uuid "fc393562-7dc4-4a61-8375-23afa7e11540")
 	)
 	(segment
 		(start 113.9105 36.3284)
