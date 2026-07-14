@@ -3372,17 +3372,17 @@
 		)
 	)
 	(gr_rect
-		(start 68.58 19.8628)
-		(end 127 50.8)
+		(start 67.889 20.066)
+		(end 127.889 51.066)
 		(stroke
 			(width 0.05)
-			(type default)
+			(type solid)
 		)
 		(fill no)
 		(layer "Edge.Cuts")
 		(uuid "487d49f0-c37a-4c22-ba2a-b56de1c4e1fd")
 	)
-	(gr_text "PoE Inj + Surge Prot rev 1.5.1"
+	(gr_text "PoE Inj + Surge Prot rev 1.5.2"
 		(at 85.725 50.165 0)
 		(layer "F.SilkS")
 		(uuid "7a8ca8bc-f746-4da7-a720-36335aea8f66")
