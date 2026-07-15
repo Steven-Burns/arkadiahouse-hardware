@@ -60,11 +60,11 @@ light:
     name: "Strip ${device_hostname[:3]}-1"
     id: strip_${device_hostname[:3]}_1
     rgb_order: RGB
-    num_leds: ${144 * 1}
+    num_leds: 367
   - <<: *light_strip_defaults
     pin: GPIO25
     name: "Strip ${device_hostname[:3]}-2"
     id: strip_${device_hostname[:3]}_2
-    num_leds: ${96 * 1}
+    num_leds: 353
 
 
