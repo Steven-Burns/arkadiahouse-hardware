@@ -67,7 +67,7 @@ Use esphome's over-the-air updater: esphome upload or esphome run to flash a sin
 
 ## option 2
 
-Flash the "factory" .bin file (the one that has "factory" in the filename) with esptool
+Flash the "factory" .bin file (the one that has "factory" in the filename) with esptool.  Run this on the host to which the board is connected via USB.  This will flash to the first detected COM port with an ESP32 attached.
 
 ```DOS
 esptool write-flash 0 <flash-factory-file.bin>
