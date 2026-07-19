@@ -1,0 +1,42 @@
+packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+    vars:
+      builtin_led_pin: "GPIO2"
+  standard_device: !include
+    file: /workspace/include/standard-home-assistant-device.yaml
+  wifi: !include  
+    file: /workspace/include/wifi.yaml
+
+esp32:
+  # board: nodemcu-32s <-- This also works for the wemos d1 mini 
+  board: wemos_d1_mini32
+  cpu_frequency: 240MHZ
+  toolchain: esp-idf  
+  framework:
+    type: esp-idf
+    advanced:
+      minimum_chip_revision: "3.1"
+      sram1_as_iram: true
+#      enable_ota_rollback: false
+
+esphome:
+  name: ${device_hostname}
+  friendly_name: "Baseline ${device_hostname[:3]}"
+  comment: ${device_comment}
+  name_add_mac_suffix: false
+  project:
+    name: "ArkadiaHouse.Baseline"
+    version: "1.0"
+
+logger:
+  level: DEBUG
+  # baud_rate = 0 will disable serial logging (API access to logs should still work, tho)
+  # we explicitly set the logger baud rate to 115200 so that UART0 is allocated, and our uart components start with 
+  # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
+  # logger baud rate to 0.  Then uart initialization would start with UART0.
+  baud_rate: 115200
+  logs:
+    # turn the volume down on sensors as some are really noisy
+    sensor: ERROR
+
