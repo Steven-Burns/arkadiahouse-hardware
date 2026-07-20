@@ -108,7 +108,7 @@
 			(pdf_back_fp_property_popups yes)
 			(pdf_metadata yes)
 			(pdf_single_document no)
-			(dxfpolygonmode no)
+			(dxfpolygonmode yes)
 			(dxfimperialunits no)
 			(dxfusepcbnewfont yes)
 			(psnegative no)
