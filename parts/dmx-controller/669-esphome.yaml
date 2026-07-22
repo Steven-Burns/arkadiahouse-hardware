@@ -1,7 +1,6 @@
 substitutions:
   device_hostname: 669-esphome
   device_comment: "Controls lights DLxxx through DLyyy."
-  light_prefix: ${device_hostname[:3]}
 
 <<: !include 
   file: ./dmx-base.yaml
@@ -9,8 +8,7 @@ substitutions:
 <<: !include 
   file: ./outputs-u1-001-155.yaml
 
-
-# none of this goo compiles reliably.
+# none of this goo compiles reliably
 #packages:
 #  light0: !include ./rgbww-lights-u1.00-04.yaml
 #  light1: !include ./rgbww-lights-u1.05-09.yaml
