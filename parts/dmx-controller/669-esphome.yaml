@@ -10,9 +10,6 @@ packages:
   base: !include 
     file: ./dmx-base.yaml
 
-# <<: !include 
-#   file: ./dmx-base.yaml
-
 
 # none of this goo compiles reliably
 #packages:
@@ -42,6 +39,9 @@ light:
     cold_white: dmx_u1_ch4
     warm_white: dmx_u1_ch5
     effects:
+      - pulse:
+      - strobe:
+      - flicker:
       - random:
           transition_length: 3s
           update_interval: 7s
