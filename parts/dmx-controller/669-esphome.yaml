@@ -25,9 +25,12 @@ light:
     name: "Light ${device_hostname[:3]}-U1-01"
     id: light_${device_hostname[:3]}_u1_01
     default_transition_length: 0s
-    gamma_correct: 1.0
+    gamma_correct: 2.8
     disabled_by_default: false
-    restore_mode: ALWAYS_OFF
+    restore_mode: RESTORE_AND_OFF
+    initial_state: 
+      state: OFF
+      color_mode: RGB_COLD_WARM_WHITE
     flash_transition_length: 0s
     constant_brightness: false
     color_interlock: false
@@ -40,12 +43,162 @@ light:
     warm_white: dmx_u1_ch5
     effects:
       - pulse:
+          name: "Slow Pulse"
+          transition_length: 4.5s
+          update_interval: 5s
+          min_brightness: 0%
+          max_brightness: 100%
       - strobe:
+          name: Color Switcher
+          colors:
+            - state: true
+              red: 100%
+              green: 0%
+              blue: 0%
+              cold_white: 0%
+              warm_white: 0%
+              duration: 1250ms
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 100%
+              blue: 0%
+              cold_white: 0%
+              warm_white: 0%
+              duration: 1250ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 0%
+              blue: 100%
+              cold_white: 0%
+              warm_white: 0%
+              duration: 1250ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 100%
+              warm_white: 0%
+              duration: 1250ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 0%
+              warm_white: 100%
+              duration: 1250ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 100%
+              green: 100%
+              blue: 0%
+              cold_white: 0%
+              warm_white: 0%
+              duration: 1250ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 100%
+              blue: 100%
+              cold_white: 0%
+              warm_white: 100%
+              duration: 1250ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 100%
+              green: 0%
+              blue: 100%
+              cold_white: 0%
+              warm_white: 100%
+              duration: 1250ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 100%
+              warm_white: 100%
+              duration: 1250ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
       - flicker:
       - random:
-          transition_length: 3s
-          update_interval: 7s
+          transition_length: 1s
+          update_interval: 2s
           name: Random
+      - random:
+          transition_length: 250ms
+          update_interval: 1s
+          name: Fast Random
+      - random:
+          transition_length: 100ms
+          update_interval: 500ms
+          name: Very Fast Random
       - lambda:
           name: Custom Effect 01
           update_interval: 6s
