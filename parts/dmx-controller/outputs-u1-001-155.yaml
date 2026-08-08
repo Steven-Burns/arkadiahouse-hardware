@@ -561,64 +561,64 @@ output:
     channel: 140
     universe: dmx_u1
     id: dmx_u1_ch140
-  - platform: dmx512
-    channel: 141 
-    universe: dmx_u1
-    id: dmx_u1_ch141
-  - platform: dmx512
-    channel: 142
-    universe: dmx_u1
-    id: dmx_u1_ch142
-  - platform: dmx512
-    channel: 143
-    universe: dmx_u1
-    id: dmx_u1_ch143
-  - platform: dmx512
-    channel: 144
-    universe: dmx_u1
-    id: dmx_u1_ch144
-  - platform: dmx512
-    channel: 145
-    universe: dmx_u1
-    id: dmx_u1_ch145
-  - platform: dmx512
-    channel: 146
-    universe: dmx_u1
-    id: dmx_u1_ch146
-  - platform: dmx512
-    channel: 147
-    universe: dmx_u1
-    id: dmx_u1_ch147
-  - platform: dmx512
-    channel: 148
-    universe: dmx_u1
-    id: dmx_u1_ch148
-  - platform: dmx512
-    channel: 149
-    universe: dmx_u1
-    id: dmx_u1_ch149
-  - platform: dmx512
-    channel: 150
-    universe: dmx_u1
-    id: dmx_u1_ch150
-  - platform: dmx512
-    channel: 151
-    universe: dmx_u1
-    id: dmx_u1_ch151
-  - platform: dmx512
-    channel: 152
-    universe: dmx_u1
-    id: dmx_u1_ch152
-  - platform: dmx512
-    channel: 153
-    universe: dmx_u1
-    id: dmx_u1_ch153
-  - platform: dmx512
-    channel: 154
-    universe: dmx_u1
-    id: dmx_u1_ch154
-  - platform: dmx512
-    channel: 155
-    universe: dmx_u1
-    id: dmx_u1_ch155
+  # - platform: dmx512
+  #   channel: 141 
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch141
+  # - platform: dmx512
+  #   channel: 142
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch142
+  # - platform: dmx512
+  #   channel: 143
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch143
+  # - platform: dmx512
+  #   channel: 144
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch144
+  # - platform: dmx512
+  #   channel: 145
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch145
+  # - platform: dmx512
+  #   channel: 146
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch146
+  # - platform: dmx512
+  #   channel: 147
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch147
+  # - platform: dmx512
+  #   channel: 148
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch148
+  # - platform: dmx512
+  #   channel: 149
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch149
+  # - platform: dmx512
+  #   channel: 150
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch150
+  # - platform: dmx512
+  #   channel: 151
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch151
+  # - platform: dmx512
+  #   channel: 152
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch152
+  # - platform: dmx512
+  #   channel: 153
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch153
+  # - platform: dmx512
+  #   channel: 154
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch154
+  # - platform: dmx512
+  #   channel: 155
+  #   universe: dmx_u1
+  #   id: dmx_u1_ch155
 
