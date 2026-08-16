@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "local_project") (type "KiCad") (uri "C:/Users/steve/repos/arkadiahouse-hardware/parts/sensor-hub/hub/pcb") (options "") (descr ""))
+)
