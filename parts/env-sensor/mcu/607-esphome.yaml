@@ -1,6 +1,0 @@
-substitutions:
-  device_hostname: 607-esphome
-
-<<: !include ./env-sense-base.yaml
-
-
