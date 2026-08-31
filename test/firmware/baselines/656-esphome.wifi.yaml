@@ -1,5 +1,6 @@
 <<: !include 
-  file: /workspace/include/wemos-d1-mini-wifi-baseline.yaml
+  file: /workspace/test/firmware/baselines/wemos-d1-mini-baseline.yaml
   vars:
-    
+    device_hostname: 656-esphome
+    device_comment: "ESPHome 656 baseline."
 
