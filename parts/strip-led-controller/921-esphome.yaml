@@ -1,5 +1,0 @@
-<<: !include 
-  file: ./strip-controller-base.yaml
-  vars:
-    device_hostname: "921-esphome"
-    device_comment: "Controls lights xxx through yyy."

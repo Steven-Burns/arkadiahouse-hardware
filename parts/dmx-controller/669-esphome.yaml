@@ -1,6 +1,5 @@
 substitutions:
   device_hostname: 669-esphome
-  device_comment: "Controls lights DLxxx through DLyyy."
 
 packages:
   universe1_outputs: !include 
@@ -25,7 +24,7 @@ light:
     name: "Light ${device_hostname[:3]}-U1-01"
     id: light_${device_hostname[:3]}_u1_01
     default_transition_length: 0s
-    gamma_correct: 2.8
+    gamma_correct: 1.0
     disabled_by_default: false
     restore_mode: RESTORE_AND_OFF
     initial_state: 
@@ -186,7 +185,144 @@ light:
             #   warm_white: 0%
             #   duration: 150ms
 
-      - flicker:
+      - strobe:
+          name: As Fast As Possible Color Switcher
+          colors:
+            - state: true
+              red: 100%
+              green: 0%
+              blue: 0%
+              cold_white: 0%
+              warm_white: 0%
+              duration: 50ms
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 100%
+              blue: 0%
+              cold_white: 0%
+              warm_white: 0%
+              duration: 50ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 0%
+              blue: 100%
+              cold_white: 0%
+              warm_white: 0%
+              duration: 50ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 100%
+              warm_white: 0%
+              duration: 50ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 0%
+              warm_white: 100%
+              duration: 50ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 100%
+              green: 100%
+              blue: 0%
+              cold_white: 0%
+              warm_white: 0%
+              duration: 50ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 100%
+              blue: 100%
+              cold_white: 0%
+              warm_white: 100%
+              duration: 50ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 100%
+              green: 0%
+              blue: 100%
+              cold_white: 0%
+              warm_white: 100%
+              duration: 50ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
+            - state: true
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 100%
+              warm_white: 100%
+              duration: 50ms 
+            # - state: true
+            #   red: 0%
+            #   green: 0%
+            #   blue: 0%
+            #   cold_white: 0%
+            #   warm_white: 0%
+            #   duration: 150ms
+
       - random:
           transition_length: 1s
           update_interval: 2s

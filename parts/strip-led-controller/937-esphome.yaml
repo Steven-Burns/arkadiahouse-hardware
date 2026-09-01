@@ -1,18 +1,16 @@
 substitutions:
   device_hostname: 937-esphome
-  device_comment: "Controls strip xxx and yyy."
 
-<<: !include 
-  file: ./strip-controller-base.yaml
+packages:
+  strip_controller_base: !include ./strip-controller-base.yaml
 
 light:
   - &light_strip_defaults
     platform: esp32_rmt_led_strip
-    pin: GPIO27
     chipset: ws2812
-    is_wrgb: false
     default_transition_length: 0s
     gamma_correct: 1.0
+    channel_colors: RGB
     effects:
       - addressable_random_twinkle:
       - addressable_fireworks:
@@ -57,9 +55,9 @@ light:
           name: Flicker 2
           update_interval: 16ms
           intensity: 25%      
+    pin: GPIO27
     name: "Strip ${device_hostname[:3]}-1"
     id: strip_${device_hostname[:3]}_1
-    rgb_order: RGB
     num_leds: ${96 * 1}
   - <<: *light_strip_defaults
     pin: GPIO25

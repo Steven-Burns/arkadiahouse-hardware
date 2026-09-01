@@ -37,7 +37,7 @@ esp32:
 esphome:
   name: ${device_hostname}
   friendly_name: "Pixelstrip Controller ${device_hostname[:3]}"
-  comment: ${device_comment}
+  comment: "Controls LED pixel light strips."
   name_add_mac_suffix: false
   project:
     name: "ArkadiaHouse.PixelstripController"
