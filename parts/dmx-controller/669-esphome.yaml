@@ -8,7 +8,8 @@ packages:
     file: ./outputs-u2-001-155.yaml
   base: !include 
     file: ./dmx-base.yaml
-
+    vars:
+      device_hostname: 669-esphome
 
 # none of this goo compiles reliably
 #packages:

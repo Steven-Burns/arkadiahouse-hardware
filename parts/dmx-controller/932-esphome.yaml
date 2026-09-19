@@ -1,9 +1,13 @@
-substitutions:
-  device_hostname: 932-esphome
-  device_comment: "Controls lights DLxxx through DLyyy."
+packages:
+  outputs: !include 
+    file: ./outputs-u1-001-155.yaml
+  # this defines a single channel on/off light for each DMX channel of both universes, which can be useful for testing and debugging.
+  debug-lights: !include
+    file: ./debug-lights-u1.yaml
+  base: !include
+    file: ./dmx-base.yaml
+    vars:
+      device_hostname: 932-esphome
 
-<<: !include 
-  file: ./dmx-base.yaml
 
-<<: !include 
-  file: ./outputs-u1-001-155.yaml
+

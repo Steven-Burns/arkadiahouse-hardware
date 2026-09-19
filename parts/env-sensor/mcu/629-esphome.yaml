@@ -1,6 +1,6 @@
-substitutions:
-  device_hostname: 629-esphome
-
-<<: !include ./env-sense-base.yaml
-
+packages:
+  base: !include
+    file: ./env-sense-base.yaml
+    vars: 
+      device_hostname: 629-esphome
 

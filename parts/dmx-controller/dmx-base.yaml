@@ -3,7 +3,6 @@
 
 substitutions:
   device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
-  device_comment: SPECIFY_COMMENT_WHEN_INCLUDING_BASELINE_YAML
 
 external_components:
   - source: github://andyboeh/esphome-dmx512

@@ -561,6 +561,11 @@ output:
     channel: 140
     universe: dmx_u1
     id: dmx_u1_ch140
+  #
+  # My DMX hardware appears to have a practical max limit of 30 devices per universe.
+  # I'll truncate that to 28 devices (140 channels) to leave a little safety margin 
+  # in case I get into a pinch and need 2 extra devices on the same universe.
+  #
   # - platform: dmx512
   #   channel: 141 
   #   universe: dmx_u1
