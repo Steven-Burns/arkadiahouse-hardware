@@ -7,7 +7,7 @@ packages:
 light:
   - &light_strip_defaults
     platform: esp32_rmt_led_strip
-    chipset: ws2812
+    chipset: ws2811
     default_transition_length: 0s
     gamma_correct: 1.0
     channel_colors: RGB
