@@ -58,7 +58,7 @@ light:
     pin: GPIO27
     name: "Strip ${device_hostname[:3]}-1"
     id: strip_${device_hostname[:3]}_1
-    num_leds: 1
+    num_leds: 2
   - <<: *light_strip_defaults
     pin: GPIO25
     name: "Strip ${device_hostname[:3]}-2"
