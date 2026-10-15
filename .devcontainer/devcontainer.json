@@ -31,7 +31,7 @@
   "mounts": 
   [
     // this is convenient for copying files back and forth between the (Windows) host and the container
-    "type=bind,source=c:\\temp,target=/host/temp"
+    "type=bind,source=t:\\devcontainer-temp,target=/host/temp"
   ],
 
   // This is a reference to a named docker volume that is assumed to already exist (created manually
