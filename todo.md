@@ -4,5 +4,12 @@ Revise the design of the keypad to use the interrupt-driven feature of the pin e
 
 Figure out the KiCad command line and do fully automated command-line builds using the KiCad container.  See https://hub.docker.com/r/kicad/kicad
 
-Work out the workflow for a "release" -- probably something along the lines of creating a git branch, building, doing some sort of testing (heh), and then checking in the built binaries (instead of discarding them, which is current practice).
+Automate the workflow for a "release" -- probably something along the lines of:
+    * creating a git branch representing the release
+    * building in some build pipeline workflow thingy , 
+    * doing some sort of testing (heh), 
+    * checking in the built binaries for archival
+    * flashing all the devices
+
+Using some fancypants internet-hosted workflow engine like GitHub or Azure DevOps or whatever would be the trendy thing to do, but more dependencies that I will forget the details of maintaining does not seem like a win over a locally run script.
  
