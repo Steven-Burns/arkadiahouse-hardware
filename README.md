@@ -51,12 +51,23 @@ Copy/create the secrets.yaml file to /include/secrets.yaml (in the container vol
 
 If you have a secrets.yaml file on a cloned repo outside the container, note that the devcontainer.json configures a volume mount to the host's c:\temp folder.  The mount is /host/temp
 
+(I keep copies of my secrets.yaml files in my OneDrive Personal Vault.)
+
 # batch building
 
 PowerShell to the rescue.
 
 ```DOS
-dir ???-*.yaml | % { esphome compile $_ }
+dir ???-esphome.yaml -recurse | % { esphome compile $_ }
+```
+
+Or if you're going to flash the binaries with USB, this is handy.  Copies the compiled binaries to the host.
+
+```DOS
+("662","656") | 
+% { dir ($_ + "-esphome.yaml") -recurse} | 
+% { esphome compile $_; copy ($_.Directory.FullName + "/.esphome/build/" + $_.BaseName + "/build/firmware.factory.bin") ("/host/temp/" + $_.BaseName + ".firmware.factory.bin") -verbose}
+
 ```
 
 # flashing
@@ -85,6 +96,15 @@ pip3 install esphome --upgrade
 
 ## option 2
 
-some docker incantation that will rebuild the container image. That might even be preferable to option 1 for hygenic reasons.
+Use this docker incantation to update and rebuild the base image of the container's image (this is the FROM ... AS line in the Dockerfile)
 
-Since the repo is cloned to a docker named volume, rebuilding the image should not torch the cloned repo.
+```DOS
+docker pull ghcr.io/esphome/esphome:stable
+```
+
+Then have VSCode rebuild the container.
+
+Since the repo is cloned to a docker named volume, rebuilding the image should not touch the cloned repo on the named volume.
+
+This technique IMO is preferable to option 1 as all the dependencies are cleanly bundled.
+
