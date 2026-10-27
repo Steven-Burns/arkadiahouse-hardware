@@ -1,0 +1,135 @@
+# a version of the diagnostics configuration package that works with esp8266 MCUs
+
+substitutions:
+  builtin_led_pin: GPIO2
+
+debug:
+  update_interval: 60s
+
+text_sensor:
+  - platform: debug
+    device:
+      name: "Device Info"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+    reset_reason:
+      name: "Previous Reset Reason"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+  - platform: version
+    name: Firmware Version
+    entity_category: "diagnostic"
+    icon: "mdi:information-box"
+    internal: false
+  # the ESPHome version is the first chunk of the Firmware Version; commenting 
+  # this out as it is redundant
+  # - platform: version
+  #   id: esphome_version
+  #   name: ESPHome Version
+  #   hide_timestamp: true
+  #   entity_category: diagnostic
+  #   internal: true
+
+  # also available, but I don't know what I'd use them for:
+  #   lambda: return { ESPHOME_PROJECT_NAME " " ESPHOME_PROJECT_VERSION };
+
+  - platform: template
+    name: "Firmware Build Timestamp"
+    id: firmware_build_timestamp
+    # using device_class timestamp causes the value to stop updating the server. IDK why.
+    #device_class: timestamp
+    entity_category: "diagnostic"
+    icon: "mdi:information-box"
+    internal: false
+    lambda: return { __DATE__ "::" __TIME__ };
+    # You'd think update_interval never would mean set it once, and never change it again.
+    # But, no, it means "never set it."  Not useful.
+    update_interval: 86400s
+
+sensor:
+  - platform: uptime
+    name: Uptime (approx)
+    id: sys_uptime_id
+    state_class: total_increasing
+    update_interval: 60s
+    entity_category: "diagnostic"
+    icon: "mdi:information-box"
+  - platform: debug
+    cpu_frequency:
+      name: "CPU Speed"
+      id: sys_esp_cpu_freq
+      unit_of_measurement: Hz
+      state_class: measurement
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+      internal: true
+      filters:
+        delta: 1
+    free:
+      name: "Heap Free"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+      unit_of_measurement: B
+      state_class: measurement
+      device_class: data_size
+      internal: true
+      filters:
+        delta: 100
+    block:
+      name: "Heap Max Block"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+      unit_of_measurement: B
+      device_class: data_size
+      internal: true
+      filters:
+        delta: 100
+    loop_time:
+      name: "Loop Time"
+      entity_category: "diagnostic"
+      icon: "mdi:information-box"
+      filters:
+        delta: 5
+    # this stat is not avail on hardware that does not have PSRAM.
+    # psram:
+    #   name: "PSRAM Free"
+    #   entity_category: "diagnostic"
+    #   unit_of_measurement: B
+    #   state_class: measurement
+    #   device_class: data_size
+    #   internal: true
+    #   filters:
+    #     delta: 100
+    
+binary_sensor:
+  - platform: status
+    name: "Is Device Online"
+    entity_category: "diagnostic"
+    icon: "mdi:information-box"
+
+button:
+  - platform: restart
+    icon: mdi:power-cycle
+    name: "Safely Restart Device"
+    entity_category: diagnostic
+
+# this combination of output and interval will blink the on-board led
+# without creating a home assistant entity. No entity means that the 
+# state transitions will not be communicated with Home Assistant and 
+# therefore generate no traffic no data logging history. This blinky is 
+# just to tell me that the "loop is running."
+
+output:
+  - platform: gpio
+    id: on_board_led_id
+    pin:
+      number: ${builtin_led_pin}
+      mode: output
+
+interval:
+  - interval: 500ms
+    then:
+      lambda: |- 
+        static bool led_is_on = false;
+        led_is_on = !led_is_on;
+        id(on_board_led_id)->set_state(led_is_on);

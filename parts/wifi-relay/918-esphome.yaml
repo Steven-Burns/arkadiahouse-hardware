@@ -1,0 +1,6 @@
+packages:
+  base: !include
+    file: ./relay-base.yaml
+    vars:
+      device_hostname: 918-esphome
+

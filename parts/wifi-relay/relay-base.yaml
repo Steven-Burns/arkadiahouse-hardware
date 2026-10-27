@@ -1,0 +1,59 @@
+# base configuration for all v1.x Arkadia WiFi connected relays.
+
+substitutions:
+  device_hostname: SPECIFY_HOSTNAME_WHEN_INCLUDING_BASELINE_YAML
+
+packages:
+  diagnostics: !include 
+    file: /workspace/include/esp8266-diagnostics.yaml
+    vars:
+      builtin_led_pin: "GPIO2"
+  lite_device: !include
+    file: /workspace/include/lite-home-assistant-device.yaml
+  wifi: !include
+    file: /workspace/include/wifi.yaml
+
+esp8266:
+  board: esp01_1m
+# https://esphome.io/components/esp8266 "early_pin_init (Optional, boolean): Specifies
+# whether pins should be initialised as early as possible to known values. Recommended 
+# value is false where switches are involved, as these will toggle when updating the 
+# firmware or when restarting the device"
+# setting this to false seems to prevent the gadget from triggering the relay on boot.
+  early_pin_init: false
+
+esphome:
+  name: ${device_hostname}
+  friendly_name: "Relay ${device_hostname[:3]}" 
+  comment: "WiFi enabled relay switcheroo."
+  name_add_mac_suffix: false
+  project:
+    name: "ArkadiaHouse.WiFiRelay"
+    version: "1.2"
+
+logger:
+  level: DEBUG
+  baud_rate: 115200
+
+
+switch:
+  - platform: gpio
+    name: "Relay 0"
+    id: relay_0_id
+    restore_mode: ALWAYS_OFF
+    pin: 
+      number: GPIO0
+      inverted: true
+      mode:
+        output: true
+
+# this is how to do a "pulsing relay"
+    # on_turn_on:
+    #   # the action here is to "pulse" the switch -- turn it off 
+    #   # after it has been turned on for 250ms.
+    #   - delay: 250ms
+    #   - switch.turn_off: relay_0_id
+
+
+
+
