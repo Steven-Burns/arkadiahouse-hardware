@@ -9,15 +9,18 @@ packages:
   base: !include 
     file: ./dmx-base.yaml
     vars:
-      device_hostname: 669-esphome
+      device_hostname: ${device_hostname}
 
 # none of this goo compiles reliably
 #packages:
 #  light0: !include ./rgbww-lights-u1.00-04.yaml
 #  light1: !include ./rgbww-lights-u1.05-09.yaml
-
+# nor
 # <<: !include ./rgbww-lights-u1.00-04.yaml
 # <<: !include ./rgbww-lights-u1.05-09.yaml
+# but I should try again in a bit in case the packages thingy gets fixed.
+# the idea being to put the 'template' definition of one (or more) of my Chinese
+# LED downlights into a separate file from which DMX controllers can be composed.
 
 light:
   - &light_defaults
@@ -27,10 +30,11 @@ light:
     default_transition_length: 0s
     gamma_correct: 1.0
     disabled_by_default: false
-    restore_mode: RESTORE_AND_OFF
     initial_state: 
       state: OFF
       color_mode: RGB_COLD_WARM_WHITE
+    resume_effect: true
+    restore_state: all
     flash_transition_length: 0s
     constant_brightness: false
     color_interlock: false

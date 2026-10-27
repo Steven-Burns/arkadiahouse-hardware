@@ -3,7 +3,9 @@ light:  # Here we define simple on/off 'lights' for each individual DMX channel,
     platform: monochromatic
     internal: true
     default_transition_length: 0s
-    gamma_correct: 0
+    gamma_correct: 1.0
+    resume_effect: true
+    restore_state: all
     id: light_u2_ch1
     name: "U2_Ch001"
     output: dmx_u2_ch1
