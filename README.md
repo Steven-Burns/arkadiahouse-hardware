@@ -108,3 +108,14 @@ Since the repo is cloned to a docker named volume, rebuilding the image should n
 
 This technique IMO is preferable to option 1 as all the dependencies are cleanly bundled.
 
+# other hardware jiggery-pokery
+
+## jailbroken iPhone 4
+
+Still working on getting a more moderner browser running on it.
+
+## hacked amazon echo show 5
+
+Linda recevied a free Echo Show 5. "Free" as in "Amazon will now freely push ads in your face."
+
+So I fixed it with this https://github.com/HuskerMinion/techo5
