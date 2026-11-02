@@ -38,9 +38,9 @@ logger:
 
 switch:
   - platform: gpio
-    name: "Relay 0"
+    name: "Switch 0"
     id: relay_0_id
-    restore_mode: ALWAYS_OFF
+    restore_mode: RESTORE_DEFAULT_OFF
     pin: 
       number: GPIO0
       inverted: true
