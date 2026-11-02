@@ -1,5 +1,5 @@
 substitutions:
-  device_hostname: 669-esphome
+  device_hostname: 669-dmx-esphome
 
 packages:
   universe1_outputs: !include 

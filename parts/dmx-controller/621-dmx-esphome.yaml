@@ -7,7 +7,7 @@ packages:
   base: !include
     file: ./dmx-base.yaml
     vars:
-      device_hostname: 621-esphome
+      device_hostname: 621-dmx-esphome
 
 
 
