@@ -1,5 +1,5 @@
 substitutions:
-  device_hostname: 937-esphome
+  device_hostname: 937-pxl-esphome
 
 packages:
   strip_controller_base: !include ./strip-controller-base.yaml

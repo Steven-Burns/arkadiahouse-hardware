@@ -1,5 +1,5 @@
 substitutions:
-  device_hostname: 944-esphome
+  device_hostname: 936-pxl-esphome
 
 packages:
   strip_controller_base: !include ./strip-controller-base.yaml
@@ -7,10 +7,10 @@ packages:
 light:
   - &light_strip_defaults
     platform: esp32_rmt_led_strip
-    chipset: ws2812
-    channel_colors: RGB
+    chipset: ws2811
     default_transition_length: 0s
     gamma_correct: 1.0
+    channel_colors: RGB
     effects:
       - addressable_random_twinkle:
       - addressable_fireworks:
@@ -58,11 +58,11 @@ light:
     pin: GPIO27
     name: "Strip ${device_hostname[:3]}-1"
     id: strip_${device_hostname[:3]}_1
-    num_leds: 367
+    num_leds: 2
   - <<: *light_strip_defaults
     pin: GPIO25
     name: "Strip ${device_hostname[:3]}-2"
     id: strip_${device_hostname[:3]}_2
-    num_leds: 353
+    num_leds: 1
 
 
