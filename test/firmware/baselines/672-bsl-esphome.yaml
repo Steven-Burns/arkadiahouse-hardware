@@ -1,0 +1,6 @@
+packages:
+  baseline: !include 
+    file: ./wemos-d1-mini-baseline.yaml
+    vars:
+      device_hostname: 672-bsl-esphome
+

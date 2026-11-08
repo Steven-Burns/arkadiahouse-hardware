@@ -65,7 +65,7 @@ Or if you're going to flash the binaries with USB, this is handy.  Copies the co
 
 ```DOS
 ("662","656") | 
-% { dir ($_ + "-esphome.yaml") -recurse} | 
+% { dir ($_ + "*.yaml") -recurse} | 
 % { esphome compile $_; copy ($_.Directory.FullName + "/.esphome/build/" + $_.BaseName + "/build/firmware.factory.bin") ("/host/temp/" + $_.BaseName + ".firmware.factory.bin") -verbose}
 
 ```

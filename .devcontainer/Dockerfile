@@ -3,7 +3,7 @@ FROM ghcr.io/esphome/esphome:stable AS base
 # git config --system --add safe.directory "*"
 
 RUN \
-    git config --global user.name "Steven Burns was here" && \
+    git config --global user.name "Steven Burns" && \
     git config --global user.email "steven.burns@live.com" 
 
 RUN \
