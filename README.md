@@ -58,7 +58,7 @@ If you have a secrets.yaml file on a cloned repo outside the container, note tha
 PowerShell to the rescue.
 
 ```DOS
-dir ???-esphome.yaml -recurse | % { esphome compile $_ }
+dir ???-*esphome.yaml -recurse | % { esphome compile $_ }
 ```
 
 Or if you're going to flash the binaries with USB, this is handy.  Copies the compiled binaries to the host.

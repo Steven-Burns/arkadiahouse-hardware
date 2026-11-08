@@ -10,6 +10,7 @@ light:
     chipset: ws2811
     default_transition_length: 0s
     gamma_correct: 1.0
+    restore_state: all
     channel_colors: RGB
     effects:
       - addressable_random_twinkle:

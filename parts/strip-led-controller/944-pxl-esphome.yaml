@@ -11,6 +11,7 @@ light:
     channel_colors: RGB
     default_transition_length: 0s
     gamma_correct: 1.0
+    restore_state: all
     effects:
       - addressable_random_twinkle:
       - addressable_fireworks:
