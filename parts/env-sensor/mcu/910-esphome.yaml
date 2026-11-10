@@ -2,4 +2,4 @@ packages:
   base: !include
     file: ./env-sense-base.yaml
     vars: 
-      device_hostname: 910-esphome
+      device_hostname: 910-env-esphome
