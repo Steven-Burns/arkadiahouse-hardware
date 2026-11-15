@@ -1,0 +1,110 @@
+# this is a one-off variation of the pixel strip controller for the Layton Way
+# pool light, a homebuilt 2-LED unit to replace the stupid expensive branded
+# light.
+# The main difference is that this runs over WiFi instead of wired ETH
+
+substitutions:
+  device_hostname: 936-lwl-esphome
+
+packages:
+  diagnostics: !include 
+    file: /workspace/include/diagnostics.yaml
+    vars:
+      builtin_led_pin: "GPIO2"
+  standard_device: !include
+    file: /workspace/include/standard-home-assistant-device.yaml
+  wifi: !include  
+    file: /workspace/include/wifi.yaml
+
+esp32:
+  # board: nodemcu-32s <-- This also works for the wemos d1 mini 
+  board: wemos_d1_mini32
+  cpu_frequency: 240MHZ
+  toolchain: esp-idf  
+  framework:
+    type: esp-idf
+    advanced:
+      minimum_chip_revision: "3.1"
+      sram1_as_iram: true
+
+esphome:
+  name: ${device_hostname}
+  friendly_name: "Layton Way Pool Light Controller ${device_hostname[:3]}"
+  comment: "Controls the Layton Way main pool light."
+  name_add_mac_suffix: false
+  project:
+    name: "LaytonLegacy.PoolLightController"
+    version: "1.1"
+
+logger:
+  level: DEBUG
+  # baud_rate = 0 will disable serial logging (API access to logs should still work, tho)
+  # we explicitly set the logger baud rate to 115200 so that UART0 is allocated, and our uart components start with 
+  # UART1. If we ever wanted to have 3 UARTS on a single controller, we could use the logger for that by setting the
+  # logger baud rate to 0.  Then uart initialization would start with UART0.
+  baud_rate: 115200
+  logs:
+    # turn the volume down on sensors as some are really noisy
+    sensor: ERROR
+
+light:
+  - &light_strip_defaults
+    platform: esp32_rmt_led_strip
+    chipset: ws2811
+    default_transition_length: 0s
+    gamma_correct: 1.0
+    restore_state: all
+    channel_colors: RGB
+    effects:
+      - addressable_random_twinkle:
+      - addressable_fireworks:
+      - addressable_fireworks:
+          name: Fireworks 2
+          update_interval: 32ms
+          spark_probability: 30%
+          use_random_color: false
+          fade_out_rate: 120      
+      - addressable_twinkle:
+      - addressable_twinkle:
+          name: Twinkle 2
+          twinkle_probability: 75%
+          progress_interval: 4ms      
+      - addressable_scan:
+      - addressable_scan:
+          name: cylon eye
+          move_interval: 1ms
+          scan_width: 20      
+      - addressable_rainbow:
+      - strobe:
+      - pulse:
+      - addressable_color_wipe:
+      - addressable_color_wipe:
+          name: Color Wipe 2
+          colors:
+            - red: 100%
+              green: 100%
+              blue: 100%
+              num_leds: 5
+              gradient: true
+            - red: 0%
+              green: 0%
+              blue: 0%
+              num_leds: 1
+          add_led_interval: 100ms
+          reverse: false      
+      - random:
+      - flicker:
+      - addressable_flicker:
+      - addressable_flicker:
+          name: Flicker 2
+          update_interval: 16ms
+          intensity: 25%      
+    pin: GPIO27
+    name: "Light ${device_hostname[:3]}-1"
+    id: light_${device_hostname[:3]}_1
+    num_leds: 2
+
+
+
+
+
