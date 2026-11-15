@@ -1,3 +1,6 @@
+substitutions:
+  use_wired_networking: false
+
 packages:
   diagnostics: !include 
     file: /workspace/include/diagnostics.yaml
@@ -7,6 +10,18 @@ packages:
     file: /workspace/include/standard-home-assistant-device.yaml
   wifi: !include  
     file: /workspace/include/wifi.yaml
+    condition: "${not use_wired_networking} "
+  wired_ethernet: !include
+    file: /workspace/include/wired-ethernet.yaml
+    condition: "${use_wired_networking}"
+    vars:
+      # these are the pinouts I used for sensor hub devices. See /workspace/parts/sensor-hub/hub
+      ethernet_clk_pin: "GPIO18"  
+      ethernet_mosi_pin: "GPIO23" 
+      ethernet_miso_pin: "GPIO19" 
+      ethernet_cs_pin: "GPIO05" 
+      ethernet_interrupt_pin: "GPIO26" 
+      ethernet_reset_pin: "GPIO4"
 
 esp32:
   # board: nodemcu-32s <-- This also works for the wemos d1 mini 

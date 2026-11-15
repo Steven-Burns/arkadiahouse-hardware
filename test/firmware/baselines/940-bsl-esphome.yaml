@@ -2,5 +2,6 @@ packages:
   baseline: !include 
     file: ./wemos-d1-mini-baseline.yaml
     vars:
+      use_wired_networking: true
       device_hostname: 940-bsl-esphome
 
