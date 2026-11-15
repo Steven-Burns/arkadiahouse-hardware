@@ -1,5 +1,0 @@
-<<: !include 
-  file: /workspace/include/lolin-s2-mini-wifi-baseline.yaml
-  vars:
-    
-  

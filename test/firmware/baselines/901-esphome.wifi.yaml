@@ -1,6 +1,0 @@
-<<: !include 
-  file: /workspace/include/wemos-d1-mini-wifi-baseline.yaml
-  vars:
-    
-
-

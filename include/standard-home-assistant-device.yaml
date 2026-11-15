@@ -10,7 +10,6 @@ api:
   # is lost, even if lost forever. A non-zero timeout will cause the board to reboot if it can't connect to the API within the specified time, 
   # which is the most useful option for our purposes.
   # reboot_timeout: 0s
-  # password is deprecated in favor of encryption key
   encryption:
      key: !secret api_encryption_key
   on_client_connected:
