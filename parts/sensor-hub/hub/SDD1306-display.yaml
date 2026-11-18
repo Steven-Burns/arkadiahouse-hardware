@@ -5,6 +5,10 @@ substitutions:
 # with values broadcast by the HA server via the HA API connection. 
 # They can be referenced in the display lambda to show data from other devices.
 # Essentially local shadow copies of server-side state.
+# The server creates these entities automatically when an env-sensor device is
+# added to the system -- HA creates entities for all non-internal components declared
+# by the device according to a naming convention that we replicate here with 
+# substutution variables.
 sensor:
   - platform: homeassistant
     name: Humidity (${source_env_sensor_entity_id_prefix})
@@ -79,123 +83,130 @@ display:
           static const int big_char_height = 37;
           int yellow_line = 0;
           int blue_line = 0;
+          int x, y = 0;
 
           static std::string device_name = App.get_name();
-          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%.3s", device_name.c_str());
 
-          std::string ip_addr = id(ip_address_id).get_state();
-          //ESP_LOGD("steve", "text sensor %s", ip_addr.c_str()); 
-          std::string last_octet = "---";
-          std::string::size_type last_dot = ip_addr.rfind('.');
-          if (last_dot != std::string::npos) 
+          auto inDiagMode = id(in_diag_mode);
+
+          if (inDiagMode)
           {
-            last_octet = ip_addr.substr(last_dot + 1, 3);
+
+            it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%.3s", device_name.c_str());
+
+            std::string ip_addr = id(ip_address_id).get_state();
+            //ESP_LOGD("steve", "text sensor %s", ip_addr.c_str()); 
+            std::string last_octet = "---";
+            std::string::size_type last_dot = ip_addr.rfind('.');
+            if (last_dot != std::string::npos) 
+            {
+              last_octet = ip_addr.substr(last_dot + 1, 3);
+            }
+            it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%s", last_octet.c_str());
+
+            int ill = (int) id(illuminance_id)->state;
+            it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%3d", ill);
+
+            // the encapsulation of data is ... not, as here we start to read all sorts of global data with 
+            // 'well-known' names...
+
+            int radar_target0 = id(ld2410_0_target_detected);
+            int radar_target1 = id(ld2410_1_target_detected);
+
+            it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
+              "R%s%s",
+              radar_target0 == 0 ? "U" : ( radar_target0 == 1 ? "D" : "X"), 
+              radar_target1 == 0 ? "U" : ( radar_target1 == 1 ? "D" : "X") );
+
+            auto key_states = id(keypad_key_states); 
+            //for (int i = 0; i < 10; i += 2)
+            //{
+              // it.line(full_width - yellow_width, yellow_line + i, full_width, yellow_line + i, COLOR_ON);
+              //it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT,
+              //"%s %s",
+              //key_states[i] ? std::to_string(i).c_str() : "-",
+              //key_states[i+1] ? std::to_string(i+1).c_str() : "-");
+            //}
+
+            x = blue_width;
+            y = yellow_line + 2;
+            it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
+
+            x = blue_width;
+            y += 1;
+            it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
+
+            x = blue_width;
+            y += 1;
+            it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
+
+            x = blue_width;
+            y += 4;
+            it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
+
+            x = blue_width;
+            y += 1;
+            it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
+
+            x = blue_width;
+            y += 1;
+            it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
+
+            x = blue_width;
+            y += 4;
+            it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
+
+            x = blue_width;
+            y += 1;
+            it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
+
+            x = blue_width;
+            y += 1;
+            it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
+            x += 4;
+            it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
+
           }
-          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%s", last_octet.c_str());
-
-          int ill = (int) id(illuminance_id)->state;
-          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, "%3d", ill);
-
-          // the encapsulation of data is ... not, as here we start to read all sorts of global data with 
-          // 'well-known' names...
-
-          int radar_target0 = id(ld2410_0_target_detected);
-          int radar_target1 = id(ld2410_1_target_detected);
-
-          it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT, 
-            "R%s%s",
-            radar_target0 == 0 ? "U" : ( radar_target0 == 1 ? "D" : "X"), 
-            radar_target1 == 0 ? "U" : ( radar_target1 == 1 ? "D" : "X") );
-
-          auto key_states = id(keypad_key_states); 
-          //for (int i = 0; i < 10; i += 2)
-          //{
-            // it.line(full_width - yellow_width, yellow_line + i, full_width, yellow_line + i, COLOR_ON);
-            //it.printf(full_width, yellow_line += tiny_char_height, tiny_font, TextAlign::BASELINE_RIGHT,
-            //"%s %s",
-            //key_states[i] ? std::to_string(i).c_str() : "-",
-            //key_states[i+1] ? std::to_string(i+1).c_str() : "-");
-          //}
-
-          int x = blue_width;
-          int y = yellow_line + 2;
-          it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
-
-          x = blue_width;
-          y += 1;
-          it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
-
-          x = blue_width;
-          y += 1;
-          it.line(x, y, x + 2, y, key_states[0] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[1] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[2] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[3] ? COLOR_OFF : COLOR_ON);
-
-
-          x = blue_width;
-          y += 4;
-          it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
-
-          x = blue_width;
-          y += 1;
-          it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
-
-          x = blue_width;
-          y += 1;
-          it.line(x, y, x + 2, y, key_states[4] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[6] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[8] ? COLOR_OFF : COLOR_ON);
-
-
-          x = blue_width;
-          y += 4;
-          it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
-
-          x = blue_width;
-          y += 1;
-          it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
-
-          x = blue_width;
-          y += 1;
-          it.line(x, y, x + 2, y, key_states[5] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[7] ? COLOR_OFF : COLOR_ON);
-          x += 4;
-          it.line(x, y, x + 2, y, key_states[9] ? COLOR_OFF : COLOR_ON);
 
           // blinky routine as an array of connected points.
           static const int NUM_BLINKIES = 3;

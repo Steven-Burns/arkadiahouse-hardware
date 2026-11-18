@@ -12,10 +12,13 @@ globals:
   - id: keypad_key_states
     type: int[10]
     restore_value: no
-  - id: supress_shift_key_click
+  - id: suppress_shift_key_click
     type: bool
     restore_value: no
     initial_value: 'false'
+  - id: in_diag_mode
+    type: bool
+    restore_value: no
 
 # These events are reacted to in Home Assistant automations. They are 'logical'
 # interpretations of raw keypresses (which are implemented with the binary_sensors
@@ -87,6 +90,8 @@ event:
             }
             return "t:d=32,o=4,b=80:b4ff";
 
+# The underlying mechanism for triggering the logical events above are
+# various clicks and chords of the 9 switches implemented below
 binary_sensor:
   - platform: gpio
     name: "KSW 0"
@@ -190,10 +195,14 @@ binary_sensor:
           a[3] = x;        
     on_release:
       then:
-        # Trigger device reboot: hold keys 5, 6, and 9 down, click key 3
+        # Key 3 is a modifier key as well as a toggle key.  When other keys are 
+        # held down, and key 3 is clicked, magical events take place...
         lambda: |-
           auto rp = id(rtttl_player);
           auto a = id(keypad_key_states);
+          
+          // Trigger device reboot: hold keys 5, 6, and 9 down (only), click key 3
+
           if (    a[5] && a[6] && a[9]
               &&  !a[0] && !a[1] && !a[2] && !a[4] && !a[7] && !a[8]) 
           {
@@ -201,20 +210,23 @@ binary_sensor:
             rp->play("p:d=32,o=5,b=100:c,c#,d#,e,f#,g#,a#,b");
             App.safe_reboot();
           }
+
+          // toggle device diag mode: hold 2 (only), click 3
           if (    a[2] 
               &&  !a[0] && !a[1] && !a[4] && !a[5] && !a[6] && !a[7] && !a[8] && !a[9])
           {
             ESP_LOGD("keypad", "DIAG key sequence!");
             rp->play("l:d=16,o=5,b=280:a,g#,g,f#,f,f#,g,g#,4a");
-            id(supress_shift_key_click) = true;
+            id(suppress_shift_key_click) = true;
+            id(in_diag_mode) = !id(in_diag_mode);
           }
     on_click:
       then:
         - if:
             condition:
               lambda: |-
-                // ESP_LOGD("keypad", "checking supress");
-                auto a = id(supress_shift_key_click);
+                // ESP_LOGD("keypad", "checking suppress");
+                auto a = id(suppress_shift_key_click);
                 bool result = !a;
                 // ESP_LOGD("keypad", "fire click = %d", result ? 1:0);
                 return result;
@@ -228,9 +240,9 @@ binary_sensor:
                     device_hostname: ${device_hostname}
                     message: toggle
             else:
-              - logger.log: "Eating click event for key 3"
+              - logger.log: "Suppressing click event for key 3"
         - globals.set:
-            id: supress_shift_key_click
+            id: suppress_shift_key_click
             value: 'false'
 
   - platform: gpio
