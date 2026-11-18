@@ -1,8 +1,10 @@
 substitutions:
   source_env_sensor_entity_id_prefix: no_prefix_specified_in_yaml
   
-# The sensors we declare here get their values from Home Assistant via the API; 
-# They can be used in the display lambda to show data from other devices.
+# The sensors we declare here get their values from Home Assistant, populated 
+# with values broadcast by the HA server via the HA API connection. 
+# They can be referenced in the display lambda to show data from other devices.
+# Essentially local shadow copies of server-side state.
 sensor:
   - platform: homeassistant
     name: Humidity (${source_env_sensor_entity_id_prefix})

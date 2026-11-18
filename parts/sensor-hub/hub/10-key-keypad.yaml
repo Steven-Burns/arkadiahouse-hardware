@@ -9,9 +9,387 @@ mcp23017:
     # TODO need to experiment with this --> interrupt_pin: GPIO0
 
 globals:
-   - id: keypad_key_states
-     type: int[10]
-     restore_value: no
+  - id: keypad_key_states
+    type: int[10]
+    restore_value: no
+  - id: supress_shift_key_click
+    type: bool
+    restore_value: no
+    initial_value: 'false'
+
+# These events are reacted to in Home Assistant automations. They are 'logical'
+# interpretations of raw keypresses (which are implemented with the binary_sensors
+# following.)
+event:
+  - platform: template
+    name: "Keypad Light Switch Event"  
+    id: keypad_lightsw_event
+    device_class: "button"
+    event_types:
+      - "toggle"
+      - "dim up"
+      - "dim down"
+      - "next preset"
+    on_event:
+      then:
+        - rtttl.play: !lambda |-
+            if (event_type == "toggle") 
+            {
+              return "t:d=32,o=5,b=280:c#,c";
+            }
+            return "t:d=32,o=4,b=80:b4ff";
+#     auto t = event_type.c_str();
+#     ESP_LOGD("keypad", "Event '%s' triggered.", t);
+  - platform: template
+    name: "Keypad Fan Switch Event"  
+    id: keypad_fan_event
+    device_class: "button"
+    event_types:
+      - "toggle"  
+      - "speed up"
+      - "speed down"
+    on_event:
+      then:
+        - rtttl.play: !lambda |-
+            if (event_type == "toggle") 
+            {
+              return "t:d=32,o=5,b=280:d#,d";
+            }
+            return "t:d=32,o=4,b=80:b4ff";
+  - platform: template
+    name: "Keypad Blinds Event"  
+    id: keypad_blinds_event
+    device_class: "button"
+    event_types:
+      - "toggle"
+      - "extend up"
+      - "extend down"
+    on_event:
+      then:
+        - rtttl.play: !lambda |-
+            if (event_type == "toggle") 
+            {
+              return "t:d=32,o=5,b=280:e#,e";
+            }
+            return "t:d=32,o=4,b=80:b4ff";
+  - platform: template
+    name: "Keypad Door Lock Event"  
+    id: keypad_door_lock_event
+    device_class: "button"
+    event_types:
+      - "toggle"
+    on_event:
+      then:
+        - rtttl.play: !lambda |-
+            if (event_type == "toggle") 
+            {
+              return "t:d=32,o=5,b=280:f#,f";
+            }
+            return "t:d=32,o=4,b=80:b4ff";
+
+binary_sensor:
+  - platform: gpio
+    name: "KSW 0"
+    id: keypad_button_0
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 0
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    filters:
+      - delayed_on_off: 20ms
+      - settle: 10ms
+    on_state:
+      then:
+        lambda: |-
+          // ESP_LOGD("keypad", "KEY0 ON_STATE state = %d", x);
+          id(keypad_key_states)[0] = x;    
+    on_click:
+      then:
+        # - logger.log: "KEY0 ON_CLICK"
+        # we will fire both types of events, and then test with server-side 
+        # event handlers to see which type works best.  Both seem slow.
+        - event.trigger:
+            id: keypad_lightsw_event
+            event_type: "toggle"
+        - homeassistant.event:
+            event: esphome.keypad_lightsw_event
+            data:
+              device_hostname: ${device_hostname}
+              message: toggle
+  - platform: gpio
+    name: "KSW 1"
+    id: keypad_button_1
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 1
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_state:
+      then:
+        - lambda: |-
+            id(keypad_key_states)[1] = x;   
+    on_click:
+      then:
+        - event.trigger:
+            id: keypad_fan_event
+            event_type: "toggle"
+        - homeassistant.event:
+            event: esphome.keypad_fan_event
+            data:
+              device_hostname: ${device_hostname}
+              message: toggle
+
+  - platform: gpio
+    name: "KSW 2"
+    id: keypad_button_2
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 2
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_state:
+      then:
+        - lambda: |-
+            id(keypad_key_states)[2] = x;        
+    on_click:
+      then:
+        - event.trigger:
+            id: keypad_blinds_event
+            event_type: "toggle"
+        - homeassistant.event:
+            event: esphome.keypad_blind_event
+            data:
+              device_hostname: ${device_hostname}
+              message: toggle
+
+  - platform: gpio
+    name: "KSW 3"
+    id: keypad_button_3
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 3
+      inverted: true
+      mode: 
+        input: true
+        pullup: true
+    on_state:
+      then:
+        lambda: |-
+          auto a = id(keypad_key_states);
+          a[3] = x;        
+    on_release:
+      then:
+        # Trigger device reboot: hold keys 5, 6, and 9 down, click key 3
+        lambda: |-
+          auto rp = id(rtttl_player);
+          auto a = id(keypad_key_states);
+          if (    a[5] && a[6] && a[9]
+              &&  !a[0] && !a[1] && !a[2] && !a[4] && !a[7] && !a[8]) 
+          {
+            ESP_LOGD("keypad", "REBOOT key sequence!");
+            rp->play("p:d=32,o=5,b=100:c,c#,d#,e,f#,g#,a#,b");
+            App.safe_reboot();
+          }
+          if (    a[2] 
+              &&  !a[0] && !a[1] && !a[4] && !a[5] && !a[6] && !a[7] && !a[8] && !a[9])
+          {
+            ESP_LOGD("keypad", "DIAG key sequence!");
+            rp->play("l:d=16,o=5,b=280:a,g#,g,f#,f,f#,g,g#,4a");
+            id(supress_shift_key_click) = true;
+          }
+    on_click:
+      then:
+        - if:
+            condition:
+              lambda: |-
+                // ESP_LOGD("keypad", "checking supress");
+                auto a = id(supress_shift_key_click);
+                bool result = !a;
+                // ESP_LOGD("keypad", "fire click = %d", result ? 1:0);
+                return result;
+            then:
+              - event.trigger:
+                  id: keypad_door_lock_event
+                  event_type: "toggle"
+              - homeassistant.event:
+                  event: esphome.keypad_door_lock_event
+                  data:
+                    device_hostname: ${device_hostname}
+                    message: toggle
+            else:
+              - logger.log: "Eating click event for key 3"
+        - globals.set:
+            id: supress_shift_key_click
+            value: 'false'
+
+  - platform: gpio
+    name: "KSW 4"
+    id: keypad_button_4
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 4
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_state:
+      then:
+        lambda: |-
+          id(keypad_key_states)[4] = x;        
+    on_click:
+      then:
+        - event.trigger:
+            id: keypad_lightsw_event
+            event_type: "dim up"
+        - homeassistant.event:
+            event: esphome.keypad_lightsw_event
+            data:
+              device_hostname: ${device_hostname}
+              message: dim up
+
+  - platform: gpio
+    name: "KSW 5"
+    id: keypad_button_5
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 5
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_state:
+      then:
+        lambda: |-
+          id(keypad_key_states)[5] = x;        
+    on_click:
+      then:
+        - event.trigger:
+            id: keypad_lightsw_event
+            event_type: "dim down"
+        - homeassistant.event:
+            event: esphome.keypad_lightsw_event
+            data:
+              device_hostname: ${device_hostname}
+              message: dim down
+
+  - platform: gpio
+    name: "KSW 6"
+    id: keypad_button_6
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 6
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_state:
+      then:
+        lambda: |-
+          id(keypad_key_states)[6] = x;        
+    on_click:
+      then:
+        - event.trigger:
+            id: keypad_fan_event
+            event_type: "speed up"
+        - homeassistant.event:
+            event: esphome.keypad_fan_event
+            data:
+              device_hostname: ${device_hostname}
+              message: speed up
+  - platform: gpio
+    name: "KSW 7"
+    id: keypad_button_7
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 7
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_state:
+      then:
+        lambda: |-
+          id(keypad_key_states)[7] = x;        
+    on_click:
+      then:
+        - event.trigger:
+            id: keypad_fan_event
+            event_type: "speed down"
+        - homeassistant.event:
+            event: esphome.keypad_fan_event
+            data:
+              device_hostname: ${device_hostname}
+              message: speed down
+
+  - platform: gpio
+    name: "KSW 8"
+    id: keypad_button_8
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 8
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_state:
+      then:
+        lambda: |-
+          id(keypad_key_states)[8] = x;        
+    on_click:
+      then:
+        - event.trigger:
+            id: keypad_blinds_event
+            event_type: "extend up"
+        - homeassistant.event:
+            event: esphome.keypad_blinds_event
+            data:
+              device_hostname: ${device_hostname}
+              message: extend up
+  - platform: gpio
+    name: "KSW 9"
+    id: keypad_button_9
+    internal: true
+    pin:
+      mcp23xxx: mcp23017_0
+      number: 9
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_state:
+      then:
+        lambda: |-
+          id(keypad_key_states)[9] = x;        
+    on_click:
+      then:
+        - event.trigger:
+            id: keypad_blinds_event
+            event_type: "extend down"
+        - homeassistant.event:
+            event: esphome.keypad_blinds_event
+            data:
+              device_hostname: ${device_hostname}
+              message: extend down
+
+
+# more random notes
+
 
 
           # auto b = id(buzzer_0_id); 
@@ -41,185 +419,3 @@ globals:
 #         level: "50%"
 
 # id(light_1).set_level(0.5);
-
-binary_sensor:
-  - platform: gpio
-    name: "KSW 0"
-    id: keypad_button_0
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 0
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        lambda: |-
-          id(keypad_key_states)[0] = x;    
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw0:d=32,o=5,b=180:a4,a";
-  - platform: gpio
-    name: "KSW 1"
-    id: keypad_button_1
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 1
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        - lambda: |-
-            id(keypad_key_states)[1] = x;   
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw1:d=32,o=5,b=180:b4,b";
-  - platform: gpio
-    name: "KSW 2"
-    id: keypad_button_2
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 2
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        - lambda: |-
-            id(keypad_key_states)[2] = x;        
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw2:d=32,o=5,b=180:c4,c";
-  - platform: gpio
-    name: "KSW 3"
-    id: keypad_button_3
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 3
-      inverted: true
-      mode: 
-        input: true
-        pullup: true
-    on_state:
-      then:
-        lambda: |-
-          id(keypad_key_states)[3] = x;        
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw3:d=32,o=5,b=180:d4,d";
-  - platform: gpio
-    name: "KSW 4"
-    id: keypad_button_4
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 4
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        lambda: |-
-          id(keypad_key_states)[4] = x;        
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw4:d=32,o=5,b=180:e4,e";
-  - platform: gpio
-    name: "KSW 5"
-    id: keypad_button_5
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 5
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        lambda: |-
-          id(keypad_key_states)[5] = x;        
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw5:d=32,o=5,b=180:f4,f";
-  - platform: gpio
-    name: "KSW 6"
-    id: keypad_button_6
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 6
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        lambda: |-
-          id(keypad_key_states)[6] = x;        
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw6:d=32,o=5,b=180:g,g";
-  - platform: gpio
-    name: "KSW 7"
-    id: keypad_button_7
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 7
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        lambda: |-
-          id(keypad_key_states)[7] = x;        
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw7:d=32,o=5,b=180:a,b";
-  - platform: gpio
-    name: "KSW 8"
-    id: keypad_button_8
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 8
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        lambda: |-
-          id(keypad_key_states)[8] = x;        
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw8:d=32,o=5,b=180:b,d";
-  - platform: gpio
-    name: "KSW 9"
-    id: keypad_button_9
-    pin:
-      mcp23xxx: mcp23017_0
-      number: 9
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    on_state:
-      then:
-        lambda: |-
-          id(keypad_key_states)[9] = x;        
-    on_release:
-      then:
-        - rtttl.play: !lambda |-
-            return "sw9:d=32,o=5,b=400:c,a4#,c";
