@@ -207,8 +207,13 @@ binary_sensor:
               &&  !a[0] && !a[1] && !a[2] && !a[4] && !a[7] && !a[8]) 
           {
             ESP_LOGD("keypad", "REBOOT key sequence!");
-            rp->play("p:d=32,o=5,b=100:c,c#,d#,e,f#,g#,a#,b");
-            App.safe_reboot();
+
+            rp->add_on_finished_playback_callback([]() {
+              ESP_LOGD("keypad", "reboot Song completed");
+              App.safe_reboot();
+            });
+
+            rp->play("t:d=16,o=6,b=100:e,4f,8f,4d,8p,ffffff,eeee,8e,e,4f,8f5,4d5,8f4,2d4,2c#4");
           }
 
           // toggle device diag mode: hold 2 (only), click 3

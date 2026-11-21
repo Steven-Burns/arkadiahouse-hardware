@@ -94,3 +94,6 @@ GhostbustersP1:d=4,o=5,b=125:16c#,16p,8c#,16e,16f,16g#,16p,8b,8p,8a#.
 InspectorGadget:d=4,o=5,b=140:16d,16e,16f,16g,8a,8d6,c#
 Mahnahmanah:d=16,o=5,b=150:e,p,4g,p,a,f#,d
 GoodBad:d=4,o=5,b=100:32a#,32d#6,32a#,32d#6,8a#.,16f#.,16g#.,d#
+
+
+ShBoom:d=16,o=6,b=100:e,4f,8f,4d,8p,ffffff,eeee,8e,e,4f,8f,4d,8p,8f,d,a#,g5,4a5,4a5,2f5

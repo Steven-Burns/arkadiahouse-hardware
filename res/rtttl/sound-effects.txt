@@ -17,7 +17,7 @@ DeskPhon:d=8,o=5,b=500:c#,f,c#,f,c#,f,c#,f,c#,f,4p.,c#,f,c#,f,c#,f,c#,f,c#,f,1p.
 fastMario:d=16,o=6,b=280:e,e,32p,8e,c,8e,8g
 
 
-
+Reboot:d=16,o=6,b=100:e,4f,8f,4d,8p,ffffff,eeee,8e,e,4f,8f5,4d5,8f4,2d4,2c#4
 
 Startup sounds
 
