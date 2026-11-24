@@ -13,16 +13,16 @@ This repo hosts both ESPHome firmware configuration and KiCad circuit diagram "s
 
 Complete these steps once, before the steps in the section 'startup.'
 
-Create a docker named volume named "arkadiahouse-docker-volume".
+Create a docker named volume named "arkadiahouse-hardware-repo".
 
 ```DOS
-docker volume create arkadiahouse-docker-volume
+docker volume create arkadiahouse-hardware-repo
 ```
 
 Clone the repo into that volume at a folder named arkdiahouse-hardware. That folder will be mounted as /workspace when the container is run.
 
 ```DOS
-docker run --interactive --user root --volume arkadiahouse-docker-volume:/clone-destination --rm cleanstart/git:latest clone https://github.com/Steven-Burns/arkadiahouse-hardware.git /clone-destination/arkadiahouse-hardware --verbose
+docker run --interactive --user root --volume arkadiahouse-hardware-repo:/clone-destination --rm cleanstart/git:latest clone https://github.com/Steven-Burns/arkadiahouse-hardware.git /clone-destination/arkadiahouse-hardware --verbose
 ```
 
 The devcontainer.json file checked into this repo assumes that the above have been completed before VS Code attempts to open the project in a container.
